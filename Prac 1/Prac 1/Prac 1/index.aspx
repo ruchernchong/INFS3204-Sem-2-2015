@@ -1,0 +1,92 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/bootstrap.Master" CodeBehind="index.aspx.cs" Inherits="Prac_1.index" %>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="jumbotron">
+        <h1>Basic Calculator</h1>
+        <li>Performing basic calculator operations and converting the result from base-10 to base-2.</li>
+        <li>Counting the numbers of digitals in base-2 number</li>
+    </div>
+    <form id="frmCalculator" runat="server">
+        <div class="col-lg-7">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Basic Calculator</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <asp:TextBox ID="txtInputOne" placeholder="Input One" runat="server" TabIndex="1"></asp:TextBox>
+                                <asp:DropDownList ID="dropOperators" runat="server"></asp:DropDownList>
+                                <asp:TextBox ID="txtInputTwo" placeholder="Input Two" runat="server" TabIndex="2"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblBase10" runat="server" Text="lblBase10"></asp:Label>
+
+                            </td>
+                            <td colspan="2">
+                                <asp:TextBox ID="txtResultBase10" runat="server"></asp:TextBox>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblBase2" runat="server" Text="lblBase2"></asp:Label>
+
+                            </td>
+                            <td colspan="2">
+                                <asp:TextBox ID="txtResultBase2" runat="server"></asp:TextBox>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <asp:Button ID="btnCalculate" runat="server" OnClick="btnCalculate_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-5">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h3 class="panel-title">Counting</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblNumOfZero" runat="server"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNumOfZero" runat="server"></asp:TextBox>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="lblNumOfOne" runat="server"></asp:Label>
+
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNumOfOne" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <asp:Button ID="btnCount" runat="server" OnClick="btnCount_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</asp:Content>
