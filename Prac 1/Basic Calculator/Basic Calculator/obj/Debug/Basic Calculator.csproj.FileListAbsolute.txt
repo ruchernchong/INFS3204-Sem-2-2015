@@ -50,3 +50,55 @@ C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\I
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Prac 1\Prac 1\obj\Debug\Prac 1.dll
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Prac 1\Prac 1\obj\Debug\Prac 1.pdb
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Prac 1\Prac 1\obj\Debug\Basic Calculator.csprojResolveAssemblyReference.cache
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Prac 1.dll.config
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Prac 1.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Prac 1.pdb
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Antlr3.Runtime.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\EntityFramework.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\EntityFramework.SqlServer.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Newtonsoft.Json.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Owin.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\System.Web.Optimization.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\System.Web.Providers.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\WebGrease.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\System.Web.Optimization.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Antlr3.Runtime.pdb
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Newtonsoft.Json.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\EntityFramework.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\EntityFramework.SqlServer.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\System.Web.Providers.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Basic Calculator.csprojResolveAssemblyReference.cache
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Prac 1.dll
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Prac 1.pdb
