@@ -3,8 +3,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h1>Basic Calculator</h1>
-        <li>Performing basic calculator operations and converting the result from base-10 to base-2.</li>
-        <li>Counting the numbers of digitals in base-2 number</li>
+        <p>Performing basic calculator operations and converting the result from base-10 to base-2.</p>
+        <p>Counting the numbers of digitals in base-2 number</p>
     </div>
     <form id="frmCalculator" runat="server">
         <div class="col-lg-7">
@@ -25,18 +25,15 @@
                         <tr>
                             <td>
                                 <asp:Label ID="lblBase10" runat="server" Text="lblBase10"></asp:Label>
-
                             </td>
                             <td colspan="2">
                                 <asp:TextBox ID="txtResultBase10" runat="server"></asp:TextBox>
-
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 <asp:Label ID="lblBase2" runat="server" Text="lblBase2"></asp:Label>
-
                             </td>
                             <td colspan="2">
                                 <asp:TextBox ID="txtResultBase2" runat="server"></asp:TextBox>
@@ -66,13 +63,11 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="txtNumOfZero" runat="server"></asp:TextBox>
-
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Label ID="lblNumOfOne" runat="server"></asp:Label>
-
                             </td>
                             <td>
                                 <asp:TextBox ID="txtNumOfOne" runat="server"></asp:TextBox>
