@@ -99,6 +99,5 @@ C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\I
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Basic Calculator.csprojResolveAssemblyReference.cache
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Prac 1.dll
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 1\Basic Calculator\Basic Calculator\obj\Debug\Prac 1.pdb

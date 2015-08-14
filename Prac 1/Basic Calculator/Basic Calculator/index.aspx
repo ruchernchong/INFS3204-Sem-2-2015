@@ -6,7 +6,7 @@
         <p>Performing basic calculator operations and converting the result from base-10 to base-2.</p>
         <p>Counting the numbers of digitals in base-2 number</p>
     </div>
-    <form id="frmCalculator" runat="server">
+    <form id="frmCalculator" class="form-inline" runat="server">
         <div class="col-lg-7">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -18,8 +18,8 @@
                             <td></td>
                             <td>
                                 <asp:TextBox ID="txtInputOne" placeholder="Input One" runat="server" TabIndex="1" CssClass="form-control"></asp:TextBox>
-                                <asp:DropDownList ID="dropOperators" runat="server"></asp:DropDownList>
-                                <asp:TextBox ID="txtInputTwo" placeholder="Input Two" runat="server" TabIndex="2"></asp:TextBox>
+                                <asp:DropDownList ID="dropOperators" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <asp:TextBox ID="txtInputTwo" placeholder="Input Two" runat="server" TabIndex="2" CssClass="form-control"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -27,7 +27,7 @@
                                 <asp:Label ID="lblBase10" runat="server" Text="lblBase10"></asp:Label>
                             </td>
                             <td colspan="2">
-                                <asp:TextBox ID="txtResultBase10" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtResultBase10" runat="server" CssClass="form-control"></asp:TextBox>
                             </td>
                         </tr>
 
@@ -36,13 +36,13 @@
                                 <asp:Label ID="lblBase2" runat="server" Text="lblBase2"></asp:Label>
                             </td>
                             <td colspan="2">
-                                <asp:TextBox ID="txtResultBase2" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtResultBase2" runat="server" CssClass="form-control"></asp:TextBox>
 
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <asp:Button ID="btnCalculate" runat="server" OnClick="btnCalculate_Click" />
+                                <asp:Button ID="btnCalculate" runat="server" OnClick="btnCalculate_Click" CssClass="btn btn-warning" />
                             </td>
                         </tr>
                     </table>
@@ -62,7 +62,7 @@
                                 <asp:Label ID="lblNumOfZero" runat="server"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtNumOfZero" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtNumOfZero" runat="server" CssClass="form-control"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -70,13 +70,13 @@
                                 <asp:Label ID="lblNumOfOne" runat="server"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txtNumOfOne" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtNumOfOne" runat="server" CssClass="form-control"></asp:TextBox>
                             </td>
                         </tr>
 
                         <tr>
                             <td colspan="2">
-                                <asp:Button ID="btnCount" runat="server" OnClick="btnCount_Click" class="btn btn-success" />
+                                <asp:Button ID="btnCount" runat="server" OnClick="btnCount_Click" class="btn btn-warning" />
                             </td>
                         </tr>
                     </table>
