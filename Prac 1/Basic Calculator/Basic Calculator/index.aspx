@@ -17,7 +17,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:TextBox ID="txtInputOne" placeholder="Input One" runat="server" TabIndex="1"></asp:TextBox>
+                                <asp:TextBox ID="txtInputOne" placeholder="Input One" runat="server" TabIndex="1" CssClass="form-control"></asp:TextBox>
                                 <asp:DropDownList ID="dropOperators" runat="server"></asp:DropDownList>
                                 <asp:TextBox ID="txtInputTwo" placeholder="Input Two" runat="server" TabIndex="2"></asp:TextBox>
                             </td>
@@ -76,7 +76,7 @@
 
                         <tr>
                             <td colspan="2">
-                                <asp:Button ID="btnCount" runat="server" OnClick="btnCount_Click" />
+                                <asp:Button ID="btnCount" runat="server" OnClick="btnCount_Click" class="btn btn-success" />
                             </td>
                         </tr>
                     </table>
