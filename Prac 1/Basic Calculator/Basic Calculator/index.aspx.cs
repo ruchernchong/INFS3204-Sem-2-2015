@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Prac_1
 {
@@ -84,9 +81,18 @@ namespace Prac_1
                             txtResultBase2.Text = Convert.ToString(product, 2);
                             break;
                         case 3:
-                            int quotient = int.Parse(txtInputOne.Text) / int.Parse(txtInputTwo.Text);
-                            txtResultBase10.Text = quotient.ToString();
-                            txtResultBase2.Text = Convert.ToString(quotient, 2);
+                            try
+                            {
+                                int quotient = int.Parse(txtInputOne.Text) / int.Parse(txtInputTwo.Text);
+                                txtResultBase10.Text = quotient.ToString();
+                                txtResultBase2.Text = Convert.ToString(quotient, 2);
+                            }
+                            catch (System.DivideByZeroException q)
+                            {
+                                string DivideByZeroError = "alert(\"Input detected a divides by zero.\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(),
+                                    "ServerControlScript", DivideByZeroError, true);
+                            }
                             break;
                     }
                 }
