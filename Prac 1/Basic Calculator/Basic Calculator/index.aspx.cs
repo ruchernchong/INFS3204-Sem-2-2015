@@ -54,9 +54,10 @@ namespace Prac_1
             // Validation input; empty input handler message. \
             if (txtInputOne.Text == "" || txtInputTwo.Text == "")
             {
-                string emptyInputs = "alert(\"Either Input One or Input Two is empty. Please enter a valid number for each field.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                    "ServerControlScript", emptyInputs, true);
+                //string emptyInputs = "alert(\"Either Input One or Input Two is empty. Please enter a valid number for each field.\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(),
+                //    "ServerControlScript", emptyInputs, true);
+                Response.Write("<script>alert(\"Either Input One or Input Two is empty. Please enter a valid integer for each field.\");</script>");
             }
             else
             {
@@ -87,11 +88,13 @@ namespace Prac_1
                                 txtResultBase10.Text = quotient.ToString();
                                 txtResultBase2.Text = Convert.ToString(quotient, 2);
                             }
-                            catch (System.DivideByZeroException q)
+                            catch (DivideByZeroException q)
                             {
-                                string DivideByZeroError = "alert(\"Input detected a divides by zero.\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(),
-                                    "ServerControlScript", DivideByZeroError, true);
+                                //string DivideByZeroError = "alert(\"Input detected a divides by zero.\");";
+                                //ScriptManager.RegisterStartupScript(this, GetType(),
+                                //    "ServerControlScript", DivideByZeroError, true);
+                                //Response.Write("<script>alert(\"Input detected a divides by zero.\");</script>");
+                                Response.Write("<script>alert(\"" + q.Message + "\");</script>");
                             }
                             break;
                     }
@@ -99,9 +102,10 @@ namespace Prac_1
                 catch (FormatException e)
                 {
                     // Catch format error if input is a string instead of an integer.
-                    string FormatError = "alert(\"Please ensure that the input you entered is a valid integer.\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(),
-                        "ServerControlScript", FormatError, true);
+                    //string FormatError = "alert(\"Please ensure that the input you entered is a valid integer.\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(),
+                    //    "ServerControlScript", FormatError, true);
+                    Response.Write("<script>alert(\"" + e.Message + "\");</script>");
                 }
             }
         }
