@@ -1,0 +1,21 @@
+Brisbane,4000
+New Farm,4005
+Bowen Hills,4006
+Hamilton,4007
+Eagle Farm,4009
+Albion Bc,4010
+Clayfield,4011
+Lutwyche,4030
+Alderley,4051
+Kelvin Grove,4059
+Ashgrove,4060
+Milton,4064
+Bardon,4065
+St Lucia,4067
+Uni of Queensland,4072
+Highgate Hill,4101
+Dutton Park,4102
+East Brisbane,4169
+Cannon Hill,4170
+Balmoral,4171
+Murarrie,4172

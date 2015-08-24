@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FindDateByZodiac">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dateInterval" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindDateByZodiacResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindDateByZodiacResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindDateByZodiacSoapIn">
+    <wsdl:part name="parameters" element="tns:FindDateByZodiac" />
+  </wsdl:message>
+  <wsdl:message name="FindDateByZodiacSoapOut">
+    <wsdl:part name="parameters" element="tns:FindDateByZodiacResponse" />
+  </wsdl:message>
+  <wsdl:portType name="webSvc_DateByNameSoap">
+    <wsdl:operation name="FindDateByZodiac">
+      <wsdl:input message="tns:FindDateByZodiacSoapIn" />
+      <wsdl:output message="tns:FindDateByZodiacSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="webSvc_DateByNameSoap" type="tns:webSvc_DateByNameSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindDateByZodiac">
+      <soap:operation soapAction="http://tempuri.org/FindDateByZodiac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webSvc_DateByNameSoap12" type="tns:webSvc_DateByNameSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindDateByZodiac">
+      <soap12:operation soapAction="http://tempuri.org/FindDateByZodiac" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="webSvc_DateByName">
+    <wsdl:port name="webSvc_DateByNameSoap" binding="tns:webSvc_DateByNameSoap">
+      <soap:address location="http://localhost:49772/webSvc_DateByName.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webSvc_DateByNameSoap12" binding="tns:webSvc_DateByNameSoap12">
+      <soap12:address location="http://localhost:49772/webSvc_DateByName.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Zodiac_Finder.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Zodiac_Finder_localhost_webSvc_DateByName" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:49772/webSvc_DateByName.asmx</Value>
+    </Setting>
+    <Setting Name="Zodiac_Finder_localhost1_webSvc_NameByDate" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:49772/webSvc_NameByDate.asmx</Value>
+    </Setting>
+    <Setting Name="Zodiac_Finder_PostcodeFinder_webSvc_PostcodeFinder" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:49772/webSvc_PostcodeFinder.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
