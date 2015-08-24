@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Zodiac_Finder.FindDateByName;
-using Zodiac_Finder.FindNameByDate;
-using Zodiac_Finder.PostcodeFinder;
 
 namespace Zodiac_Finder
 {
@@ -85,13 +82,6 @@ namespace Zodiac_Finder
                 txtResultNameByDate_GetName.Text = string.Format("{0}",
                     GetZodiacName.FindZodiacByDate(valTxtNameByDate_Month, valTxtNameByDate_Day).ToString());
             }
-        }
-
-        protected void btnShowPostcode_Click(object sender, EventArgs e)
-        {
-            webSvc_PostcodeFinder PostcodeFinder = new webSvc_PostcodeFinder();
-            lblPostcode.Text = string.Format("Postcode: {0}",
-                PostcodeFinder.PostcodeFinder(dropSuburb.SelectedItem.Value).ToString());
         }
     }
 }
