@@ -9,6 +9,8 @@ namespace Zodiac_Finder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            webSvc_PostcodeFinder populateSuburb = new webSvc_PostcodeFinder();
+
             string file = "Postcodes.txt";
             string sourcePath = Directory.GetCurrentDirectory();
 
@@ -76,6 +78,7 @@ namespace Zodiac_Finder
             catch (Exception q)
             {
                 Response.Write("<script>alert(\"" + q.Message + "\");</script>");
+                Debug.WriteLine(q.Message);
             }
             finally
             {

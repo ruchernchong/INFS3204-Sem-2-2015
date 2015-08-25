@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace Zodiac_Finder
@@ -21,7 +22,7 @@ namespace Zodiac_Finder
             public string dropSuburb { get; set; }
         }
 
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
 
         [WebMethod]
         public string PostcodeFinder(string dropSuburb)
@@ -36,11 +37,11 @@ namespace Zodiac_Finder
             string[][] arraySuburbs = getSuburbs.Select(suburbs => suburbs.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToArray()).ToArray();
             Debug.WriteLine(arraySuburbs);
 
-            for (int j = 0; j < arraySuburbs.GetLength(0); j++)
+            for (int i = 0; i < arraySuburbs.GetLength(0); i++)
             {
-                if (String.Compare(dropSuburb, arraySuburbs[j][0], true) == 0)
+                if (String.Compare(dropSuburb, arraySuburbs[i][0], true) == 0)
                 {
-                    return arraySuburbs[j][1];
+                    return arraySuburbs[i][1];
                 }
             }
             return "Invalid Selection";
