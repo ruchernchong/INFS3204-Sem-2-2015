@@ -32,7 +32,7 @@ namespace Zodiac_Finder
                     return zodiac[i, 2];
                 }
             }
-            return "Invalid Input";
+            return "Wrong Input Date";
         }
     }
 }
