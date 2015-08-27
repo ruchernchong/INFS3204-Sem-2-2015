@@ -126,7 +126,9 @@
 
         $(document).ready(function () {
             $("#btnShowPostcode").click(function () {
+                //Zodiac_Finder.webSvc_PostcodeFinder.PostcodeFinder($get("<%=dropSuburb.ClientID %>").value, onSuccess, onFailed);
                 //alert('{"dropSuburb" : ' + JSON.stringify($("#<%=dropSuburb.ClientID %>").val()) + '}');
+
                 $.ajax({
                     type: "POST",
                     url: "webSvc_PostcodeFinder.asmx/PostcodeFinder",
