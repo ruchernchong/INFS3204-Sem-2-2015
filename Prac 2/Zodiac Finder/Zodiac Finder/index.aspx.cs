@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Zodiac_Finder.serviceRef_DateByName;
+using Zodiac_Finder.serviceRef_NameByDate;
+using Zodiac_Finder.serviceRef_PostcodeFinder;
 
 namespace Zodiac_Finder
 {
@@ -9,7 +12,7 @@ namespace Zodiac_Finder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            webSvc_PostcodeFinder populateSuburb = new webSvc_PostcodeFinder();
+            webSvc_PostcodeFinderSoapClient populateSuburb = new serviceRef_PostcodeFinder.webSvc_PostcodeFinderSoapClient();
 
             string file = "Postcodes.txt";
             string sourcePath = Directory.GetCurrentDirectory();
@@ -59,14 +62,14 @@ namespace Zodiac_Finder
 
         protected void btnDateByName_GetDate_Click(object sender, EventArgs e)
         {
-            webSvc_DateByName GetDateInterval = new webSvc_DateByName();
+            webSvc_DateByNameSoapClient GetDateInterval = new serviceRef_DateByName.webSvc_DateByNameSoapClient();
             txtResultDateByName_GetDateInterval.Text = String.Format("{0}",
                 GetDateInterval.FindDateByZodiac(txtDateByName_Name.Text).ToString());
         }
 
         protected void btnNameByDate_GetZodiac_Click(object sender, EventArgs e)
         {
-            webSvc_NameByDate GetZodiacName = new webSvc_NameByDate();
+            webSvc_NameByDateSoapClient GetZodiacName = new serviceRef_NameByDate.webSvc_NameByDateSoapClient();
 
             int valTxtNameByDate_Month = 0, valTxtNameByDate_Day = 0;
 

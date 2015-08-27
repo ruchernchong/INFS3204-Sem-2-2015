@@ -34,20 +34,19 @@ namespace Zodiac_Finder
         public string FindZodiacByDate(int mth, int day)
         {
             // Force Year to be 2012, a leap year.
-            DateTime inputDate = new DateTime(2012, mth, day);
-            Debug.WriteLine(inputDate);
+            DateTime getDateFromInput= new DateTime(2012, mth, day);
+            Debug.WriteLine(getDateFromInput);
+
             for (int i = 0; i < zodiac.GetLength(0); i++)
             {
-                DateTime startDate = new DateTime(2012, int.Parse(zodiac[i, 1]), int.Parse(zodiac[i, 2]));
-                DateTime endDate = new DateTime(2012, int.Parse(zodiac[i, 3]), int.Parse(zodiac[i, 4]));
+                DateTime dateLower = new DateTime(2012, int.Parse(zodiac[i, 1]), int.Parse(zodiac[i, 2]));
+                DateTime dateUpper = new DateTime(2012, int.Parse(zodiac[i, 3]), int.Parse(zodiac[i, 4]));
 
-                Debug.WriteLine(startDate);
-
-                if (inputDate > new DateTime(2012, 12, 22) || inputDate < new DateTime(2012, 01, 19))
+                if (getDateFromInput > new DateTime(2012, 12, 22) || getDateFromInput < new DateTime(2012, 01, 19))
                 {
                     return "Capricorn";
                 }
-                else if (inputDate >= startDate && inputDate <= endDate)
+                else if (getDateFromInput >= dateLower && getDateFromInput <= dateUpper)
                 {
                     Debug.WriteLine(zodiac[i, 0]);
                     return zodiac[i, 0];

@@ -39,6 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,11 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.11.3.min.js" />
-    <Content Include="Web References\PostcodeFinder\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\serviceRef_DateByName\webSvc_DateByName.wsdl" />
+    <Content Include="Service References\serviceRef_DateByName\Zodiac_Finder.serviceRef_DateByName.FindDateByZodiacResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Web References\PostcodeFinder\webSvc_PostcodeFinder.wsdl" />
+    <None Include="Service References\serviceRef_NameByDate\webSvc_NameByDate.wsdl" />
+    <Content Include="Service References\serviceRef_NameByDate\Zodiac_Finder.serviceRef_NameByDate.FindZodiacByDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\serviceRef_PostcodeFinder\webSvc_PostcodeFinder.wsdl" />
+    <Content Include="Service References\serviceRef_PostcodeFinder\Zodiac_Finder.serviceRef_PostcodeFinder.PostcodeFinderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -95,18 +104,27 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\FindNameByDate\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
+    <None Include="Service References\serviceRef_DateByName\webSvc_DateByName.disco" />
+    <None Include="Service References\serviceRef_DateByName\configuration91.svcinfo" />
+    <None Include="Service References\serviceRef_DateByName\configuration.svcinfo" />
+    <None Include="Service References\serviceRef_DateByName\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <None Include="Web References\FindNameByDate\webSvc_NameByDate.disco" />
-    <Content Include="Web References\FindDateByName\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
+    </None>
+    <None Include="Service References\serviceRef_NameByDate\webSvc_NameByDate.disco" />
+    <None Include="Service References\serviceRef_NameByDate\configuration91.svcinfo" />
+    <None Include="Service References\serviceRef_NameByDate\configuration.svcinfo" />
+    <None Include="Service References\serviceRef_NameByDate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <None Include="Web References\FindNameByDate\webSvc_NameByDate.wsdl" />
-    <None Include="Web References\FindDateByName\webSvc_DateByName.disco" />
-    <None Include="Web References\PostcodeFinder\webSvc_PostcodeFinder.disco" />
+    </None>
+    <None Include="Service References\serviceRef_PostcodeFinder\webSvc_PostcodeFinder.disco" />
+    <None Include="Service References\serviceRef_PostcodeFinder\configuration91.svcinfo" />
+    <None Include="Service References\serviceRef_PostcodeFinder\configuration.svcinfo" />
+    <None Include="Service References\serviceRef_PostcodeFinder\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="webSvc_PostcodeFinder.asmx" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -114,7 +132,6 @@
     <Content Include="Web.config" />
     <Content Include="webSvc_DateByName.asmx" />
     <Content Include="webSvc_NameByDate.asmx" />
-    <None Include="Web References\FindDateByName\webSvc_DateByName.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bootstrap.Master.cs">
@@ -137,20 +154,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\FindNameByDate\Reference.cs">
+    <Compile Include="Service References\serviceRef_DateByName\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Web References\FindDateByName\Reference.cs">
+    <Compile Include="Service References\serviceRef_NameByDate\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Web References\PostcodeFinder\Reference.cs">
+    <Compile Include="Service References\serviceRef_PostcodeFinder\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="webSvc_DateByName.asmx.cs">
       <DependentUpon>webSvc_DateByName.asmx</DependentUpon>
@@ -172,39 +189,9 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:49772/webSvc_DateByName.asmx%3fop=FindDateByZodiac">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\FindDateByName\</RelPath>
-      <UpdateFromURL>http://localhost:49772/webSvc_DateByName.asmx%3fop=FindDateByZodiac</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Zodiac_Finder_localhost_webSvc_DateByName</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:49772/webSvc_NameByDate.asmx%3fop=FindZodiacByDate">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\FindNameByDate\</RelPath>
-      <UpdateFromURL>http://localhost:49772/webSvc_NameByDate.asmx%3fop=FindZodiacByDate</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Zodiac_Finder_localhost1_webSvc_NameByDate</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost:49772/webSvc_PostcodeFinder.asmx%3fop=PostcodeFinder">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\PostcodeFinder\</RelPath>
-      <UpdateFromURL>http://localhost:49772/webSvc_PostcodeFinder.asmx%3fop=PostcodeFinder</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Zodiac_Finder_PostcodeFinder_webSvc_PostcodeFinder</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <WCFMetadataStorage Include="Service References\serviceRef_DateByName\" />
+    <WCFMetadataStorage Include="Service References\serviceRef_NameByDate\" />
+    <WCFMetadataStorage Include="Service References\serviceRef_PostcodeFinder\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
