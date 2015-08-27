@@ -10,3 +10,4 @@ C:\Users\s4328248\Downloads\INFS3204-Sem-2-2015\Prac 2\Zodiac Finder\Zodiac Find
 C:\Users\s4328248\Downloads\INFS3204-Sem-2-2015\Prac 2\Zodiac Finder\Zodiac Finder\bin\Zodiac Finder.pdb
 C:\Users\s4328248\Downloads\INFS3204-Sem-2-2015\Prac 2\Zodiac Finder\Zodiac Finder\obj\Debug\Zodiac Finder.dll
 C:\Users\s4328248\Downloads\INFS3204-Sem-2-2015\Prac 2\Zodiac Finder\Zodiac Finder\obj\Debug\Zodiac Finder.pdb
+C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 2\Zodiac Finder\Zodiac Finder\obj\Debug\Zodiac Finder.csprojResolveAssemblyReference.cache

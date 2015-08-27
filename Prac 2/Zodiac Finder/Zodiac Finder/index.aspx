@@ -90,7 +90,6 @@
                                 </td>
                                 <td>
                                     <input type="button" id="btnShowPostcode" class="btn btn-primary" value="Show Postcode" />
-                                    <%--<asp:Button ID="btnShowPostcode" runat="server" CssClass="btn btn-primary" OnClick="btnShowPostcode_Click" />--%>
                                 </td>
                             </tr>
                             <tr>
@@ -124,15 +123,11 @@
             $get("lblPostcode").innerHTML = "Invalid Postcode.";
         }
 
-        $(document).ready(function () {
-            $("#btnShowPostcode").click(function () {
-                //Zodiac_Finder.webSvc_PostcodeFinder.PostcodeFinder($get("<%=dropSuburb.ClientID %>").value, onSuccess, onFailed);
-                //alert('{"dropSuburb" : ' + JSON.stringify($("#<%=dropSuburb.ClientID %>").val()) + '}');
-
-                $.ajax({
-                    type: "POST",
-                    url: "webSvc_PostcodeFinder.asmx/PostcodeFinder",
-                    data: '{"dropSuburb": "' + $("#<%=dropSuburb.ClientID %>").val() + '"}',
+        $("#btnShowPostcode").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "webSvc_PostcodeFinder.asmx/PostcodeFinder",
+                data: '{"dropSuburb": "' + $("#<%=dropSuburb.ClientID %>").val() + '"}',
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (response) {
@@ -143,6 +138,5 @@
                     }
                 });
             });
-        });
     </script>
 </asp:Content>
