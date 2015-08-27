@@ -16,6 +16,8 @@ namespace Zodiac_Finder
     {
         string[,] zodiac = 
             {
+                {"Aquarius", "01/21 - 02/19"},
+                {"Pisces", "02/20 - 03/20"},
                 {"Aries", "03/21 - 04/20"},
                 {"Taurus", "04/21 - 05/21"},
                 {"Gemini", "05/22 - 06/21"},
@@ -25,9 +27,7 @@ namespace Zodiac_Finder
                 {"Libra", "09/24 - 10/23"},
                 {"Scorpio", "10/24 - 11/22"},
                 {"Sagittarius", "11/23 - 12/21"},
-                {"Capricorn", "12/22 - 01/20"},
-                {"Aquarius", "01/21 - 02/19"},
-                {"Pisces", "02/20 - 03/20"}
+                {"Capricorn", "12/22 - 01/20"}
             };
 
         [WebMethod]
