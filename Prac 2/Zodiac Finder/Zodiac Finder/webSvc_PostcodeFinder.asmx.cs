@@ -17,11 +17,6 @@ namespace Zodiac_Finder
     [System.Web.Script.Services.ScriptService]
     public class webSvc_PostcodeFinder : System.Web.Services.WebService
     {
-        public class Suburb
-        {
-            public string dropSuburb { get; set; }
-        }
-
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
 
         [WebMethod]

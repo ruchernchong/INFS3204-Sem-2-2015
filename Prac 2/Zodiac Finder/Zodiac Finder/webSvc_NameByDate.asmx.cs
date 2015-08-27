@@ -1,4 +1,6 @@
-﻿using System.Web.Services;
+﻿using System;
+using System.Diagnostics;
+using System.Web.Services;
 
 namespace Zodiac_Finder
 {
