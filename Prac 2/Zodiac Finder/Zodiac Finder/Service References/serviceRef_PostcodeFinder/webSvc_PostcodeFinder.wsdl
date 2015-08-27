@@ -2,6 +2,31 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SuburbList">
+        <s:complexType />
+      </s:element>
+      <s:element name="SuburbListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuburbListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostcodeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="PostcodeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostcodeListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="PostcodeFinder">
         <s:complexType>
           <s:sequence>
@@ -18,6 +43,18 @@
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="SuburbListSoapIn">
+    <wsdl:part name="parameters" element="tns:SuburbList" />
+  </wsdl:message>
+  <wsdl:message name="SuburbListSoapOut">
+    <wsdl:part name="parameters" element="tns:SuburbListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostcodeListSoapIn">
+    <wsdl:part name="parameters" element="tns:PostcodeList" />
+  </wsdl:message>
+  <wsdl:message name="PostcodeListSoapOut">
+    <wsdl:part name="parameters" element="tns:PostcodeListResponse" />
+  </wsdl:message>
   <wsdl:message name="PostcodeFinderSoapIn">
     <wsdl:part name="parameters" element="tns:PostcodeFinder" />
   </wsdl:message>
@@ -25,6 +62,14 @@
     <wsdl:part name="parameters" element="tns:PostcodeFinderResponse" />
   </wsdl:message>
   <wsdl:portType name="webSvc_PostcodeFinderSoap">
+    <wsdl:operation name="SuburbList">
+      <wsdl:input message="tns:SuburbListSoapIn" />
+      <wsdl:output message="tns:SuburbListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostcodeList">
+      <wsdl:input message="tns:PostcodeListSoapIn" />
+      <wsdl:output message="tns:PostcodeListSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="PostcodeFinder">
       <wsdl:input message="tns:PostcodeFinderSoapIn" />
       <wsdl:output message="tns:PostcodeFinderSoapOut" />
@@ -32,6 +77,24 @@
   </wsdl:portType>
   <wsdl:binding name="webSvc_PostcodeFinderSoap" type="tns:webSvc_PostcodeFinderSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SuburbList">
+      <soap:operation soapAction="http://tempuri.org/SuburbList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostcodeList">
+      <soap:operation soapAction="http://tempuri.org/PostcodeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="PostcodeFinder">
       <soap:operation soapAction="http://tempuri.org/PostcodeFinder" style="document" />
       <wsdl:input>
@@ -44,6 +107,24 @@
   </wsdl:binding>
   <wsdl:binding name="webSvc_PostcodeFinderSoap12" type="tns:webSvc_PostcodeFinderSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SuburbList">
+      <soap12:operation soapAction="http://tempuri.org/SuburbList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostcodeList">
+      <soap12:operation soapAction="http://tempuri.org/PostcodeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="PostcodeFinder">
       <soap12:operation soapAction="http://tempuri.org/PostcodeFinder" style="document" />
       <wsdl:input>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2ed557ed-cbdc-498b-8ed4-a52a1b55273d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="19849096-3bd5-42ba-96c2-51096141a94e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:49772/webSvc_PostcodeFinder.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="webSvc_PostcodeFinder.wsdl" MetadataType="Wsdl" ID="6f6db7da-514c-437d-9e08-7e603c43ac64" SourceId="1" SourceUrl="http://localhost:49772/webSvc_PostcodeFinder.asmx?wsdl" />
-    <MetadataFile FileName="webSvc_PostcodeFinder.disco" MetadataType="Disco" ID="e2fee945-0e42-4041-8640-00dc05761285" SourceId="1" SourceUrl="http://localhost:49772/webSvc_PostcodeFinder.asmx?disco" />
+    <MetadataFile FileName="webSvc_PostcodeFinder.wsdl" MetadataType="Wsdl" ID="d7058b57-7aeb-48b2-897b-3647f8273694" SourceId="1" SourceUrl="http://localhost:49772/webSvc_PostcodeFinder.asmx?wsdl" />
+    <MetadataFile FileName="webSvc_PostcodeFinder.disco" MetadataType="Disco" ID="de5386f0-80de-4cea-b9a1-64edde466303" SourceId="1" SourceUrl="http://localhost:49772/webSvc_PostcodeFinder.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

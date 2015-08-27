@@ -12,11 +12,20 @@ namespace Zodiac_Finder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            webSvc_PostcodeFinderSoapClient populateSuburb = new serviceRef_PostcodeFinder.webSvc_PostcodeFinderSoapClient();
-
-            string file = "Postcodes.txt";
-            string sourcePath = Directory.GetCurrentDirectory();
-
+            if (!IsPostBack)
+            {
+                try
+                {
+                    webSvc_PostcodeFinderSoapClient populateSuburb = new serviceRef_PostcodeFinder.webSvc_PostcodeFinderSoapClient();
+                    dropSuburb.DataSource = populateSuburb.SuburbList();
+                    dropSuburb.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert(\"" + ex.Message + "\");</script>");
+                }
+            }
+            
             lblDateByName_InputName.Text = "Name of Zodiac: ";
             lblDateByName_ResultName.Text = "Date Range: ";
             lblNameByDate_Month.Text = "Month: ";
@@ -36,28 +45,7 @@ namespace Zodiac_Finder
             lblPostcode.Text = "Postcode: ";
             lblTimestamp.Text = DateTime.Now.ToString();
 
-            if (!IsPostBack)
-            {
-                try
-                {
-                    var suburb = new List<string>();
-                    StreamReader readerPostcodes = new StreamReader(sourcePath + "/" + file);
-                    string getSuburbs;
-                    while ((getSuburbs = readerPostcodes.ReadLine()) != null)
-                    {
-                        string[] suburbs = getSuburbs.Split(',');
-
-                        Debug.WriteLine(suburbs[0]);
-
-                        dropSuburb.Items.Add(suburbs[0]);
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert(\"" + ex.Message + "\");</script>");
-                }
-            }
+            
         }
 
         protected void btnDateByName_GetDate_Click(object sender, EventArgs e)

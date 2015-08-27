@@ -69,7 +69,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\serviceRef_PostcodeFinder\webSvc_PostcodeFinder.wsdl" />
+    <Content Include="Service References\serviceRef_PostcodeFinder\Zodiac_Finder.serviceRef_PostcodeFinder.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\serviceRef_PostcodeFinder\Zodiac_Finder.serviceRef_PostcodeFinder.PostcodeFinderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\serviceRef_PostcodeFinder\Zodiac_Finder.serviceRef_PostcodeFinder.PostcodeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\serviceRef_PostcodeFinder\Zodiac_Finder.serviceRef_PostcodeFinder.SuburbListResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -169,6 +178,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Suburb.cs" />
     <Compile Include="webSvc_DateByName.asmx.cs">
       <DependentUpon>webSvc_DateByName.asmx</DependentUpon>
       <SubType>Component</SubType>
