@@ -33,16 +33,28 @@ namespace Zodiac_Finder
         [WebMethod]
         public string FindZodiacByDate(int mth, int day)
         {
-            // Force Year to be 2012, a leap year.
-            DateTime getDateFromInput= new DateTime(2012, mth, day);
-            Debug.WriteLine(getDateFromInput);
+            DateTime getDateFromInput = new DateTime(1900, 01, 01);
+
+            try
+            {
+                // Force Year to be 2012, a leap year.
+                getDateFromInput = new DateTime(2012, mth, day);
+            }
+            catch (Exception ex)
+            {
+                 Debug.WriteLine(ex.Message);
+            }
 
             for (int i = 0; i < zodiac.GetLength(0); i++)
             {
                 DateTime dateLower = new DateTime(2012, int.Parse(zodiac[i, 1]), int.Parse(zodiac[i, 2]));
                 DateTime dateUpper = new DateTime(2012, int.Parse(zodiac[i, 3]), int.Parse(zodiac[i, 4]));
 
-                if (getDateFromInput > new DateTime(2012, 12, 22) || getDateFromInput < new DateTime(2012, 01, 19))
+                if (getDateFromInput <= new DateTime(2012, 01, 01))
+                {
+                    return "Invalid Input";
+                }
+                else if (getDateFromInput > new DateTime(2012, 12, 22) || getDateFromInput < new DateTime(2012, 01, 19))
                 {
                     return "Capricorn";
                 }
