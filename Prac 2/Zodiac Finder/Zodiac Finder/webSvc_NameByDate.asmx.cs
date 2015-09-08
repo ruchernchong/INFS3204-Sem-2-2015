@@ -16,6 +16,7 @@ namespace Zodiac_Finder
     {
         string[,] zodiac = 
             {
+                // Zodiac Name, Start Month, Start Day, End Month, End Day
                 {"Aquarius", "01", "21", "02", "19"},
                 {"Pisces", "02", "20", "03", "20"},
                 {"Aries", "03", "21", "04", "20"},
