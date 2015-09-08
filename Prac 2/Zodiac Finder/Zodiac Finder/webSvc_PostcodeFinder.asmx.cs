@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web.Script.Services;
 using System.Web.Services;
+using System.Web;
 
 namespace Zodiac_Finder
 {
@@ -104,8 +105,9 @@ namespace Zodiac_Finder
 
         public IEnumerable<String> ReadLines()
         {
-            string file = "/Postcodes.txt";
-            string sourcePath = Directory.GetCurrentDirectory();
+            string file = "Postcodes.txt";
+            string sourcePath = HttpRuntime.AppDomainAppPath;
+            Debug.WriteLine(HttpRuntime.AppDomainAppPath);
 
             StreamReader readerSuburbPostcode = new StreamReader(sourcePath + file);
 
