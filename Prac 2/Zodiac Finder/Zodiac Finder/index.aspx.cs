@@ -73,7 +73,7 @@ namespace Zodiac_Finder
             }
             finally
             {
-                txtResultNameByDate_GetName.Text = string.Format("{0}",
+                txtResultNameByDate_GetName.Text = String.Format("{0}",
                     GetZodiacName.FindZodiacByDate(valTxtNameByDate_Month, valTxtNameByDate_Day).ToString());
             }
         }
