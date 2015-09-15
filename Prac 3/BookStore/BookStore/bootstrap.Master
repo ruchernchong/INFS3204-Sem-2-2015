@@ -39,5 +39,12 @@
             </asp:ContentPlaceHolder>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="Footer" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </footer>
 </body>
 </html>

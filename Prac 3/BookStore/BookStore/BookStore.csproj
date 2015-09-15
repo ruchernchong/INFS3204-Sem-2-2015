@@ -68,11 +68,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\imgBackground.png" />
+    <Content Include="BookPurchaseService.svc" />
     <Content Include="BookStoreService.svc" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.aspx" />
     <Content Include="packages.config" />
@@ -112,6 +115,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookPurchaseService.svc.cs">
+      <DependentUpon>BookPurchaseService.svc</DependentUpon>
+    </Compile>
     <Compile Include="BookStoreService.svc.cs">
       <DependentUpon>BookStoreService.svc</DependentUpon>
     </Compile>
@@ -122,6 +128,7 @@
     <Compile Include="bootstrap.Master.designer.cs">
       <DependentUpon>bootstrap.Master</DependentUpon>
     </Compile>
+    <Compile Include="IBookPurchaseService.cs" />
     <Compile Include="IBookStoreService.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

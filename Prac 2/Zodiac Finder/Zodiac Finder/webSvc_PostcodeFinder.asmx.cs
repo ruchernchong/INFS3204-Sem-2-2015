@@ -34,7 +34,7 @@ namespace Zodiac_Finder
                                       "\r\n"
                                   };
 
-            for (int i =0; i<readerSuburb.GetLength(0); i++)
+            for (int i=0; i < readerSuburb.GetLength(0); i++)
             {
 
                 string[] arraySuburbs = readerSuburb[i].Split(delimiters, StringSplitOptions.RemoveEmptyEntries);

@@ -28,49 +28,56 @@ namespace BookStore
     public class Book
     {
         public string ID, name, author;
-        public int year, stock;
+        public int num, year, stock;
         public float price;
 
         [DataMember]
-        public string bookID
+        public string BookNum
         {
-            get { return ID; }
-            set { ID = value; }
+            get;
+            set;
         }
 
         [DataMember]
-        public string bookName
+        public string BookID
         {
-            get { return name; }
-            set { name = value; }
+            get;
+            set;
         }
 
         [DataMember]
-        public string bookAuthor
+        public string BookName
         {
-            get { return author; }
-            set { author = value; }
+            get;
+            set;
         }
 
         [DataMember]
-        public int bookYear
+        public string BookAuthor
         {
-            get { return year; }
-            set { year = value; }
+            get;
+            set;
         }
 
         [DataMember]
-        public int bookStock
+        public int BookYear
         {
-            get { return stock; }
-            set { stock = value; }
+            get;
+            set;
         }
 
         [DataMember]
-        public float bookPrice
+        public int BookStock
         {
-            get { return price; }
-            set { price = value; }
+            get;
+            set;
+        }
+
+        [DataMember]
+        public float BookPrice
+        {
+            get;
+            set;
         }
     }
 }
