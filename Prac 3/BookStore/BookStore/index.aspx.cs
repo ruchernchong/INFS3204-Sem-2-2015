@@ -7,7 +7,7 @@ using System.Numerics;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace BookStore
 {
@@ -53,14 +53,22 @@ namespace BookStore
 
                 try
                 {
-                    dataGrid_FileOutput.DataSource = BookStoreService.GetAllBooks();
-                    dataGrid_FileOutput.DataBind();
+                    GridView1.DataSource = BookStoreService.GetAllBooks();
+                    GridView1.DataBind();
+                    //dataGrid_FileOutput.DataSource = BookStoreService.GetAllBooks();
+                    //dataGrid_FileOutput.DataBind();
                 }
                 catch (Exception ex)
                 {
                     DebuggerInfo.Text = "Debug Message: {0}" + ex.Message.ToString();
                 }
             }
+        }
+
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            //Required to verify that the control is rendered properly on page
         }
 
         protected void btnAddBooks_Click(object sender, EventArgs e)
@@ -90,7 +98,7 @@ namespace BookStore
 
                             try
                             {
-                                
+
                             }
                             catch (Exception ex)
                             {
@@ -122,6 +130,7 @@ namespace BookStore
 
                         }
                         break;
+
                     case ("Year"):
                         int year = 0;
 
@@ -133,15 +142,13 @@ namespace BookStore
                         {
                             DebuggerInfo.Text = exceptionYear.Message.ToString();
                         }
+                        //dataGrid_FileOutput.DataSource = BookStoreService.searchBook(year);
+                        //dataGrid_FileOutput.DataBind();
+                        GridView1.DataSource = BookStoreService.searchBook(year);
+                        GridView1.DataBind();
 
-                        if (year > 0)
-                        {
-                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(year);
-                            dataGrid_FileOutput.DataBind();
-
-                            Debug.WriteLine(year);
-                            Debug.WriteLine(BookStoreService.searchBook(year));
-                        }
+                        //Debug.WriteLine(year);
+                        //Debug.WriteLine(BookStoreService.searchBook(year));
 
                         break;
                     default:

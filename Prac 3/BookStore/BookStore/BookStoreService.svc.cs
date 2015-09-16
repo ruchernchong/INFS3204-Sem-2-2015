@@ -51,10 +51,14 @@ namespace BookStore
                 });
             }
 
+            if (BookInfo.Count > 0) {
             foreach (Book book in BookInfo)
             {
                 return BookInfo;
             }
+        } else {
+            return null;
+        }
             throw new NotImplementedException();
         }
 
@@ -68,7 +72,6 @@ namespace BookStore
             throw new NotImplementedException();
         }
 
-        //public List<Book> searchBook(string ID, string name, string author, int year)
         public List<Book> searchBook(int year)
         {
             string[] readerBooks = ReadLines().ToArray();
@@ -85,8 +88,10 @@ namespace BookStore
                     .Select(Book => Book.Trim())
                     .ToArray();
 
-                if (int.Parse(arrayBooks[3]) == year)
+                if (year == int.Parse(arrayBooks[3]))
                 {
+                    Debug.WriteLine(int.Parse(arrayBooks[3]));
+
                     BookInfo.Add(new Book()
                     {
                         BookNum = i + 1,
@@ -94,7 +99,7 @@ namespace BookStore
                         BookName = arrayBooks[1],
                         BookAuthor = arrayBooks[2],
                         BookYear = int.Parse(arrayBooks[3]),
-                        BookPrice = '$' + float.Parse(arrayBooks[4].Trim('$')),
+                        BookPrice = float.Parse(arrayBooks[4]),
                         BookStock = int.Parse(arrayBooks[5])
                     });
                 }

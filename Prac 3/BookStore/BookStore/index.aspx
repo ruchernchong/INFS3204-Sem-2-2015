@@ -11,7 +11,8 @@
                 <div class="form-group">
                     <b><asp:Label ID="DebuggerInfo" runat="server"></asp:Label></b>
                 </div>
-                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover"></asp:DataGrid>
+                <%--<asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover"></asp:DataGrid>--%>
+                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
             </div>
         </div>
         <form id="formBook" runat="server">
