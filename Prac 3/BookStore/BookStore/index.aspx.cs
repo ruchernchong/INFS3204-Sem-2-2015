@@ -70,13 +70,11 @@ namespace BookStore
 
         protected void btnSearchBooks_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtSearch.Text))
+            if (String.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                MessageBox.Show("Input is empty.",
-                    "Input Empty",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-
+                dataGrid_FileOutput.DataSource = null;
+                dataGrid_FileOutput.DataBind();
+                DebuggerInfo.Text = "Input is empty";
             }
             else
             {
@@ -87,7 +85,7 @@ namespace BookStore
                     case ("Name"):
                         try
                         {
-
+                            
                         }
                         catch
                         {
@@ -117,31 +115,30 @@ namespace BookStore
                     case ("Year"):
                         try
                         {
-                            if (int.Parse(txtSearch.Text) > 0)
+                            int year;
+                            year = int.Parse(txtSearch.Text);
+
+                            if (year > 0)
                             {
-                                int year;
-                                year = int.Parse(txtSearch.Text);
-
-                                if (year > 0)
-                                {
-
-                                    if (BookStoreService.BookInfo == null)
-                                    {
-
-                                    }
-                                    else
-                                    {
-                                        dataGrid_FileOutput.DataSource = BookStoreService.searchBook("", "", "", year);
-                                        dataGrid_FileOutput.DataBind();
-                                    }
-                                }
+                                dataGrid_FileOutput.DataSource = BookStoreService.searchBook("", "", "", year);
+                                dataGrid_FileOutput.DataBind();
+                            }
+                            else if (BookStoreService.GetAllBooks().Count == 0)
+                            {
+                                MessageBox.Show("No results found.");
+                                DebuggerInfo.Text = "No results found.";
+                            }
+                            else
+                            {
+                                dataGrid_FileOutput.DataSource = null;
+                                dataGrid_FileOutput.DataBind();
+                                DebuggerInfo.Text = "Please make sure that Year is a positive integer.";
                             }
                         }
                         catch (Exception exceptionYear)
                         {
-                            MessageBox.Show(exceptionYear.Message.ToString());
-                            DebuggerInfo.Text = "Error: " + exceptionYear.Message.ToString();
-                            Debug.WriteLine(exceptionYear.Message.ToString());
+                            //MessageBox.Show(exceptionYear.Message.ToString());
+                            DebuggerInfo.Text = exceptionYear.Message.ToString();
                         }
                         break;
                     default:

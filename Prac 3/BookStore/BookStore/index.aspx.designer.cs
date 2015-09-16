@@ -13,6 +13,15 @@ namespace BookStore {
     public partial class index {
         
         /// <summary>
+        /// DebuggerInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DebuggerInfo;
+        
+        /// <summary>
         /// dataGrid_FileOutput control.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,15 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
+        /// rqeq_fieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqeq_fieldValidator;
+        
+        /// <summary>
         /// btnSearchBooks control.
         /// </summary>
         /// <remarks>
@@ -200,14 +218,5 @@ namespace BookStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchBooks;
-        
-        /// <summary>
-        /// DebuggerInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DebuggerInfo;
     }
 }

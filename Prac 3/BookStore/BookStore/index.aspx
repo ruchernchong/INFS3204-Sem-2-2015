@@ -2,14 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-lg-12">
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Data Table</h3>
             </div>
             <div class="panel panel-body">
-                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover">
-                </asp:DataGrid>
+                <div class="form-group">
+                    <b><asp:Label ID="DebuggerInfo" runat="server"></asp:Label></b>
+                </div>
+                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover"></asp:DataGrid>
             </div>
+
         </div>
         <form id="formBook" runat="server">
             <div class="col-lg-6">
@@ -75,6 +79,7 @@
                         </div>
                         <div class="form-group">
                             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rqeq_fieldValidator" runat="server" ErrorMessage="Please enter an input." ControlToValidate="txtSearch" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <asp:Button type="button" ID="btnSearchBooks" runat="server" CssClass="btn btn-primary" OnClick="btnSearchBooks_Click" />
@@ -83,12 +88,5 @@
                 </div>
             </div>
         </form>
-    </div>
-</asp:Content>
-<asp:Content ID="footer" ContentPlaceHolderID="Footer" runat="server">
-    <div class="col-lg-12">
-        <div class="panel panel-body">
-            <asp:Label ID="DebuggerInfo" runat="server">Debugger Info</asp:Label>
-        </div>
     </div>
 </asp:Content>

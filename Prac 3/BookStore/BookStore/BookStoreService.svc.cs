@@ -15,7 +15,7 @@ namespace BookStore
     public class BookStoreService : IBookStoreService
     {
         public List<Book> BookInfo = new List<Book>();
-
+        
         private static string path = HttpRuntime.AppDomainAppPath;
         private static string file = @"Books.txt";
         private string fullPathname = path + file;
