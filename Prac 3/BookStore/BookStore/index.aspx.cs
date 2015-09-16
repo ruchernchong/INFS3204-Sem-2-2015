@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,6 +13,8 @@ namespace BookStore
 {
     public partial class index : System.Web.UI.Page
     {
+        BookStoreService BookStoreService = new BookStoreService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             btnAddBooks.Text = "Add Books";
@@ -24,6 +27,10 @@ namespace BookStore
             lblBookYear.Text = "Year: ";
             lblBookPrice.Text = "Price: ";
             lblBookStock.Text = "Stock: ";
+
+            btnAddBooks.UseSubmitBehavior = false;
+            btnDeleteBooks.UseSubmitBehavior = false;
+            btnSearchBooks.UseSubmitBehavior = false;
 
             if (!IsPostBack)
             {
@@ -43,18 +50,16 @@ namespace BookStore
                 dropSearchItems.Add(new ListItem("Year"));
 
                 dropSearch.Items.AddRange(dropSearchItems.ToArray());
-            }
 
-            BookStoreService BookStoreService = new BookStoreService();
-
-            try
-            {
-                dataGrid_FileOutput.DataSource = BookStoreService.GetAllBooks();
-                dataGrid_FileOutput.DataBind();
-            }
-            catch (Exception ex)
-            {
-                DebuggerInfo.Text = "Debug Message: {0}" + ex.Message.ToString();
+                try
+                {
+                    dataGrid_FileOutput.DataSource = BookStoreService.GetAllBooks();
+                    dataGrid_FileOutput.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    DebuggerInfo.Text = "Debug Message: {0}" + ex.Message.ToString();
+                }
             }
         }
 
@@ -72,20 +77,25 @@ namespace BookStore
         {
             if (String.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                dataGrid_FileOutput.DataSource = null;
-                dataGrid_FileOutput.DataBind();
                 DebuggerInfo.Text = "Input is empty";
             }
             else
             {
-                BookStoreService BookStoreService = new BookStoreService();
-
                 switch (dropSearch.SelectedValue)
                 {
                     case ("Name"):
                         try
                         {
-                            
+                            string name;
+
+                            try
+                            {
+                                
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
                         }
                         catch
                         {
@@ -113,33 +123,26 @@ namespace BookStore
                         }
                         break;
                     case ("Year"):
+                        int year = 0;
+
                         try
                         {
-                            int year;
                             year = int.Parse(txtSearch.Text);
-
-                            if (year > 0)
-                            {
-                                dataGrid_FileOutput.DataSource = BookStoreService.searchBook("", "", "", year);
-                                dataGrid_FileOutput.DataBind();
-                            }
-                            else if (BookStoreService.GetAllBooks().Count == 0)
-                            {
-                                MessageBox.Show("No results found.");
-                                DebuggerInfo.Text = "No results found.";
-                            }
-                            else
-                            {
-                                dataGrid_FileOutput.DataSource = null;
-                                dataGrid_FileOutput.DataBind();
-                                DebuggerInfo.Text = "Please make sure that Year is a positive integer.";
-                            }
                         }
                         catch (Exception exceptionYear)
                         {
-                            //MessageBox.Show(exceptionYear.Message.ToString());
                             DebuggerInfo.Text = exceptionYear.Message.ToString();
                         }
+
+                        if (year > 0)
+                        {
+                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(year);
+                            dataGrid_FileOutput.DataBind();
+
+                            Debug.WriteLine(year);
+                            Debug.WriteLine(BookStoreService.searchBook(year));
+                        }
+
                         break;
                     default:
                         DebuggerInfo.Text = "Invalid input selected";

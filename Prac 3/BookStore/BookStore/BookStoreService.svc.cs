@@ -15,7 +15,7 @@ namespace BookStore
     public class BookStoreService : IBookStoreService
     {
         public List<Book> BookInfo = new List<Book>();
-        
+
         private static string path = HttpRuntime.AppDomainAppPath;
         private static string file = @"Books.txt";
         private string fullPathname = path + file;
@@ -68,7 +68,8 @@ namespace BookStore
             throw new NotImplementedException();
         }
 
-        public List<Book> searchBook(string ID, string name, string author, int year)
+        //public List<Book> searchBook(string ID, string name, string author, int year)
+        public List<Book> searchBook(int year)
         {
             string[] readerBooks = ReadLines().ToArray();
 
@@ -84,7 +85,7 @@ namespace BookStore
                     .Select(Book => Book.Trim())
                     .ToArray();
 
-                if (year == int.Parse(arrayBooks[3]))
+                if (int.Parse(arrayBooks[3]) == year)
                 {
                     BookInfo.Add(new Book()
                     {
@@ -99,17 +100,13 @@ namespace BookStore
                 }
             }
 
-            if (BookInfo.Count > 0)
+            foreach (Book book in BookInfo)
             {
-                foreach (Book book in BookInfo)
-                {
-                    return BookInfo;
-                }
+                return BookInfo;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
+
             throw new NotImplementedException();
         }
 
@@ -119,14 +116,15 @@ namespace BookStore
             string sourcePath = HttpRuntime.AppDomainAppPath;
             Debug.WriteLine(HttpRuntime.AppDomainAppPath);
 
-            StreamReader readerSuburbPostcode = new StreamReader(sourcePath + file);
+            StreamReader readerBooks = new StreamReader(sourcePath + file);
 
             string line;
-            while ((line = readerSuburbPostcode.ReadLine()) != null)
+            while ((line = readerBooks.ReadLine()) != null)
             {
                 yield return line;
                 Debug.WriteLine(line);
             }
+            readerBooks.Close();
         }
     }
 }

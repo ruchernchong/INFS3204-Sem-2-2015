@@ -13,7 +13,6 @@
                 </div>
                 <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover"></asp:DataGrid>
             </div>
-
         </div>
         <form id="formBook" runat="server">
             <div class="col-lg-6">

@@ -22,7 +22,8 @@ namespace BookStore
         bool deleteBook(int year);
 
         [OperationContract]
-        List<Book> searchBook(string ID, string name, string Author, int year);
+        //List<Book> searchBook(string ID, string name, string Author, int year);
+        List<Book> searchBook(int year);
     }
 
     [DataContract]
