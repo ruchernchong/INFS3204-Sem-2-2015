@@ -7,7 +7,7 @@
                 <h3 class="panel-title">Data Table</h3>
             </div>
             <div class="panel panel-body">
-                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover" UseAccessibleHeader="True">
+                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover">
                 </asp:DataGrid>
             </div>
         </div>
@@ -43,7 +43,7 @@
                             <asp:TextBox ID="txtBookStock" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-primary" />
+                            <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-primary" OnClick="btnAddBooks_Click" />
                         </div>
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <asp:DropDownList ID="dropNumIDYear" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="dropDelete" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
                         <div class="form-group">
                             <asp:TextBox ID="txtNum" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Button type="button" ID="btnDeleteBooks" runat="server" CssClass="btn btn-primary" />
+                            <asp:Button type="button" ID="btnDeleteBooks" runat="server" CssClass="btn btn-primary" OnClick="btnDeleteBooks_Click" />
                         </div>
                     </div>
                 </div>
@@ -71,13 +71,13 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <asp:DropDownList ID="dropNumIDAuthorYear" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="dropSearch" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
                         <div class="form-group">
-                            <asp:TextBox ID="txtID" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Button type="button" ID="btnSearchBooks" runat="server" CssClass="btn btn-primary" />
+                            <asp:Button type="button" ID="btnSearchBooks" runat="server" CssClass="btn btn-primary" OnClick="btnSearchBooks_Click" />
                         </div>
                     </div>
                 </div>

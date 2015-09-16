@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -21,7 +22,7 @@ namespace BookStore
         bool deleteBook(int year);
 
         [OperationContract]
-        List<Book> searchBook(int year);
+        List<Book> searchBook(string ID, string name, string Author, int year);
     }
 
     [DataContract]
@@ -32,7 +33,7 @@ namespace BookStore
         public float price;
 
         [DataMember]
-        public string BookNum
+        public int BookNum
         {
             get;
             set;

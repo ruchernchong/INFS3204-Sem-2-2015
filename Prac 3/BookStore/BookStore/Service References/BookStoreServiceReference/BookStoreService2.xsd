@@ -8,12 +8,13 @@
   <xs:element name="ArrayOfBook" nillable="true" type="tns:ArrayOfBook" />
   <xs:complexType name="Book">
     <xs:sequence>
-      <xs:element minOccurs="0" name="bookAuthor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="bookID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="bookName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="bookPrice" type="xs:float" />
-      <xs:element minOccurs="0" name="bookStock" type="xs:int" />
-      <xs:element minOccurs="0" name="bookYear" type="xs:int" />
+      <xs:element minOccurs="0" name="BookAuthor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookNum" type="xs:int" />
+      <xs:element minOccurs="0" name="BookPrice" type="xs:float" />
+      <xs:element minOccurs="0" name="BookStock" type="xs:int" />
+      <xs:element minOccurs="0" name="BookYear" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Book" nillable="true" type="tns:Book" />

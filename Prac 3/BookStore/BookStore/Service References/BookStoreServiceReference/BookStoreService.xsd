@@ -44,6 +44,9 @@
   <xs:element name="searchBook">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="year" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

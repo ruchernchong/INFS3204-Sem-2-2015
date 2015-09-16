@@ -148,13 +148,13 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.Button btnAddBooks;
         
         /// <summary>
-        /// dropNumIDYear control.
+        /// dropDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropNumIDYear;
+        protected global::System.Web.UI.WebControls.DropDownList dropDelete;
         
         /// <summary>
         /// txtNum control.
@@ -175,22 +175,22 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.Button btnDeleteBooks;
         
         /// <summary>
-        /// dropNumIDAuthorYear control.
+        /// dropSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropNumIDAuthorYear;
+        protected global::System.Web.UI.WebControls.DropDownList dropSearch;
         
         /// <summary>
-        /// txtID control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtID;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
         /// btnSearchBooks control.

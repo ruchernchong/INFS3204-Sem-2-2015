@@ -14,86 +14,21 @@ namespace BookStore
     // NOTE: In order to launch WCF Test Client for testing this service, please select BookStoreService.svc or BookStoreService.svc.cs at the Solution Explorer and start debugging.
     public class BookStoreService : IBookStoreService
     {
-        public void DoWork()
-        {
+        public List<Book> BookInfo = new List<Book>();
 
-        }
-
-        //public Book GetBook(string ID)
-        //{
-        //    Book BookInfo = new Book();
-
-        //    //set directory as desktop for STOCK and STORE
-        //    string path = HttpRuntime.AppDomainAppPath;
-        //    string file = @"Books.txt";
-        //    string fullFilename = path + file;
-
-        //    int count = 0;
-        //    string line;
-        //    bool BookExist = false;
-
-        //    if (File.Exists(fullFilename))
-        //    {
-        //      StreamReader fileReader = new StreamReader(fullFilename);
-        //        while ((line = fileReader.ReadLine()) != null)
-        //        {
-        //            string[] delimiters = {
-        //                                      ",",
-        //                                      "\r\n",
-        //                                      ":"
-        //                                  };
-        //            string[] arrayBooks = line.Split(delimiters, 
-        //                StringSplitOptions.RemoveEmptyEntries)
-        //                .Select(a => a.Trim())
-        //                .ToArray();
-
-        //            if (arrayBooks[1] == ID)
-        //            {
-        //                BookInfo.ID = split[1];
-        //                BookInfo.name = split[3];
-        //                BookInfo.branchNO = Convert.ToInt32(split[5]);
-        //                BookInfo.address = split[7];
-        //                BookInfo.phoneNumber = Convert.ToInt32(split[9]);
-        //                BookExist = true;
-        //            }
-        //            count++;
-        //        }
-        //        fileReader.Close();
-
-        //    }
-        //    if (BookExist)
-        //    {
-        //        return BookInfo;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+        private static string path = HttpRuntime.AppDomainAppPath;
+        private static string file = @"Books.txt";
+        private string fullPathname = path + file;
 
         public List<Book> GetAllBooks()
         {
-            List<Book> BookInfo = new List<Book>();
-            Book newBookInfo = new Book();
-
-            string path = HttpRuntime.AppDomainAppPath;
-            string file = @"Books.txt";
-            string fullPathname = path + file;
-
             string[] readerBooks = ReadLines().ToArray();
             Debug.WriteLine(readerBooks);
 
-            //if (File.Exists(fullPathname))
-            //{
-            //    StreamReader fileReader = new StreamReader(fullPathname);
-
-            //    string line;
-            //    while ((line = fileReader.ReadLine()) != null)
-            //    {
             string[] delimiters = {
-                                              ",",
-                                              "\r\n",
-                                          };
+                                      ",",
+                                      "\r\n"
+                                  };
 
             for (int i = 0; i < readerBooks.GetLength(0); i++)
             {
@@ -106,7 +41,7 @@ namespace BookStore
 
                 BookInfo.Add(new Book()
                 {
-                    BookNum = (i + 1).ToString(),
+                    BookNum = i + 1,
                     BookID = arrayBooks[0],
                     BookName = arrayBooks[1],
                     BookAuthor = arrayBooks[2],
@@ -119,12 +54,7 @@ namespace BookStore
             foreach (Book book in BookInfo)
             {
                 return BookInfo;
-                Debug.WriteLine(BookInfo);
             }
-            //}
-            //fileReader.Close();
-            //}
-
             throw new NotImplementedException();
         }
 
@@ -138,8 +68,48 @@ namespace BookStore
             throw new NotImplementedException();
         }
 
-        public List<Book> searchBook(int year)
+        public List<Book> searchBook(string ID, string name, string author, int year)
         {
+            string[] readerBooks = ReadLines().ToArray();
+
+            string[] delimiters = {
+                                      ",",
+                                      "\r\n"
+                                  };
+
+            for (int i = 0; i < readerBooks.GetLength(0); i++)
+            {
+                string[] arrayBooks = readerBooks[i].Split(delimiters,
+                    StringSplitOptions.RemoveEmptyEntries)
+                    .Select(Book => Book.Trim())
+                    .ToArray();
+
+                if (year == int.Parse(arrayBooks[3]))
+                {
+                    BookInfo.Add(new Book()
+                    {
+                        BookNum = i + 1,
+                        BookID = arrayBooks[0],
+                        BookName = arrayBooks[1],
+                        BookAuthor = arrayBooks[2],
+                        BookYear = int.Parse(arrayBooks[3]),
+                        BookPrice = '$' + float.Parse(arrayBooks[4].Trim('$')),
+                        BookStock = int.Parse(arrayBooks[5])
+                    });
+                }
+            }
+
+            if (BookInfo.Count > 0)
+            {
+                foreach (Book book in BookInfo)
+                {
+                    return BookInfo;
+                }
+            }
+            else
+            {
+                return null;
+            }
             throw new NotImplementedException();
         }
 

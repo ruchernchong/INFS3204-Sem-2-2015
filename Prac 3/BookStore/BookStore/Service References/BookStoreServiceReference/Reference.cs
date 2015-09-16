@@ -23,22 +23,25 @@ namespace BookStore.BookStoreServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string bookAuthorField;
+        private string BookAuthorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string bookIDField;
+        private string BookIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string bookNameField;
+        private string BookNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private float bookPriceField;
+        private int BookNumField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int bookStockField;
+        private float BookPriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int bookYearField;
+        private int BookStockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BookYearField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -51,79 +54,92 @@ namespace BookStore.BookStoreServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string bookAuthor {
+        public string BookAuthor {
             get {
-                return this.bookAuthorField;
+                return this.BookAuthorField;
             }
             set {
-                if ((object.ReferenceEquals(this.bookAuthorField, value) != true)) {
-                    this.bookAuthorField = value;
-                    this.RaisePropertyChanged("bookAuthor");
+                if ((object.ReferenceEquals(this.BookAuthorField, value) != true)) {
+                    this.BookAuthorField = value;
+                    this.RaisePropertyChanged("BookAuthor");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string bookID {
+        public string BookID {
             get {
-                return this.bookIDField;
+                return this.BookIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.bookIDField, value) != true)) {
-                    this.bookIDField = value;
-                    this.RaisePropertyChanged("bookID");
+                if ((object.ReferenceEquals(this.BookIDField, value) != true)) {
+                    this.BookIDField = value;
+                    this.RaisePropertyChanged("BookID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string bookName {
+        public string BookName {
             get {
-                return this.bookNameField;
+                return this.BookNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.bookNameField, value) != true)) {
-                    this.bookNameField = value;
-                    this.RaisePropertyChanged("bookName");
+                if ((object.ReferenceEquals(this.BookNameField, value) != true)) {
+                    this.BookNameField = value;
+                    this.RaisePropertyChanged("BookName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float bookPrice {
+        public int BookNum {
             get {
-                return this.bookPriceField;
+                return this.BookNumField;
             }
             set {
-                if ((this.bookPriceField.Equals(value) != true)) {
-                    this.bookPriceField = value;
-                    this.RaisePropertyChanged("bookPrice");
+                if ((this.BookNumField.Equals(value) != true)) {
+                    this.BookNumField = value;
+                    this.RaisePropertyChanged("BookNum");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int bookStock {
+        public float BookPrice {
             get {
-                return this.bookStockField;
+                return this.BookPriceField;
             }
             set {
-                if ((this.bookStockField.Equals(value) != true)) {
-                    this.bookStockField = value;
-                    this.RaisePropertyChanged("bookStock");
+                if ((this.BookPriceField.Equals(value) != true)) {
+                    this.BookPriceField = value;
+                    this.RaisePropertyChanged("BookPrice");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int bookYear {
+        public int BookStock {
             get {
-                return this.bookYearField;
+                return this.BookStockField;
             }
             set {
-                if ((this.bookYearField.Equals(value) != true)) {
-                    this.bookYearField = value;
-                    this.RaisePropertyChanged("bookYear");
+                if ((this.BookStockField.Equals(value) != true)) {
+                    this.BookStockField = value;
+                    this.RaisePropertyChanged("BookStock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BookYear {
+            get {
+                return this.BookYearField;
+            }
+            set {
+                if ((this.BookYearField.Equals(value) != true)) {
+                    this.BookYearField = value;
+                    this.RaisePropertyChanged("BookYear");
                 }
             }
         }
@@ -161,10 +177,10 @@ namespace BookStore.BookStoreServiceReference {
         System.Threading.Tasks.Task<bool> deleteBookAsync(int year);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/searchBook", ReplyAction="http://tempuri.org/IBookStoreService/searchBookResponse")]
-        BookStore.BookStoreServiceReference.Book[] searchBook(int year);
+        BookStore.BookStoreServiceReference.Book[] searchBook(string ID, string name, string Author, int year);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/searchBook", ReplyAction="http://tempuri.org/IBookStoreService/searchBookResponse")]
-        System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(int year);
+        System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(string ID, string name, string Author, int year);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -218,12 +234,12 @@ namespace BookStore.BookStoreServiceReference {
             return base.Channel.deleteBookAsync(year);
         }
         
-        public BookStore.BookStoreServiceReference.Book[] searchBook(int year) {
-            return base.Channel.searchBook(year);
+        public BookStore.BookStoreServiceReference.Book[] searchBook(string ID, string name, string Author, int year) {
+            return base.Channel.searchBook(ID, name, Author, year);
         }
         
-        public System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(int year) {
-            return base.Channel.searchBookAsync(year);
+        public System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(string ID, string name, string Author, int year) {
+            return base.Channel.searchBookAsync(ID, name, Author, year);
         }
     }
 }
