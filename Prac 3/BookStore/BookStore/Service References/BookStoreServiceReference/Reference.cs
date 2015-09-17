@@ -9,178 +9,42 @@
 //------------------------------------------------------------------------------
 
 namespace BookStore.BookStoreServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="http://schemas.datacontract.org/2004/07/BookStore")]
-    [System.SerializableAttribute()]
-    public partial class Book : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BookAuthorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BookIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BookNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BookNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private float BookPriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BookStockField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BookYearField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BookAuthor {
-            get {
-                return this.BookAuthorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BookAuthorField, value) != true)) {
-                    this.BookAuthorField = value;
-                    this.RaisePropertyChanged("BookAuthor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BookID {
-            get {
-                return this.BookIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BookIDField, value) != true)) {
-                    this.BookIDField = value;
-                    this.RaisePropertyChanged("BookID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BookName {
-            get {
-                return this.BookNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BookNameField, value) != true)) {
-                    this.BookNameField = value;
-                    this.RaisePropertyChanged("BookName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BookNum {
-            get {
-                return this.BookNumField;
-            }
-            set {
-                if ((this.BookNumField.Equals(value) != true)) {
-                    this.BookNumField = value;
-                    this.RaisePropertyChanged("BookNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public float BookPrice {
-            get {
-                return this.BookPriceField;
-            }
-            set {
-                if ((this.BookPriceField.Equals(value) != true)) {
-                    this.BookPriceField = value;
-                    this.RaisePropertyChanged("BookPrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BookStock {
-            get {
-                return this.BookStockField;
-            }
-            set {
-                if ((this.BookStockField.Equals(value) != true)) {
-                    this.BookStockField = value;
-                    this.RaisePropertyChanged("BookStock");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BookYear {
-            get {
-                return this.BookYearField;
-            }
-            set {
-                if ((this.BookYearField.Equals(value) != true)) {
-                    this.BookYearField = value;
-                    this.RaisePropertyChanged("BookYear");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BookStoreServiceReference.IBookStoreService")]
     public interface IBookStoreService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/GetAllBooks", ReplyAction="http://tempuri.org/IBookStoreService/GetAllBooksResponse")]
-        BookStore.BookStoreServiceReference.Book[] GetAllBooks();
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Exception))]
+        object[] GetAllBooks();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/GetAllBooks", ReplyAction="http://tempuri.org/IBookStoreService/GetAllBooksResponse")]
-        System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> GetAllBooksAsync();
+        System.Threading.Tasks.Task<object[]> GetAllBooksAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/addBook", ReplyAction="http://tempuri.org/IBookStoreService/addBookResponse")]
-        bool addBook(BookStore.BookStoreServiceReference.Book newBook);
+        bool addBook(string[] newBook);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/addBook", ReplyAction="http://tempuri.org/IBookStoreService/addBookResponse")]
-        System.Threading.Tasks.Task<bool> addBookAsync(BookStore.BookStoreServiceReference.Book newBook);
+        System.Threading.Tasks.Task<bool> addBookAsync(string[] newBook);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/deleteBook", ReplyAction="http://tempuri.org/IBookStoreService/deleteBookResponse")]
-        bool deleteBook(int year);
+        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://tempuri.org/IBookStoreService/deleteBookExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
+        bool deleteBook(string type, string input);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/deleteBook", ReplyAction="http://tempuri.org/IBookStoreService/deleteBookResponse")]
-        System.Threading.Tasks.Task<bool> deleteBookAsync(int year);
+        System.Threading.Tasks.Task<bool> deleteBookAsync(string type, string input);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/searchBook", ReplyAction="http://tempuri.org/IBookStoreService/searchBookResponse")]
-        BookStore.BookStoreServiceReference.Book[] searchBook(string ID, string name, string Author, int year);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Exception))]
+        object[] searchBook(string type, string input);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookStoreService/searchBook", ReplyAction="http://tempuri.org/IBookStoreService/searchBookResponse")]
-        System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(string ID, string name, string Author, int year);
+        System.Threading.Tasks.Task<object[]> searchBookAsync(string type, string input);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -210,36 +74,36 @@ namespace BookStore.BookStoreServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public BookStore.BookStoreServiceReference.Book[] GetAllBooks() {
+        public object[] GetAllBooks() {
             return base.Channel.GetAllBooks();
         }
         
-        public System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> GetAllBooksAsync() {
+        public System.Threading.Tasks.Task<object[]> GetAllBooksAsync() {
             return base.Channel.GetAllBooksAsync();
         }
         
-        public bool addBook(BookStore.BookStoreServiceReference.Book newBook) {
+        public bool addBook(string[] newBook) {
             return base.Channel.addBook(newBook);
         }
         
-        public System.Threading.Tasks.Task<bool> addBookAsync(BookStore.BookStoreServiceReference.Book newBook) {
+        public System.Threading.Tasks.Task<bool> addBookAsync(string[] newBook) {
             return base.Channel.addBookAsync(newBook);
         }
         
-        public bool deleteBook(int year) {
-            return base.Channel.deleteBook(year);
+        public bool deleteBook(string type, string input) {
+            return base.Channel.deleteBook(type, input);
         }
         
-        public System.Threading.Tasks.Task<bool> deleteBookAsync(int year) {
-            return base.Channel.deleteBookAsync(year);
+        public System.Threading.Tasks.Task<bool> deleteBookAsync(string type, string input) {
+            return base.Channel.deleteBookAsync(type, input);
         }
         
-        public BookStore.BookStoreServiceReference.Book[] searchBook(string ID, string name, string Author, int year) {
-            return base.Channel.searchBook(ID, name, Author, year);
+        public object[] searchBook(string type, string input) {
+            return base.Channel.searchBook(type, input);
         }
         
-        public System.Threading.Tasks.Task<BookStore.BookStoreServiceReference.Book[]> searchBookAsync(string ID, string name, string Author, int year) {
-            return base.Channel.searchBookAsync(ID, name, Author, year);
+        public System.Threading.Tasks.Task<object[]> searchBookAsync(string type, string input) {
+            return base.Channel.searchBookAsync(type, input);
         }
     }
 }

@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost:52460/BookStoreService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BookStoreService.xsd" MetadataType="Schema" ID="da74a444-f797-45f7-b215-9bee9c47dd3b" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?xsd=xsd0" />
     <MetadataFile FileName="BookStoreService1.xsd" MetadataType="Schema" ID="992c2a97-1079-4154-97ca-de946093b2f4" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?xsd=xsd1" />
-    <MetadataFile FileName="BookStoreService.disco" MetadataType="Disco" ID="b8bd4bdb-1255-4908-9b30-68ae849c68ab" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?disco" />
+    <MetadataFile FileName="BookStoreService.xsd" MetadataType="Schema" ID="da74a444-f797-45f7-b215-9bee9c47dd3b" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?xsd=xsd0" />
     <MetadataFile FileName="BookStoreService2.xsd" MetadataType="Schema" ID="52add7c2-57a7-41c3-bdb2-b03aa997409e" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BookStoreService3.xsd" MetadataType="Schema" ID="f76fc389-eaf4-4153-a30a-74ed332507e9" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BookStoreService.disco" MetadataType="Disco" ID="b8bd4bdb-1255-4908-9b30-68ae849c68ab" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?disco" />
     <MetadataFile FileName="BookStoreService.wsdl" MetadataType="Wsdl" ID="b4a02fe0-66ad-478e-8f7d-079a63e1ef5f" SourceId="1" SourceUrl="http://localhost:52460/BookStoreService.svc?wsdl" />
   </Metadata>
   <Extensions>

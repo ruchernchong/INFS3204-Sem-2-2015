@@ -63,6 +63,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\BookStoreServiceReference\BookStoreService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -94,9 +97,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Service References\BookStoreServiceReference\BookStore.BookStoreServiceReference.Book.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\BookStoreServiceReference\BookStoreService.disco" />
     <None Include="Service References\BookStoreServiceReference\configuration91.svcinfo" />
     <None Include="Service References\BookStoreServiceReference\configuration.svcinfo" />

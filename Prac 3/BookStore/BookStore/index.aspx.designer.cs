@@ -22,22 +22,22 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.Label DebuggerInfo;
         
         /// <summary>
-        /// GridView1 control.
+        /// dataGrid_FileOutput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.DataGrid dataGrid_FileOutput;
         
         /// <summary>
-        /// formBook control.
+        /// formBookService control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formBook;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formBookService;
         
         /// <summary>
         /// lblBookID control.
@@ -166,13 +166,13 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.DropDownList dropDelete;
         
         /// <summary>
-        /// txtNum control.
+        /// txtDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNum;
+        protected global::System.Web.UI.WebControls.TextBox txtDelete;
         
         /// <summary>
         /// btnDeleteBooks control.
@@ -200,15 +200,6 @@ namespace BookStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// rqeq_fieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rqeq_fieldValidator;
         
         /// <summary>
         /// btnSearchBooks control.

@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Numerics;
-using System.Web;
-using System.Web.UI;
+using System.ServiceModel;
+using System.Text.RegularExpressions;
+//using System.Web.UI;
 using System.Web.UI.WebControls;
-//using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace BookStore
 {
     public partial class index : System.Web.UI.Page
     {
         BookStoreService BookStoreService = new BookStoreService();
+        String[] errorMessages = {
+                                   "Input is empty.",
+                                   "Invalid input type."
+                               };
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +33,8 @@ namespace BookStore
             btnAddBooks.UseSubmitBehavior = false;
             btnDeleteBooks.UseSubmitBehavior = false;
             btnSearchBooks.UseSubmitBehavior = false;
+
+            txtBookYear.MaxLength = 4;
 
             if (!IsPostBack)
             {
@@ -53,59 +57,84 @@ namespace BookStore
 
                 try
                 {
-                    GridView1.DataSource = BookStoreService.GetAllBooks();
-                    GridView1.DataBind();
-                    //dataGrid_FileOutput.DataSource = BookStoreService.GetAllBooks();
-                    //dataGrid_FileOutput.DataBind();
+                    loadAllBooks();
                 }
                 catch (Exception ex)
                 {
-                    DebuggerInfo.Text = "Debug Message: {0}" + ex.Message.ToString();
+                    DebuggerInfo.Text = "Debug Message: " + ex.Message.ToString();
                 }
             }
-        }
-
-
-        public override void VerifyRenderingInServerForm(Control control)
-        {
-            //Required to verify that the control is rendered properly on page
         }
 
         protected void btnAddBooks_Click(object sender, EventArgs e)
         {
+            DebuggerInfo.Text = null;
 
+            String[] newBook = {
+                                   txtBookID.Text,
+                                   txtBookName.Text,
+                                   txtBookAuthor.Text,
+                                   txtBookYear.Text,
+                                   txtBookPrice.Text,
+                                   txtBookStock.Text
+                               };
+
+            Debug.WriteLine(newBook);
+            BookStoreService.addBook(newBook);
         }
 
         protected void btnDeleteBooks_Click(object sender, EventArgs e)
         {
+            DebuggerInfo.Text = null;
 
+            string type = dropDelete.SelectedValue;
+            string input = txtDelete.Text;
+
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                MessageBox.Show(errorMessages[0]);
+                DebuggerInfo.Text = errorMessages[0];
+            } else {
+                try
+                {
+                    BookStoreService.deleteBook(type, input);
+                }
+                catch (FaultException<Exception> faultEx)
+                {
+                    Debug.WriteLine(faultEx.Detail.Message);
+                    MessageBox.Show(faultEx.Detail.Message);
+                    DebuggerInfo.Text = faultEx.Detail.Message;
+                }
+                
+                Response.Redirect(Request.RawUrl);
+            }
         }
 
         protected void btnSearchBooks_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtSearch.Text))
+            DebuggerInfo.Text = null;
+
+            string type = dropSearch.SelectedValue;
+            string input = txtSearch.Text;
+
+            Regex reg = new Regex(input, RegexOptions.IgnoreCase);
+            Debug.WriteLine(reg.Matches(input));
+
+            if (String.IsNullOrWhiteSpace(input))
             {
-                DebuggerInfo.Text = "Input is empty";
+                DebuggerInfo.Text = errorMessages[0];
             }
             else
             {
-                switch (dropSearch.SelectedValue)
+                switch (type)
                 {
                     case ("Name"):
                         try
                         {
-                            string name;
-
-                            try
-                            {
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
+                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_FileOutput.DataBind();
                         }
-                        catch
+                        catch (Exception ex)
                         {
 
                         }
@@ -113,7 +142,8 @@ namespace BookStore
                     case ("ID"):
                         try
                         {
-
+                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_FileOutput.DataBind();
                         }
                         catch
                         {
@@ -123,7 +153,8 @@ namespace BookStore
                     case ("Author"):
                         try
                         {
-
+                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_FileOutput.DataBind();
                         }
                         catch
                         {
@@ -132,30 +163,24 @@ namespace BookStore
                         break;
 
                     case ("Year"):
-                        int year = 0;
-
-                        try
-                        {
-                            year = int.Parse(txtSearch.Text);
-                        }
-                        catch (Exception exceptionYear)
-                        {
-                            DebuggerInfo.Text = exceptionYear.Message.ToString();
-                        }
-                        //dataGrid_FileOutput.DataSource = BookStoreService.searchBook(year);
-                        //dataGrid_FileOutput.DataBind();
-                        GridView1.DataSource = BookStoreService.searchBook(year);
-                        GridView1.DataBind();
-
-                        //Debug.WriteLine(year);
-                        //Debug.WriteLine(BookStoreService.searchBook(year));
+                        dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
+                        dataGrid_FileOutput.DataBind();
 
                         break;
                     default:
-                        DebuggerInfo.Text = "Invalid input selected";
+                        DebuggerInfo.Text = errorMessages[1];
                         break;
                 }
             }
+        }
+
+        public void loadAllBooks()
+        {
+            var bookList = BookStoreService.GetAllBooks();
+            Debug.WriteLine(bookList);
+
+            dataGrid_FileOutput.DataSource = bookList;
+            dataGrid_FileOutput.DataBind();
         }
     }
 }

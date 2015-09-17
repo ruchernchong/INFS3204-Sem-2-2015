@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,17 +14,17 @@ namespace BookStore
     public interface IBookStoreService
     {
         [OperationContract]
-        List<Book> GetAllBooks();
+        ICollection GetAllBooks();
 
         [OperationContract]
-        bool addBook(Book newBook);
+        bool addBook(String[] newBook);
 
         [OperationContract]
-        bool deleteBook(int year);
+        [FaultContract(typeof(Exception))]
+        bool deleteBook(string type, string input);
 
         [OperationContract]
-        //List<Book> searchBook(string ID, string name, string Author, int year);
-        List<Book> searchBook(int year);
+        ICollection searchBook(string type, string input);
     }
 
     [DataContract]

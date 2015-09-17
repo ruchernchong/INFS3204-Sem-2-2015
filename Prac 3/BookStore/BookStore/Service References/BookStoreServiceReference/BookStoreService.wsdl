@@ -4,7 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:52460/BookStoreService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:52460/BookStoreService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:52460/BookStoreService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BookStore" />
+      <xsd:import schemaLocation="http://localhost:52460/BookStoreService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:52460/BookStoreService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IBookStoreService_GetAllBooks_InputMessage">
@@ -25,6 +26,9 @@
   <wsdl:message name="IBookStoreService_deleteBook_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteBookResponse" />
   </wsdl:message>
+  <wsdl:message name="IBookStoreService_deleteBook_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:Exception" />
+  </wsdl:message>
   <wsdl:message name="IBookStoreService_searchBook_InputMessage">
     <wsdl:part name="parameters" element="tns:searchBook" />
   </wsdl:message>
@@ -43,6 +47,7 @@
     <wsdl:operation name="deleteBook">
       <wsdl:input wsaw:Action="http://tempuri.org/IBookStoreService/deleteBook" message="tns:IBookStoreService_deleteBook_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBookStoreService/deleteBookResponse" message="tns:IBookStoreService_deleteBook_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBookStoreService/deleteBookExceptionFault" name="ExceptionFault" message="tns:IBookStoreService_deleteBook_ExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="searchBook">
       <wsdl:input wsaw:Action="http://tempuri.org/IBookStoreService/searchBook" message="tns:IBookStoreService_searchBook_InputMessage" />
@@ -77,6 +82,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="searchBook">
       <soap:operation soapAction="http://tempuri.org/IBookStoreService/searchBook" style="document" />
