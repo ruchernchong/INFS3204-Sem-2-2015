@@ -2,3 +2,8 @@
     padding-top: 70px;
     /*background: url('../assets/imgBackground.png') fixed no-repeat;*/
 }
+
+.errorMessages {
+    color: red;
+    font-weight: bold;
+}

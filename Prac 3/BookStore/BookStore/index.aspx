@@ -2,22 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="col-lg-12">
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title">Data Table</h3>
             </div>
-            <div class="panel panel-body">
+            <div class="panel-body">
                 <div class="form-group">
-                    <b>
-                        <asp:Label ID="DebuggerInfo" runat="server"></asp:Label></b>
+                    <span class="errorMessages">
+                        <asp:Label ID="DebuggerInfo" runat="server"></asp:Label>
+                    </span>
                 </div>
-                <asp:DataGrid ID="dataGrid_FileOutput" runat="server" CssClass="table table-striped table-hover">
+                <asp:DataGrid ID="dataGrid_DisplayData" runat="server" CssClass="table table-striped table-hover">
                 </asp:DataGrid>
             </div>
         </div>
         <form id="formBookService" runat="server">
             <div class="col-lg-6">
-                <div class="panel panel-primary">
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <h3 class="panel-title">Add Books</h3>
                     </div>
@@ -47,13 +48,13 @@
                             <asp:TextBox ID="txtBookStock" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-primary" OnClick="btnAddBooks_Click" />
+                            <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-success" OnClick="btnAddBooks_Click" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="panel panel-primary">
+            <div class="col-lg-3">
+                <div class="panel panel-danger">
                     <div class="panel-heading">
                         <h3 class="panel-title">Delete Books</h3>
                     </div>
@@ -65,12 +66,12 @@
                             <asp:TextBox ID="txtDelete" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Button type="button" ID="btnDeleteBooks" runat="server" CssClass="btn btn-primary" OnClick="btnDeleteBooks_Click" />
+                            <asp:Button type="button" ID="btnDeleteBooks" runat="server" CssClass="btn btn-danger" OnClick="btnDeleteBooks_Click" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Search Books</h3>
