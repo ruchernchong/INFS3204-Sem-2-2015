@@ -14,9 +14,11 @@ namespace BookStore
     public interface IBookStoreService
     {
         [OperationContract]
+        [FaultContract(typeof(Exception))]
         ICollection GetAllBooks();
 
         [OperationContract]
+        [FaultContract(typeof(Exception))]
         bool addBook(String[] newBook);
 
         [OperationContract]
@@ -24,63 +26,64 @@ namespace BookStore
         bool deleteBook(string type, string input);
 
         [OperationContract]
+        [FaultContract(typeof(Exception))]
         ICollection searchBook(string type, string input);
     }
 
-    //[DataContract]
-    //public class Book
-    //{
-    //    public string ID, name, author;
-    //    public int num, year, stock;
-    //    public float price;
+    [DataContract]
+    public class Book
+    {
+        public string ID, name, author;
+        public int num, year, stock;
+        public float price;
 
-    //    [DataMember]
-    //    public int BookNum
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public int BookNum
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public string BookID
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public string BookID
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public string BookName
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public string BookName
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public string BookAuthor
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public string BookAuthor
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public int BookYear
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public int BookYear
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public int BookStock
-    //    {
-    //        get;
-    //        set;
-    //    }
+        [DataMember]
+        public int BookStock
+        {
+            get;
+            set;
+        }
 
-    //    [DataMember]
-    //    public float BookPrice
-    //    {
-    //        get;
-    //        set;
-    //    }
-    //}
+        [DataMember]
+        public float BookPrice
+        {
+            get;
+            set;
+        }
+    }
 }
