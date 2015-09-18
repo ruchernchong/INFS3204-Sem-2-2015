@@ -22,13 +22,13 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.Label DebuggerInfo;
         
         /// <summary>
-        /// dataGrid_FileOutput control.
+        /// dataGrid_DisplayData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid dataGrid_FileOutput;
+        protected global::System.Web.UI.WebControls.DataGrid dataGrid_DisplayData;
         
         /// <summary>
         /// formBookService control.
