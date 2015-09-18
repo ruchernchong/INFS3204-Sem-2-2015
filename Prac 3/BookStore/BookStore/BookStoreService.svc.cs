@@ -33,17 +33,17 @@ namespace BookStore
             dataTable.Columns.Add(new DataColumn("Price ($)", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Stock", typeof(int)));
 
-            string[] readerBooks = ReadLines().ToArray();
+            String[] readerBooks = ReadLines().ToArray();
             Debug.WriteLine(readerBooks);
 
-            string[] delimiters = {
+            String[] delimiters = {
                                       ",",
                                       "\r\n"
                                   };
 
             for (int i = 0; i < readerBooks.GetLength(0); i++)
             {
-                string[] arrayBooks = readerBooks[i].Split(delimiters,
+                String[] arrayBooks = readerBooks[i].Split(delimiters,
                     StringSplitOptions.RemoveEmptyEntries)
                     .Select(Book => Book.Trim())
                     .ToArray();
@@ -73,25 +73,33 @@ namespace BookStore
         {
             if (File.Exists(finalPathname))
             {
-                using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
+                try
                 {
-                    writerBooks.WriteLineAsync(String.Format(
-                        "{0},{1},{2},{3},${4},{5}",
-                        newBook[0],
-                        newBook[1],
-                        newBook[2],
-                        newBook[3],
-                        newBook[4],
-                        newBook[5]
-                        ));
+                    using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
+                    {
+                        writerBooks.WriteLineAsync(String.Format(
+                            "{0},{1},{2},{3},${4},{5}",
+                            newBook[0],
+                            newBook[1],
+                            newBook[2],
+                            newBook[3],
+                            newBook[4],
+                            newBook[5]
+                            ));
 
-                    return true;
+                        return true;
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    throw new FaultException<Exception>(new Exception(Ex.Message));
                 }
             }
             else
             {
                 return false;
             }
+
             throw new NotImplementedException();
         }
 
@@ -155,7 +163,6 @@ namespace BookStore
                                     throw new FaultException<Exception>(new Exception(input));
                                 }
                                 break;
-
                             default:
                                 return false;
                         }
@@ -164,12 +171,19 @@ namespace BookStore
 
                     if (isDeleted)
                     {
-                        using (StreamWriter writerBooks = new StreamWriter(tempFile))
+                        try
                         {
-                            foreach (string bookLine in bookLines)
+                            using (StreamWriter writerBooks = new StreamWriter(tempFile))
                             {
-                                writerBooks.WriteLine(bookLine);
+                                foreach (string bookLine in bookLines)
+                                {
+                                    writerBooks.WriteLine(bookLine);
+                                }
                             }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new FaultException<Exception>(new Exception(Ex.Message));
                         }
 
                         deleteFile(); //Call deleteFile() method;
@@ -179,9 +193,9 @@ namespace BookStore
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
-                return false;
+                throw new FaultException<Exception>(new Exception(Ex.Message));
             }
         }
 
@@ -195,9 +209,9 @@ namespace BookStore
                     File.Move(tempFile, finalPathname);
                 }
             }
-            catch (Exception ex)
+            catch (Exception Ex)
             {
-                Debug.WriteLine(ex.Message.ToString());
+                throw new FaultException<Exception>(new Exception(Ex.Message));
             }
         }
 
@@ -214,77 +228,115 @@ namespace BookStore
             dataTable.Columns.Add(new DataColumn("Price ($)", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Stock", typeof(int)));
 
-            string[] readerBooks = ReadLines().ToArray();
-
-            string[] delimiters = {
+            String[] readerBooks = ReadLines().ToArray();
+            String[] delimiters = {
                                       ",",
                                       "\r\n"
                                   };
 
             for (int i = 0; i < readerBooks.GetLength(0); i++)
             {
-                string[] arrayBooks = readerBooks[i].Split(delimiters,
+                String[] arrayBooks = readerBooks[i].Split(delimiters,
                     StringSplitOptions.RemoveEmptyEntries)
                     .Select(Book => Book.Trim())
                     .ToArray();
 
-                if (input == arrayBooks[0]) //ID
+                switch (type)
                 {
-                    dataRow = dataTable.NewRow();
+                    case "ID":
+                        try
+                        {
+                            if (arrayBooks[0].Equals(input))
+                            {
+                                dataRow = dataTable.NewRow();
 
-                    dataRow[0] = i + 1; // Index of Book
-                    dataRow[1] = arrayBooks[0]; // ID of Book
-                    dataRow[2] = arrayBooks[1]; // Name of Book
-                    dataRow[3] = arrayBooks[2]; // Author of Book
-                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                    dataRow[5] = arrayBooks[4]; // Price of Book
-                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                dataRow[0] = i + 1; // Index of Book
+                                dataRow[1] = arrayBooks[0]; // ID of Book
+                                dataRow[2] = arrayBooks[1]; // Name of Book
+                                dataRow[3] = arrayBooks[2]; // Author of Book
+                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                dataRow[5] = arrayBooks[4]; // Price of Book
+                                dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                    dataTable.Rows.Add(dataRow);
-                }
-                else if (input == arrayBooks[1]) //Name
-                {
-                    dataRow = dataTable.NewRow();
+                                dataTable.Rows.Add(dataRow);
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new FaultException<Exception>(new Exception(Ex.Message));
+                        }
+                        break;
+                    case "Name":
+                        try
+                        {
+                            if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                            {
+                                dataRow = dataTable.NewRow();
 
-                    dataRow[0] = i + 1; // Index of Book
-                    dataRow[1] = arrayBooks[0]; // ID of Book
-                    dataRow[2] = arrayBooks[1]; // Name of Book
-                    dataRow[3] = arrayBooks[2]; // Author of Book
-                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                    dataRow[5] = arrayBooks[4]; // Price of Book
-                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                dataRow[0] = i + 1; // Index of Book
+                                dataRow[1] = arrayBooks[0]; // ID of Book
+                                dataRow[2] = arrayBooks[1]; // Name of Book
+                                dataRow[3] = arrayBooks[2]; // Author of Book
+                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                dataRow[5] = arrayBooks[4]; // Price of Book
+                                dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                    dataTable.Rows.Add(dataRow);
-                }
-                else if (input == arrayBooks[2]) //Author
-                {
-                    dataRow = dataTable.NewRow();
+                                dataTable.Rows.Add(dataRow);
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new FaultException<Exception>(new Exception(Ex.Message));
+                        }
+                        break;
+                    case "Author":
+                        try
+                        {
+                            if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                            {
+                                dataRow = dataTable.NewRow();
 
-                    dataRow[0] = i + 1; // Index of Book
-                    dataRow[1] = arrayBooks[0]; // ID of Book
-                    dataRow[2] = arrayBooks[1]; // Name of Book
-                    dataRow[3] = arrayBooks[2]; // Author of Book
-                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                    dataRow[5] = arrayBooks[4]; // Price of Book
-                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                dataRow[0] = i + 1; // Index of Book
+                                dataRow[1] = arrayBooks[0]; // ID of Book
+                                dataRow[2] = arrayBooks[1]; // Name of Book
+                                dataRow[3] = arrayBooks[2]; // Author of Book
+                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                dataRow[5] = arrayBooks[4]; // Price of Book
+                                dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                    dataTable.Rows.Add(dataRow);
-                }
-                else if (input == arrayBooks[3]) //Year
-                {
-                    Debug.WriteLine(arrayBooks[i]);
+                                dataTable.Rows.Add(dataRow);
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new FaultException<Exception>(new Exception(Ex.Message));
+                        }
+                        break;
+                    case "Year":
+                        try
+                        {
+                            if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                            {
+                                dataRow = dataTable.NewRow();
 
-                    dataRow = dataTable.NewRow();
+                                dataRow[0] = i + 1; // Index of Book
+                                dataRow[1] = arrayBooks[0]; // ID of Book
+                                dataRow[2] = arrayBooks[1]; // Name of Book
+                                dataRow[3] = arrayBooks[2]; // Author of Book
+                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                dataRow[5] = arrayBooks[4]; // Price of Book
+                                dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                    dataRow[0] = i + 1; // Index of Book
-                    dataRow[1] = arrayBooks[0]; // ID of Book
-                    dataRow[2] = arrayBooks[1]; // Name of Book
-                    dataRow[3] = arrayBooks[2]; // Author of Book
-                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                    dataRow[5] = arrayBooks[4]; // Price of Book
-                    dataRow[6] = arrayBooks[5]; // Stock of Book
-
-                    dataTable.Rows.Add(dataRow);
+                                dataTable.Rows.Add(dataRow);
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new FaultException<Exception>(new Exception(Ex.Message));
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
 
@@ -296,13 +348,18 @@ namespace BookStore
 
         public IEnumerable<String> ReadLines()
         {
-            string file = "Books.txt";
-            string sourcePath = HttpRuntime.AppDomainAppPath;
-            Debug.WriteLine(HttpRuntime.AppDomainAppPath);
-
-            StreamReader readerBooks = new StreamReader(sourcePath + file);
-
+            StreamReader readerBooks;
             string line;
+
+            try
+            {
+                readerBooks = new StreamReader(finalPathname);
+            }
+            catch (Exception Ex)
+            {
+                throw new FaultException<Exception>(new Exception(Ex.Message));
+            }
+
             while ((line = readerBooks.ReadLine()) != null)
             {
                 yield return line;
