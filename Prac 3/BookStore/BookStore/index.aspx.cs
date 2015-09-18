@@ -12,6 +12,7 @@ namespace BookStore
     public partial class index : System.Web.UI.Page
     {
         BookStoreService BookStoreService = new BookStoreService();
+
         String[] errorMessages = {
                                    "Input is empty.",
                                    "Invalid input type."
@@ -81,6 +82,8 @@ namespace BookStore
 
             Debug.WriteLine(newBook);
             BookStoreService.addBook(newBook);
+
+            loadAllBooks();
         }
 
         protected void btnDeleteBooks_Click(object sender, EventArgs e)
@@ -106,7 +109,7 @@ namespace BookStore
                     DebuggerInfo.Text = faultEx.Detail.Message;
                 }
                 
-                Response.Redirect(Request.RawUrl);
+                loadAllBooks();
             }
         }
 
@@ -131,8 +134,8 @@ namespace BookStore
                     case ("Name"):
                         try
                         {
-                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
-                            dataGrid_FileOutput.DataBind();
+                            dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_DisplayData.DataBind();
                         }
                         catch (Exception ex)
                         {
@@ -142,8 +145,8 @@ namespace BookStore
                     case ("ID"):
                         try
                         {
-                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
-                            dataGrid_FileOutput.DataBind();
+                            dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_DisplayData.DataBind();
                         }
                         catch
                         {
@@ -153,8 +156,8 @@ namespace BookStore
                     case ("Author"):
                         try
                         {
-                            dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
-                            dataGrid_FileOutput.DataBind();
+                            dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
+                            dataGrid_DisplayData.DataBind();
                         }
                         catch
                         {
@@ -163,8 +166,8 @@ namespace BookStore
                         break;
 
                     case ("Year"):
-                        dataGrid_FileOutput.DataSource = BookStoreService.searchBook(type, input);
-                        dataGrid_FileOutput.DataBind();
+                        dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
+                        dataGrid_DisplayData.DataBind();
 
                         break;
                     default:
@@ -179,8 +182,8 @@ namespace BookStore
             var bookList = BookStoreService.GetAllBooks();
             Debug.WriteLine(bookList);
 
-            dataGrid_FileOutput.DataSource = bookList;
-            dataGrid_FileOutput.DataBind();
+            dataGrid_DisplayData.DataSource = bookList;
+            dataGrid_DisplayData.DataBind();
         }
     }
 }

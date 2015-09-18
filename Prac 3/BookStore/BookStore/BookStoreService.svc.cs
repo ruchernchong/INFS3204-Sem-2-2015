@@ -172,15 +172,9 @@ namespace BookStore
                             }
                         }
 
-                        if (File.Exists(finalPathname))
-                        {
-                            File.Delete(finalPathname);
-                            File.Move(tempFile, finalPathname);
+                        deleteFile(); //Call deleteFile() method;
 
-                            return true;
-                        }
-                        //deleteFile(); //Call deleteFile() method;
-                        //return true;
+                        return true;
                     }
                     return false;
                 }
