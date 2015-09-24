@@ -51,6 +51,7 @@ namespace BookStore
             btnPurchase.UseSubmitBehavior = false;
 
             txtBookYear.MaxLength = 4;
+            txtPurchase.Enabled = false;
 
             divEmptyResults.Visible = false;
             divErrorMessage.Visible = false;
