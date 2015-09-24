@@ -15,6 +15,8 @@ namespace BookStore
     {
         //Declare BookStoreService from WCF Client.
         BookStoreService BookStoreService = new BookStoreService();
+        //BookPurchaseService BookPurchaseService = new BookPurchaseService();
+        BookPurchaseServiceReference.BookPurchaseServiceClient BookPurchaseService = new BookPurchaseServiceReference.BookPurchaseServiceClient();
 
         //Declare error messages to use in array form.
         String[] errorMessages = {
@@ -160,10 +162,11 @@ namespace BookStore
             }
             else
             {
-                
+
                 try
                 {
-                    if (BookStoreService.searchBook(type, input).Count > 0) {
+                    if (BookStoreService.searchBook(type, input).Count > 0)
+                    {
                         dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
                         dataGrid_DisplayData.DataBind();
                     }
