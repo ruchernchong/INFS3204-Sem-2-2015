@@ -24,8 +24,16 @@ namespace BookStore
         {
             DataTable dataTable = new DataTable();
             DataRow dataRow;
+            DataColumn dataColumnIndex = new DataColumn();
 
-            dataTable.Columns.Add(new DataColumn("Num", typeof(String)));
+            dataColumnIndex.DataType = typeof(String);
+            dataColumnIndex.AutoIncrement = true;
+            dataColumnIndex.AutoIncrementSeed = 1;
+            dataColumnIndex.AutoIncrementStep = 1;
+            dataColumnIndex.ColumnName = "Num";
+
+            dataTable.Columns.Add(dataColumnIndex);
+            //dataTable.Columns.Add(new DataColumn("Num", typeof(String)));
             dataTable.Columns.Add(new DataColumn("ID", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Name", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Author", typeof(String)));
@@ -219,8 +227,15 @@ namespace BookStore
         {
             DataTable dataTable = new DataTable();
             DataRow dataRow;
+            DataColumn dataColumnIndex = new DataColumn();
 
-            dataTable.Columns.Add(new DataColumn("Num", typeof(String)));
+            dataColumnIndex.DataType = typeof(String);
+            dataColumnIndex.AutoIncrement = true;
+            dataColumnIndex.AutoIncrementSeed = 1;
+            dataColumnIndex.AutoIncrementStep = 1;
+            dataColumnIndex.ColumnName = "Num";
+
+            dataTable.Columns.Add(dataColumnIndex);
             dataTable.Columns.Add(new DataColumn("ID", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Name", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Author", typeof(String)));
