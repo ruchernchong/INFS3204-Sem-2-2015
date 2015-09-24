@@ -114,18 +114,22 @@
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="lblBookNo" runat="server" CssClass="col-lg-offset-1 col-lg-1 control-label"></asp:Label>
+                                <%--<asp:PlaceHolder ID="placeholderLblBookNumber" runat="server"></asp:PlaceHolder>--%>
                                 <div class="col-lg-2">
                                     <asp:TextBox ID="txtBookNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:PlaceHolder ID="placeholderTxtBookNumber" runat="server"></asp:PlaceHolder>
                                 </div>
-                                <asp:Label ID="lblAmount" runat="server" CssClass="col-lg-1 control-label"></asp:Label>
+                                <asp:Label ID="lblQuantity" runat="server" CssClass="col-lg-1 control-label"></asp:Label>
+                                <%--<asp:PlaceHolder ID="placeholderLblQuantity" runat="server"></asp:PlaceHolder>--%>
                                 <div class="col-lg-2">
-                                    <asp:TextBox ID="txtAmount" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:PlaceHolder ID="placeholderTxtQuantity" runat="server"></asp:PlaceHolder>
                                 </div>
-                                <asp:Button ID="btnMore" runat="server" CssClass="btn btn-default" />
+                                <asp:Button ID="btnMore" runat="server" CssClass="btn btn-default" OnClick="btnMore_Click" />
                             </div>
 
                             <div class="form-group">
-                                <asp:Button ID="btnPurchase" runat="server" CssClass="col-lg-offset-1 col-lg-1 btn btn-default" />
+                                <asp:Button ID="btnPurchase" runat="server" CssClass="col-lg-offset-1 col-lg-1 btn btn-default" OnClick="btnPurchase_Click" />
                                 <div class="col-lg-2">
                                     <asp:TextBox ID="txtPurchase" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>

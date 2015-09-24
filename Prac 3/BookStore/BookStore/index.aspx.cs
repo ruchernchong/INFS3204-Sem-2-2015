@@ -23,6 +23,8 @@ namespace BookStore
                                    "No results found for "
                                };
 
+        private static int moreBtnCount;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Assigning values to ASP elements on Load.
@@ -40,7 +42,7 @@ namespace BookStore
             lblBookStock.Text = "Stock: ";
             lblTotalBudget.Text = "Total Budget: ";
             lblBookNo.Text = "Book No: ";
-            lblAmount.Text = "Amt: ";
+            lblQuantity.Text = "Amt: ";
 
             btnAddBooks.UseSubmitBehavior = false;
             btnDeleteBooks.UseSubmitBehavior = false;
@@ -80,6 +82,16 @@ namespace BookStore
                     divErrorMessage.Visible = true;
                     divErrorMessage.Controls.Add(new LiteralControl(Ex.Message));
                 }
+
+                //this.NumberOfLblBookNumber = 0;
+                //this.NumberOfLblQuantity = 0;
+
+                this.NumberOfTxtBookNumber = 0;
+                this.NumberOfTxtQuantity = 0;
+            }
+            else
+            {
+                this.CreateDynamicElements();
             }
         }
 
@@ -178,6 +190,129 @@ namespace BookStore
 
             dataGrid_DisplayData.DataSource = bookList;
             dataGrid_DisplayData.DataBind();
+        }
+
+        protected void btnMore_Click(object sender, EventArgs e)
+        {
+            //Label lblBookNumber = new Label();
+            //Label lblQuantity = new Label();
+
+            TextBox txtBookNumber = new TextBox(); 
+            TextBox txtQuantity = new TextBox();
+
+            LiteralControl lineBreak = new LiteralControl("<br />");
+
+            //lblBookNumber.ID = "lblBookNumber_" + NumberOfLblBookNumber.ToString();
+            //lblBookNumber.Text = "Book No: ";
+            //lblBookNumber.CssClass = "control-label";
+            //placeholderLblBookNumber.Controls.Add(lblBookNumber);
+            //this.NumberOfLblBookNumber++;
+
+            //lblQuantity.ID = "lblQuantity_" + NumberOfLblQuantity.ToString();
+            //lblQuantity.Text = "Amt: ";
+            //lblQuantity.CssClass = "control-label";
+            //placeholderLblQuantity.Controls.Add(lblQuantity);
+            //this.NumberOfLblQuantity++;
+
+            txtBookNumber.ID = "txtBookNumber_" + NumberOfTxtBookNumber.ToString();
+            txtBookNumber.CssClass = "form-control";
+
+            txtQuantity.ID = "txtQuantity_" + NumberOfTxtQuantity.ToString();
+            txtQuantity.CssClass = "form-control";
+
+            //placeholderTxtBookNumber.Controls.Add(lineBreak);
+            //placeholderTxtQuantity.Controls.Add(lineBreak);
+
+            placeholderTxtBookNumber.Controls.Add(lineBreak);
+            placeholderTxtBookNumber.Controls.Add(txtBookNumber);
+
+            placeholderTxtQuantity.Controls.Add(lineBreak);
+            placeholderTxtQuantity.Controls.Add(txtQuantity);
+
+            this.NumberOfTxtBookNumber++;
+            this.NumberOfTxtQuantity++;
+        }
+
+        private void CreateDynamicElements()
+        {
+            //moreBtnCount = this.NumberOfLblBookNumber;
+            //moreBtnCount = this.NumberOfLblQuantity;
+            moreBtnCount = this.NumberOfTxtBookNumber;
+            moreBtnCount = this.NumberOfTxtQuantity;
+
+            for (int i = 0; i < moreBtnCount; i++)
+            {
+                //Label lblBookNumber = new Label();
+                //Label lblQuantity = new Label();
+
+                TextBox txtBookNumber = new TextBox();
+                TextBox txtQuantity = new TextBox();
+
+                LiteralControl lineBreak = new LiteralControl("<br />");
+
+                //lblBookNumber.ID = "lblBookNumber_" + i.ToString();
+                //lblBookNumber.Text = "Book No: ";
+                //lblBookNumber.CssClass = "control-label";
+                //lblQuantity.ID = "lblQuantity_" + i.ToString();
+                //lblQuantity.Text = "Amt: ";
+                //lblQuantity.CssClass = "control-label";
+
+                txtBookNumber.ID = "txtBookNumber_" + i.ToString();
+                txtBookNumber.CssClass = "form-control";
+
+                txtQuantity.ID = "txtQuantity_" + i.ToString();
+                txtQuantity.CssClass = "form-control";
+
+                //placeholderLblBookNumber.Controls.Add(lblBookNumber);
+                //placeholderLblQuantity.Controls.Add(lblQuantity);
+
+                placeholderTxtBookNumber.Controls.Add(lineBreak);
+                placeholderTxtBookNumber.Controls.Add(txtBookNumber);
+
+                placeholderTxtQuantity.Controls.Add(lineBreak);
+                placeholderTxtQuantity.Controls.Add(txtQuantity);
+            }
+        }
+
+
+        protected void btnPurchase_Click(object sender, EventArgs e)
+        {
+            //string totalBudget = txtTotalBudget.Text;
+            //string bookNo = txtBookNumber.Text;
+            //string bookQuantity = txtQuantity.Text;
+
+            //// Taking from Book No. and Book Quantity
+            //Dictionary<string, string> desireBook = new Dictionary<string, string>();
+
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    MessageBox.Show(bookNo);
+            //    desireBook.Add(bookNo, bookQuantity);
+            //}
+        }
+
+        //protected int NumberOfLblBookNumber
+        //{
+        //    get { return (int)ViewState["NumLblBookNumber"]; }
+        //    set { ViewState["NumLblBookNumber"] = value; }
+        //}
+
+        //protected int NumberOfLblQuantity
+        //{
+        //    get { return (int)ViewState["NumLblQuantity"]; }
+        //    set { ViewState["NumLblQuantity"] = value; }
+        //}
+
+        protected int NumberOfTxtBookNumber
+        {
+            get { return (int)ViewState["NumTxtBookNumber"]; }
+            set { ViewState["NumTxtBookNumber"] = value; }
+        }
+
+        protected int NumberOfTxtQuantity
+        {
+            get { return (int)ViewState["NumTxtQuantity"]; }
+            set { ViewState["NumTxtQuantity"] = value; }
         }
     }
 }
