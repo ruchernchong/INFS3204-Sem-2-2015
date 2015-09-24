@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52460/BookPurchaseService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="BookPurchaseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="response" nillable="true" type="xs:string" />
+  <xs:element name="result" type="xs:boolean" />
+  <xs:element name="BookPurchaseInfo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="budget" type="xs:float" />
+  <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="items" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
+</xs:schema>

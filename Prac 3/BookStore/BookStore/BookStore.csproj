@@ -63,6 +63,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService.wsdl" />
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\BookPurchaseServiceReference\BookStore.BookPurchaseServiceReference.BookPurchaseInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\BookStoreServiceReference\BookStoreService3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -104,6 +120,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService.disco" />
+    <None Include="Service References\BookPurchaseServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\BookPurchaseServiceReference\configuration.svcinfo" />
+    <None Include="Service References\BookPurchaseServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Service References\BookStoreServiceReference\BookStoreService.wsdl" />
@@ -141,6 +164,11 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BookPurchaseServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BookStoreServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +179,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BookPurchaseServiceReference\" />
     <WCFMetadataStorage Include="Service References\BookStoreServiceReference\" />
   </ItemGroup>
   <PropertyGroup>

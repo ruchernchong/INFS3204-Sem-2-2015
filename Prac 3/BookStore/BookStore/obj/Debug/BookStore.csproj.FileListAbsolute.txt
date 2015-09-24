@@ -3,4 +3,3 @@ C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\I
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 3\BookStore\BookStore\bin\BookStore.pdb
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 3\BookStore\BookStore\obj\Debug\BookStore.dll
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 3\BookStore\BookStore\obj\Debug\BookStore.pdb
-C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 3\BookStore\BookStore\obj\Debug\BookStore.csprojResolveAssemblyReference.cache

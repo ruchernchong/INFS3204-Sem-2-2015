@@ -11,7 +11,13 @@ namespace BookStore
     [ServiceContract]
     public interface IBookPurchaseService
     {
-        
+        [OperationContract]
+        [FaultContract(typeof(Exception))]
+        BookPurchaseInfo PurchaseBook(BookPurchaseResponse Response);
+
+        [OperationContract]
+        [FaultContract(typeof(Exception))]
+        BookPurchaseInfo BookPurchaseInfo();
     }
 
     [MessageContract]

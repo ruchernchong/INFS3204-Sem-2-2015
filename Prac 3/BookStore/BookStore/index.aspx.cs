@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace BookStore
 {
@@ -162,11 +162,10 @@ namespace BookStore
             }
             else
             {
-
+                
                 try
                 {
-                    if (BookStoreService.searchBook(type, input).Count > 0)
-                    {
+                    if (BookStoreService.searchBook(type, input).Count > 0) {
                         dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
                         dataGrid_DisplayData.DataBind();
                     }
