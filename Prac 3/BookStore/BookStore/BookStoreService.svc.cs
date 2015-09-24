@@ -43,7 +43,6 @@ namespace BookStore
 
             String[] readerBooks = ReadLines().ToArray();
             Debug.WriteLine(readerBooks);
-
             String[] delimiters = {
                                       ",",
                                       "\r\n"
@@ -60,7 +59,7 @@ namespace BookStore
 
                 dataRow = dataTable.NewRow();
 
-                dataRow[0] = i + 1; // Index of Book
+                //dataRow[0] = i + 1; // Index of Book
                 dataRow[1] = arrayBooks[0]; // ID of Book
                 dataRow[2] = arrayBooks[1]; // Name of Book
                 dataRow[3] = arrayBooks[2]; // Author of Book
@@ -265,7 +264,7 @@ namespace BookStore
                             {
                                 dataRow = dataTable.NewRow();
 
-                                dataRow[0] = i + 1; // Index of Book
+                                //dataRow[0] = i + 1; // Index of Book
                                 dataRow[1] = arrayBooks[0]; // ID of Book
                                 dataRow[2] = arrayBooks[1]; // Name of Book
                                 dataRow[3] = arrayBooks[2]; // Author of Book
