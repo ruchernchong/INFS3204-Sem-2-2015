@@ -256,6 +256,24 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.TextBox txtBookNumber;
         
         /// <summary>
+        /// panelFormGroupBookNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelFormGroupBookNumber;
+        
+        /// <summary>
+        /// placeholderLblBookNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder placeholderLblBookNumber;
+        
+        /// <summary>
         /// placeholderTxtBookNumber control.
         /// </summary>
         /// <remarks>
@@ -283,6 +301,24 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
         
         /// <summary>
+        /// panelFormGroupQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelFormGroupQuantity;
+        
+        /// <summary>
+        /// placeholderLblQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder placeholderLblQuantity;
+        
+        /// <summary>
         /// placeholderTxtQuantity control.
         /// </summary>
         /// <remarks>
@@ -301,15 +337,6 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.Button btnMore;
         
         /// <summary>
-        /// btnPurchase control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPurchase;
-        
-        /// <summary>
         /// txtPurchase control.
         /// </summary>
         /// <remarks>
@@ -317,5 +344,14 @@ namespace BookStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPurchase;
+        
+        /// <summary>
+        /// btnPurchase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPurchase;
     }
 }

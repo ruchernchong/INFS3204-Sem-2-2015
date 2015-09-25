@@ -40,7 +40,7 @@ namespace BookStore
             lblBookName.Text = "Name: ";
             lblBookAuthor.Text = "Author: ";
             lblBookYear.Text = "Year: ";
-            lblBookPrice.Text = "Price: ";
+            lblBookPrice.Text = "Price($): ";
             lblBookStock.Text = "Stock: ";
             lblTotalBudget.Text = "Total Budget: ";
             lblBookNo.Text = "Book No: ";

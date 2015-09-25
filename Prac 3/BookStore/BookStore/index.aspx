@@ -12,55 +12,45 @@
             </div>
         </div>
         <asp:Panel ID="divErrorMessage" CssClass="alert alert-danger" runat="server"></asp:Panel>
-        <form id="formBookService" class="form-horizontal" runat="server">
+        <form id="formBookService" class="form" runat="server">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">Add Books</h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <asp:Label ID="lblBookID" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookID" runat="server" CssClass="form-control" placeholder="Book ID"></asp:TextBox>
-                                </div>
-
-                                <asp:Label ID="lblBookName" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookName" runat="server" CssClass="form-control" placeholder="Book Name"></asp:TextBox>
-                                </div>
-
-                                <asp:Label ID="lblBookAuthor" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookAuthor" runat="server" CssClass="form-control" placeholder="Book Author"></asp:TextBox>
-                                </div>
+                                <asp:Label ID="lblBookID" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookID" runat="server" CssClass="form-control" placeholder="Book ID"></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <asp:Label ID="lblBookYear" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookYear" runat="server" CssClass="form-control" placeholder="Year of Book published"></asp:TextBox>
-                                </div>
-
-                                <asp:Label ID="lblBookPrice" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookPrice" runat="server" CssClass="form-control" placeholder="Price of Book"></asp:TextBox>
-                                </div>
-
-                                <asp:Label ID="lblBookStock" runat="server" CssClass="col-sm-1 control-label"></asp:Label>
-                                <div class="col-lg-3">
-                                    <asp:TextBox ID="txtBookStock" runat="server" CssClass="form-control" placeholder="Book Stock"></asp:TextBox>
-                                </div>
+                                <asp:Label ID="lblBookName" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookName" runat="server" CssClass="form-control" placeholder="Book Name"></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <div class="col-lg-12">
-                                    <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-success" OnClick="btnAddBooks_Click" />
-                                </div>
+                                <asp:Label ID="lblBookAuthor" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookAuthor" runat="server" CssClass="form-control" placeholder="Book Author"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblBookYear" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookYear" runat="server" CssClass="form-control" placeholder="Year of Book published"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblBookPrice" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookPrice" runat="server" CssClass="form-control" placeholder="Price of Book"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblBookStock" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookStock" runat="server" CssClass="form-control" placeholder="Book Stock"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button type="button" ID="btnAddBooks" runat="server" CssClass="btn btn-success" OnClick="btnAddBooks_Click" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="panel panel-danger">
                         <div class="panel-heading">
                             <h3 class="panel-title">Delete Books</h3>
@@ -80,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Search Books</h3>
@@ -100,39 +90,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
+                <div class="col-lg-8">
+                    <div class="panel panel-warning">
                         <div class="panel panel-heading">
                             <h3 class="panel-title">Purchase Book</h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <asp:Label ID="lblTotalBudget" runat="server" CssClass="col-lg-offset-1 col-lg-1 control-label"></asp:Label>
-                                <div class="col-lg-2">
-                                    <asp:TextBox ID="txtTotalBudget" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
+                                <asp:Label ID="lblTotalBudget" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtTotalBudget" runat="server" CssClass="form-control" placeholder="Enter your budget here"></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <asp:Label ID="lblBookNo" runat="server" CssClass="col-lg-offset-1 col-lg-1 control-label"></asp:Label>
-                                <%--<asp:PlaceHolder ID="placeholderLblBookNumber" runat="server"></asp:PlaceHolder>--%>
-                                <div class="col-lg-2">
-                                    <asp:TextBox ID="txtBookNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Label ID="lblBookNo" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtBookNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Panel ID="panelFormGroupBookNumber" runat="server">
+                                    <asp:PlaceHolder ID="placeholderLblBookNumber" runat="server"></asp:PlaceHolder>
                                     <asp:PlaceHolder ID="placeholderTxtBookNumber" runat="server"></asp:PlaceHolder>
-                                </div>
-                                <asp:Label ID="lblQuantity" runat="server" CssClass="col-lg-1 control-label"></asp:Label>
-                                <%--<asp:PlaceHolder ID="placeholderLblQuantity" runat="server"></asp:PlaceHolder>--%>
-                                <div class="col-lg-2">
-                                    <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
-                                    <asp:PlaceHolder ID="placeholderTxtQuantity" runat="server"></asp:PlaceHolder>
-                                </div>
-                                <asp:Button ID="btnMore" runat="server" CssClass="btn btn-default" OnClick="btnMore_Click" />
+                                </asp:Panel>
                             </div>
-
                             <div class="form-group">
-                                <asp:Button ID="btnPurchase" runat="server" CssClass="col-lg-offset-1 col-lg-1 btn btn-default" OnClick="btnPurchase_Click" />
-                                <div class="col-lg-2">
-                                    <asp:TextBox ID="txtPurchase" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
+                                <asp:Label ID="lblQuantity" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Panel ID="panelFormGroupQuantity" runat="server">
+                                    <asp:PlaceHolder ID="placeholderLblQuantity" runat="server"></asp:PlaceHolder>
+                                    <asp:PlaceHolder ID="placeholderTxtQuantity" runat="server"></asp:PlaceHolder>
+                                </asp:Panel>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="btnMore" runat="server" CssClass="btn btn-warning" OnClick="btnMore_Click" />
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox ID="txtPurchase" runat="server" CssClass="form-control" placeholder="Your result will be shown here"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="btnPurchase" runat="server" CssClass="btn btn-warning" OnClick="btnPurchase_Click" />
                             </div>
                         </div>
                     </div>
