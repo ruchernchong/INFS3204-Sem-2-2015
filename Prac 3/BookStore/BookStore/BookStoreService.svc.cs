@@ -483,5 +483,9 @@ namespace BookStore
             }
             readerBooks.Close();
         }
+        private Boolean IsPositive(int number)
+        {
+            return number > 0;
+        }
     }
 }
