@@ -196,14 +196,36 @@ namespace BookStore
 
             return true;
         }
+        public Boolean AddNewRecord(Book book)
+        {
+            Book thisBook = book;
+
             try
             {
-                using (StreamReader readerBooks = new StreamReader(finalPathname))
+                using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
                 {
-                    string line;
-                    bool isDeleted = false;
-                    List<String> bookLines = new List<String>();
-                    String[] delimiters = {
+                    writerBooks.WriteLineAsync(String.Format(
+                        "{0},{1},{2},{3},${4:0.00},{5}",
+                        thisBook.ID,
+                        thisBook.name,
+                        thisBook.author,
+                        thisBook.year,
+                        thisBook.price,
+                        thisBook.stock
+                        ));
+
+                    writerBooks.Close();
+
+                    return true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                return false;
+
+                throw new FaultException<Exception>(new Exception(Ex.Message));
+            }
+        }
                                          ",",
                                          "\r\n"
                                      };
