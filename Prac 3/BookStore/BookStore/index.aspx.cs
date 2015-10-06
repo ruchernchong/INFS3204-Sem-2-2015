@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using System.Windows.Forms;
 
 namespace BookStore
 {
@@ -107,14 +107,17 @@ namespace BookStore
 
                 Debug.WriteLine(newBook);
                 BookStoreService.addBook(newBook);
-            }
-            catch (Exception Ex)
-            {
-                divErrorMessage.Visible = true;
-                divErrorMessage.Controls.Add(new LiteralControl(Ex.Message));
-            }
 
-            Response.Redirect(Request.RawUrl);
+                Response.Redirect(Request.RawUrl);
+            }
+            catch (ArgumentException ArgumentEx)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    ArgumentEx.Message, 
+                    "Empty Fields", 
+                    System.Windows.Forms.MessageBoxButtons.OK, 
+                    System.Windows.Forms.MessageBoxIcon.Warning);
+            }
         }
 
         protected void btnDeleteBooks_Click(object sender, EventArgs e)
@@ -122,26 +125,38 @@ namespace BookStore
             string type = dropDelete.SelectedValue;
             string input = txtDelete.Text;
 
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                divErrorMessage.Visible = true;
-                divErrorMessage.Controls.Add(new LiteralControl(errorMessages[0] + "Unable to delete " + input));
-            }
-            else
-            {
                 try
                 {
-                    BookStoreService.deleteBook(type, input);
-                }
-                catch (FaultException<Exception> faultEx)
-                {
-                    Debug.WriteLine(faultEx.Detail.Message);
-                    divErrorMessage.Visible = true;
-                    divErrorMessage.Controls.Add(new LiteralControl(faultEx.Message));
-                }
+                    var confirmDelete = System.Windows.Forms.MessageBox.Show(
+                         "Are you sure you want to delete: " + Environment.NewLine + type + ": " + input + "?",
+                         "Confirm Item Delete",
+                         System.Windows.Forms.MessageBoxButtons.YesNo,
+                         System.Windows.Forms.MessageBoxIcon.Question
+                         );
+                    if (confirmDelete == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        BookStoreService.deleteBook(type, input);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show(
+                            type + ": " + input + " was not deleted.",
+                            "Item not deleted",
+                            System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Information);
+                    }
 
-                Response.Redirect(Request.RawUrl);
-            }
+                    Response.Redirect(Request.RawUrl);
+                }
+            catch (Exception Ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                            Ex.Message,
+                            "Error",
+                            System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Warning
+                            );
+                }
         }
 
         protected void btnSearchBooks_Click(object sender, EventArgs e)
@@ -149,17 +164,10 @@ namespace BookStore
             string type = dropSearch.SelectedValue;
             string input = txtSearch.Text;
 
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                divErrorMessage.Visible = true;
-                divErrorMessage.Controls.Add(new LiteralControl(errorMessages[0] + " Unable to search " + input));
-            }
-            else
-            {
-                
                 try
                 {
-                    if (BookStoreService.searchBook(type, input).Count > 0) {
+                    if (BookStoreService.searchBook(type, input).Count > 0)
+                    {
                         dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
                         dataGrid_DisplayData.DataBind();
                     }
@@ -173,11 +181,22 @@ namespace BookStore
                 }
                 catch (FaultException<Exception> faultEx)
                 {
-                    divErrorMessage.Visible = true;
-                    divErrorMessage.Controls.Add(new LiteralControl(faultEx.Detail.Message));
+                    System.Windows.Forms.MessageBox.Show(
+                        faultEx.Detail.Message,
+                        "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Warning
+                        );
+                }
+                catch (Exception Ex) {
+                    System.Windows.Forms.MessageBox.Show(
+                        Ex.Message,
+                        "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Warning
+                        );
                 }
             }
-        }
 
         // Method to loadAllBooks(); Used for populating on Page_Load.
         public void loadAllBooks()
