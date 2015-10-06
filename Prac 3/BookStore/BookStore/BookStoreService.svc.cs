@@ -140,41 +140,56 @@ namespace BookStore
             throw new NotImplementedException();
         }
 
-        public bool addBook(String[] newBook)
+        public Boolean addBook(String[] newBook)
         {
-            if (File.Exists(finalPathname))
+            Book thisBook = createBook(newBook, 0);
+            bool isUpdatedBookStock = true;
+
+            try
             {
-                try
+                String[] readerBooks = ReadLines().ToArray();
+                String[] delimiters = {
+                                      ",",
+                                      "\r\n"
+                                  };
+
+                for (int i = 0; i < readerBooks.GetLength(0); i++)
                 {
-                    using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
+                    String[] arrayBooks = readerBooks[i].Split(delimiters,
+                        StringSplitOptions.RemoveEmptyEntries)
+                        .Select(Book => Book.Trim())
+                        .ToArray();
+
+                    if (arrayBooks[0] == thisBook.ID)
                     {
-                        writerBooks.WriteLineAsync(String.Format(
-                            "{0},{1},{2},{3},${4},{5}",
-                            newBook[0],
-                            newBook[1],
-                            newBook[2],
-                            newBook[3],
-                            newBook[4],
-                            newBook[5]
-                            ));
+                        int newStock = thisBook.stock;
+                        int oldStock = int.Parse(arrayBooks[5]);
+                        int updatedStock = oldStock + newStock;
+
+                        updateRecord(thisBook, updatedStock);
+                        isUpdatedBookStock = true;
 
                         return true;
                     }
                 }
-                catch (Exception Ex)
-                {
-                    throw new FaultException<Exception>(new Exception(Ex.Message));
-                }
             }
-            else
+            catch (Exception Ex)
             {
-                return false;
+                throw new FaultException<Exception>(new Exception(Ex.Message));
             }
+
+            if (isUpdatedBookStock)
+            {
+                AddNewRecord(thisBook);
+
+                return true;
+            }
+
+            return false;
 
             throw new NotImplementedException();
         }
 
-        public bool deleteBook(string type, string input)
         public Boolean updateRecord(Book book, int updatedStock)
         {
             Book thisBook = book;
