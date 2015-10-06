@@ -241,43 +241,40 @@ namespace BookStore
                 throw new FaultException<Exception>(new Exception(Ex.Message));
             }
         }
+
+        public Boolean deleteBook(string type, string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                throw new NullReferenceException("Input is empty.");
+            }
+            else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
+            {
+                throw new FormatException("Year must be a valid positive integer. Input: " + input);
+            }
+            else
+            {
+                try
+                {
+                    using (StreamReader readerBooks = new StreamReader(finalPathname))
+                    {
+                        string line;
+                        bool isDeleted = false;
+                        List<String> bookLines = new List<String>();
+                        String[] delimiters = {
                                          ",",
                                          "\r\n"
                                      };
 
-                    while ((line = readerBooks.ReadLine()) != null)
-                    {
-                        String[] arrayBooks = line.Split(delimiters,
-                        StringSplitOptions.RemoveEmptyEntries);
-
-                        switch (type)
+                        while ((line = readerBooks.ReadLine()) != null)
                         {
-                            case "ID":
-                                if (arrayBooks[0].Equals(input))
-                                {
-                                    isDeleted = true;
-                                }
-                                else
-                                {
-                                    bookLines.Add(line);
-                                }
-                                break;
+                            String[] arrayBooks = line.Split(delimiters,
+                            StringSplitOptions.RemoveEmptyEntries);
 
-                            case "Name":
-                                if (arrayBooks[1].Equals(input))
-                                {
-                                    isDeleted = true;
-                                }
-                                else
-                                {
-                                    bookLines.Add(line);
-                                }
-                                break;
-
-                            case "Year":
-                                try
-                                {
-                                    if (int.Parse(arrayBooks[3]) == int.Parse(input))
+                            switch (type)
+                            {
+                                case "ID":
+                                    if (arrayBooks[0].Equals(input))
                                     {
                                         isDeleted = true;
                                     }
@@ -285,45 +282,72 @@ namespace BookStore
                                     {
                                         bookLines.Add(line);
                                     }
-                                }
-                                catch
-                                {
-                                    throw new FaultException<Exception>(new Exception(input));
-                                }
-                                break;
-                            default:
-                                return false;
-                        }
-                    }
-                    readerBooks.Close();
+                                    break;
 
-                    if (isDeleted)
-                    {
-                        try
-                        {
-                            using (StreamWriter writerBooks = new StreamWriter(tempFile))
-                            {
-                                foreach (string bookLine in bookLines)
-                                {
-                                    writerBooks.WriteLine(bookLine);
-                                }
+                                case "Name":
+                                    if (arrayBooks[1].Equals(input))
+                                    {
+                                        isDeleted = true;
+                                    }
+                                    else
+                                    {
+                                        bookLines.Add(line);
+                                    }
+                                    break;
+
+                                case "Year":
+                                    try
+                                    {
+
+                                        if (int.Parse(arrayBooks[3]) == int.Parse(input))
+                                        {
+                                            isDeleted = true;
+                                        }
+                                        else
+                                        {
+                                            bookLines.Add(line);
+                                        }
+
+                                    }
+                                    catch
+                                    {
+                                        throw new FaultException<Exception>(new Exception(input));
+                                    }
+                                    break;
+                                default:
+                                    return false;
                             }
                         }
-                        catch (Exception Ex)
+                        readerBooks.Close();
+
+                        if (isDeleted)
                         {
-                            throw new FaultException<Exception>(new Exception(Ex.Message));
+                            try
+                            {
+                                using (StreamWriter writerBooks = new StreamWriter(tempFile))
+                                {
+                                    foreach (string bookLine in bookLines)
+                                    {
+                                        writerBooks.WriteLine(bookLine);
+                                    }
+                                }
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+
+                            deleteFile(); //Call deleteFile() method;
+
+                            return true;
                         }
-
-                        deleteFile(); //Call deleteFile() method;
-
-                        return true;
+                        return false;
                     }
-                    return false;
                 }
-            }
-            catch (Exception Ex)
-            {
-                throw new FaultException<Exception>(new Exception(Ex.Message));
+                catch (Exception Ex)
+                {
+                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                }
             }
         }
 
@@ -375,15 +399,24 @@ namespace BookStore
                     StringSplitOptions.RemoveEmptyEntries)
                     .Select(Book => Book.Trim())
                     .ToArray();
-
-                switch (type)
+                if (String.IsNullOrWhiteSpace(input))
+            {
+                throw new NullReferenceException("Input is empty.");
+            }
+                else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
                 {
-                    case "ID":
-                        try
-                        {
-                            if (arrayBooks[0].Equals(input))
+                    throw new FormatException("Year must be a valid positive integer. Input: " + input);
+                }
+                else
+                {
+                    switch (type)
+                    {
+                        case "ID":
+                            try
                             {
-                                dataRow = dataTable.NewRow();
+                                if (arrayBooks[0].Equals(input))
+                                {
+                                    dataRow = dataTable.NewRow();
 
                                     dataRow[1] = arrayBooks[0]; // ID of Book
                                     dataRow[2] = arrayBooks[1]; // Name of Book
@@ -392,20 +425,20 @@ namespace BookStore
                                     dataRow[5] = arrayBooks[4]; // Price of Book
                                     dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                                dataTable.Rows.Add(dataRow);
+                                    dataTable.Rows.Add(dataRow);
+                                }
                             }
-                        }
-                        catch (Exception Ex)
-                        {
-                            throw new FaultException<Exception>(new Exception(Ex.Message));
-                        }
-                        break;
-                    case "Name":
-                        try
-                        {
-                            if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                            catch (Exception Ex)
                             {
-                                dataRow = dataTable.NewRow();
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Name":
+                            try
+                            {
+                                if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                                {
+                                    dataRow = dataTable.NewRow();
 
                                     dataRow[1] = arrayBooks[0]; // ID of Book
                                     dataRow[2] = arrayBooks[1]; // Name of Book
@@ -414,20 +447,20 @@ namespace BookStore
                                     dataRow[5] = arrayBooks[4]; // Price of Book
                                     dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                                dataTable.Rows.Add(dataRow);
+                                    dataTable.Rows.Add(dataRow);
+                                }
                             }
-                        }
-                        catch (Exception Ex)
-                        {
-                            throw new FaultException<Exception>(new Exception(Ex.Message));
-                        }
-                        break;
-                    case "Author":
-                        try
-                        {
-                            if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                            catch (Exception Ex)
                             {
-                                dataRow = dataTable.NewRow();
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Author":
+                            try
+                            {
+                                if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                                {
+                                    dataRow = dataTable.NewRow();
 
                                     dataRow[1] = arrayBooks[0]; // ID of Book
                                     dataRow[2] = arrayBooks[1]; // Name of Book
@@ -436,20 +469,20 @@ namespace BookStore
                                     dataRow[5] = arrayBooks[4]; // Price of Book
                                     dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                                dataTable.Rows.Add(dataRow);
+                                    dataTable.Rows.Add(dataRow);
+                                }
                             }
-                        }
-                        catch (Exception Ex)
-                        {
-                            throw new FaultException<Exception>(new Exception(Ex.Message));
-                        }
-                        break;
-                    case "Year":
-                        try
-                        {
-                            if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                            catch (Exception Ex)
                             {
-                                dataRow = dataTable.NewRow();
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Year":
+                            try
+                            {
+                                if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                                {
+                                    dataRow = dataTable.NewRow();
 
                                     dataRow[1] = arrayBooks[0]; // ID of Book
                                     dataRow[2] = arrayBooks[1]; // Name of Book
@@ -458,16 +491,17 @@ namespace BookStore
                                     dataRow[5] = arrayBooks[4]; // Price of Book
                                     dataRow[6] = arrayBooks[5]; // Stock of Book
 
-                                dataTable.Rows.Add(dataRow);
+                                    dataTable.Rows.Add(dataRow);
+                                }
                             }
-                        }
-                        catch (Exception Ex)
-                        {
-                            throw new FaultException<Exception>(new Exception(Ex.Message));
-                        }
-                        break;
-                    default:
-                        break;
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
 
