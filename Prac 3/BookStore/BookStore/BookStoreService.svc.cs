@@ -124,7 +124,6 @@ namespace BookStore
 
                 dataRow = dataTable.NewRow();
 
-                //dataRow[0] = i + 1; // Index of Book
                 dataRow[1] = arrayBooks[0]; // ID of Book
                 dataRow[2] = arrayBooks[1]; // Name of Book
                 dataRow[3] = arrayBooks[2]; // Author of Book
@@ -329,13 +328,12 @@ namespace BookStore
                             {
                                 dataRow = dataTable.NewRow();
 
-                                //dataRow[0] = i + 1; // Index of Book
-                                dataRow[1] = arrayBooks[0]; // ID of Book
-                                dataRow[2] = arrayBooks[1]; // Name of Book
-                                dataRow[3] = arrayBooks[2]; // Author of Book
-                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                dataRow[5] = arrayBooks[4]; // Price of Book
-                                dataRow[6] = arrayBooks[5]; // Stock of Book
+                                    dataRow[1] = arrayBooks[0]; // ID of Book
+                                    dataRow[2] = arrayBooks[1]; // Name of Book
+                                    dataRow[3] = arrayBooks[2]; // Author of Book
+                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                    dataRow[5] = arrayBooks[4]; // Price of Book
+                                    dataRow[6] = arrayBooks[5]; // Stock of Book
 
                                 dataTable.Rows.Add(dataRow);
                             }
@@ -352,13 +350,12 @@ namespace BookStore
                             {
                                 dataRow = dataTable.NewRow();
 
-                                dataRow[0] = i + 1; // Index of Book
-                                dataRow[1] = arrayBooks[0]; // ID of Book
-                                dataRow[2] = arrayBooks[1]; // Name of Book
-                                dataRow[3] = arrayBooks[2]; // Author of Book
-                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                dataRow[5] = arrayBooks[4]; // Price of Book
-                                dataRow[6] = arrayBooks[5]; // Stock of Book
+                                    dataRow[1] = arrayBooks[0]; // ID of Book
+                                    dataRow[2] = arrayBooks[1]; // Name of Book
+                                    dataRow[3] = arrayBooks[2]; // Author of Book
+                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                    dataRow[5] = arrayBooks[4]; // Price of Book
+                                    dataRow[6] = arrayBooks[5]; // Stock of Book
 
                                 dataTable.Rows.Add(dataRow);
                             }
@@ -375,13 +372,12 @@ namespace BookStore
                             {
                                 dataRow = dataTable.NewRow();
 
-                                dataRow[0] = i + 1; // Index of Book
-                                dataRow[1] = arrayBooks[0]; // ID of Book
-                                dataRow[2] = arrayBooks[1]; // Name of Book
-                                dataRow[3] = arrayBooks[2]; // Author of Book
-                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                dataRow[5] = arrayBooks[4]; // Price of Book
-                                dataRow[6] = arrayBooks[5]; // Stock of Book
+                                    dataRow[1] = arrayBooks[0]; // ID of Book
+                                    dataRow[2] = arrayBooks[1]; // Name of Book
+                                    dataRow[3] = arrayBooks[2]; // Author of Book
+                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                    dataRow[5] = arrayBooks[4]; // Price of Book
+                                    dataRow[6] = arrayBooks[5]; // Stock of Book
 
                                 dataTable.Rows.Add(dataRow);
                             }
@@ -398,13 +394,12 @@ namespace BookStore
                             {
                                 dataRow = dataTable.NewRow();
 
-                                dataRow[0] = i + 1; // Index of Book
-                                dataRow[1] = arrayBooks[0]; // ID of Book
-                                dataRow[2] = arrayBooks[1]; // Name of Book
-                                dataRow[3] = arrayBooks[2]; // Author of Book
-                                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                dataRow[5] = arrayBooks[4]; // Price of Book
-                                dataRow[6] = arrayBooks[5]; // Stock of Book
+                                    dataRow[1] = arrayBooks[0]; // ID of Book
+                                    dataRow[2] = arrayBooks[1]; // Name of Book
+                                    dataRow[3] = arrayBooks[2]; // Author of Book
+                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
+                                    dataRow[5] = arrayBooks[4]; // Price of Book
+                                    dataRow[6] = arrayBooks[5]; // Stock of Book
 
                                 dataTable.Rows.Add(dataRow);
                             }
