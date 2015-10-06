@@ -118,6 +118,7 @@
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="btnMore" runat="server" CssClass="btn btn-warning" OnClick="btnMore_Click" />
+                                <asp:PlaceHolder ID="placeHolderAddField" runat="server"></asp:PlaceHolder>
                             </div>
                             <div class="form-group">
                                 <asp:TextBox ID="txtPurchase" runat="server" CssClass="form-control" placeholder="Your result will be shown here"></asp:TextBox>
