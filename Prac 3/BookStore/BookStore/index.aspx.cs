@@ -25,8 +25,6 @@ namespace BookStore
                                    "No results found for "
                                };
 
-        private static int moreBtnCount;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             //Assigning values to ASP elements on Load.
