@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.ServiceModel;
@@ -98,7 +99,6 @@ namespace BookStore
             dataColumnIndex.ColumnName = "Num";
 
             dataTable.Columns.Add(dataColumnIndex);
-            //dataTable.Columns.Add(new DataColumn("Num", typeof(String)));
             dataTable.Columns.Add(new DataColumn("ID", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Name", typeof(String)));
             dataTable.Columns.Add(new DataColumn("Author", typeof(String)));
@@ -211,6 +211,7 @@ namespace BookStore
 
             return true;
         }
+
         public Boolean AddNewRecord(Book book)
         {
             Book thisBook = book;
@@ -532,6 +533,7 @@ namespace BookStore
             }
             readerBooks.Close();
         }
+
         private Boolean IsPositive(int number)
         {
             return number > 0;
