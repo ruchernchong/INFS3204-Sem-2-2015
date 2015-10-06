@@ -97,29 +97,20 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <asp:Label ID="lblTotalBudget" runat="server" CssClass="control-label"></asp:Label>
+                                <asp:Label ID="lblTotalBudget" runat="server"></asp:Label>
                                 <asp:TextBox ID="txtTotalBudget" runat="server" CssClass="form-control" placeholder="Enter your budget here"></asp:TextBox>
                             </div>
+                            <asp:Label ID="lblBookNumber_0" runat="server"></asp:Label>
+                            <asp:TextBox ID="txtBookNumber_0" runat="server"></asp:TextBox>
+
+                            <asp:Label ID="lblQty_0" runat="server"></asp:Label>
+                            <asp:TextBox ID="txtQty_0" runat="server"></asp:TextBox>
+
+                            <asp:PlaceHolder ID="placeHolderAddField" runat="server"></asp:PlaceHolder>
                             <div class="form-group">
-                                <asp:Label ID="lblBookNo" runat="server" CssClass="control-label"></asp:Label>
-                                <asp:TextBox ID="txtBookNumber" runat="server" CssClass="form-control"></asp:TextBox>
-                                <asp:Panel ID="panelFormGroupBookNumber" runat="server">
-                                    <asp:PlaceHolder ID="placeholderLblBookNumber" runat="server"></asp:PlaceHolder>
-                                    <asp:PlaceHolder ID="placeholderTxtBookNumber" runat="server"></asp:PlaceHolder>
-                                </asp:Panel>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label ID="lblQuantity" runat="server" CssClass="control-label"></asp:Label>
-                                <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
-                                <asp:Panel ID="panelFormGroupQuantity" runat="server">
-                                    <asp:PlaceHolder ID="placeholderLblQuantity" runat="server"></asp:PlaceHolder>
-                                    <asp:PlaceHolder ID="placeholderTxtQuantity" runat="server"></asp:PlaceHolder>
-                                </asp:Panel>
-                            </div>
-                            <div class="form-group">
-                                <asp:Button ID="btnMore" runat="server" CssClass="btn btn-warning" OnClick="btnMore_Click" />
-                                <asp:PlaceHolder ID="placeHolderAddField" runat="server"></asp:PlaceHolder>
-                            </div>
+                            <asp:Button ID="btnMore" runat="server" CssClass="btn btn-warning" OnClick="btnMore_Click" />
+                                </div>
+                            <br />
                             <div class="form-group">
                                 <asp:TextBox ID="txtPurchase" runat="server" CssClass="form-control" placeholder="Your result will be shown here"></asp:TextBox>
                             </div>

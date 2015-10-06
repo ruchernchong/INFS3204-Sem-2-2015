@@ -238,94 +238,49 @@ namespace BookStore {
         protected global::System.Web.UI.WebControls.TextBox txtTotalBudget;
         
         /// <summary>
-        /// lblBookNo control.
+        /// lblBookNumber_0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBookNo;
+        protected global::System.Web.UI.WebControls.Label lblBookNumber_0;
         
         /// <summary>
-        /// txtBookNumber control.
+        /// txtBookNumber_0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBookNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtBookNumber_0;
         
         /// <summary>
-        /// panelFormGroupBookNumber control.
+        /// lblQty_0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelFormGroupBookNumber;
+        protected global::System.Web.UI.WebControls.Label lblQty_0;
         
         /// <summary>
-        /// placeholderLblBookNumber control.
+        /// txtQty_0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder placeholderLblBookNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtQty_0;
         
         /// <summary>
-        /// placeholderTxtBookNumber control.
+        /// placeHolderAddField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder placeholderTxtBookNumber;
-        
-        /// <summary>
-        /// lblQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQuantity;
-        
-        /// <summary>
-        /// txtQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
-        
-        /// <summary>
-        /// panelFormGroupQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelFormGroupQuantity;
-        
-        /// <summary>
-        /// placeholderLblQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder placeholderLblQuantity;
-        
-        /// <summary>
-        /// placeholderTxtQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder placeholderTxtQuantity;
+        protected global::System.Web.UI.WebControls.PlaceHolder placeHolderAddField;
         
         /// <summary>
         /// btnMore control.
