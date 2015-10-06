@@ -175,7 +175,27 @@ namespace BookStore
         }
 
         public bool deleteBook(string type, string input)
+        public Boolean updateRecord(Book book, int updatedStock)
         {
+            Book thisBook = book;
+
+            String[] bookDetails = {
+                                       thisBook.ID,
+                                       thisBook.name,
+                                       thisBook.author,
+                                       thisBook.year.ToString(),
+                                       thisBook.price.ToString(),
+                                       updatedStock.ToString()
+                                   };
+            Book newBook = createBook(bookDetails, 0);
+
+            string thisID = thisBook.ID;
+            string type = "ID";
+            deleteBook(type, thisID);
+            AddNewRecord(newBook);
+
+            return true;
+        }
             try
             {
                 using (StreamReader readerBooks = new StreamReader(finalPathname))
