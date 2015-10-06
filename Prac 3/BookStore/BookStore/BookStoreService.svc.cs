@@ -20,6 +20,71 @@ namespace BookStore
 
         private string tempFile = Path.GetTempFileName();
 
+        public Book createBook(string[] bookDetails, int num)
+        {
+            List<string> fieldError = new List<string>();
+            Boolean isFieldEmpty = false;
+            for (int i = 0; i <= 5; i++)
+            {
+                if (String.IsNullOrWhiteSpace(bookDetails[i]))
+                {
+                    isFieldEmpty = true;
+
+                    switch (i)
+                    {
+                        case 0:
+                            fieldError.Add("ID");
+                            break;
+                        case 1:
+                            fieldError.Add("Name");
+                            break;
+                        case 2:
+                            fieldError.Add("Author");
+                            break;
+                        case 3:
+                            fieldError.Add("Year");
+                            break;
+                        case 4:
+                            fieldError.Add("Price");
+                            break;
+                        case 5:
+                            fieldError.Add("Stock");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            if (isFieldEmpty)
+            {
+                string concatFieldErrors = String.Join(", ", fieldError.ToArray());
+
+                throw new ArgumentException("The following field(s) are empty: ", concatFieldErrors);
+            }
+
+            bool isPositiveYear = int.Parse(bookDetails[3]) > 0;
+            bool isPositivePrice = float.Parse(bookDetails[4].Trim('$')) > 0;
+            bool isPositiveStock = int.Parse(bookDetails[5]) > 0;
+
+            if (!isPositiveYear || !isPositivePrice || !isPositiveStock)
+            {
+                throw new ArgumentException("Input for Year, Price and Stock must be positive.");
+            }
+
+            Book thisBook = new Book();
+
+            thisBook.num = num;
+            thisBook.ID = bookDetails[0];
+            thisBook.name = bookDetails[1];
+            thisBook.author = bookDetails[2];
+            thisBook.year = int.Parse(bookDetails[3]);
+            thisBook.price = float.Parse(bookDetails[4].Trim('$'));
+            thisBook.stock = int.Parse(bookDetails[5]);
+
+            return thisBook;
+        }
+
         public ICollection GetAllBooks()
         {
             DataTable dataTable = new DataTable();
