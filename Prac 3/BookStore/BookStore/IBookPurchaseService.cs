@@ -13,11 +13,19 @@ namespace BookStore
     {
         [OperationContract]
         [FaultContract(typeof(Exception))]
-        BookPurchaseInfo PurchaseBook(BookPurchaseResponse Response);
+        BookPurchaseResponse PurchaseBooks(BookPurchaseInfo purchaseInfo);
 
-        [OperationContract]
-        [FaultContract(typeof(Exception))]
-        BookPurchaseInfo BookPurchaseInfo();
+        //[OperationContract]
+        //[FaultContract(typeof(Exception))]
+        //BookPurchaseInfo BookPurchaseInfo(string total_budget, Dictionary<int, int> purchaseBook);
+
+        //[OperationContract]
+        //[FaultContract(typeof(Exception))]
+        //float getBookCost(int bookNum);
+
+        //[OperationContract]
+        //[FaultContract(typeof(Exception))]
+        //int getBookQty(int bookNum);
     }
 
     [MessageContract]
