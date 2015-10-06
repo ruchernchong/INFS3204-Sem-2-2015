@@ -18,63 +18,100 @@ namespace BookStore
         private static string file = @"books.txt";
         private string finalPathname = path + file;
 
-        //private string tempFile = Path.GetTempFileName();
+        BookPurchaseResponse thisResponse = new BookPurchaseResponse();
 
-        public BookPurchaseInfo PurchaseBook(BookPurchaseResponse Response)
+        public BookPurchaseResponse PurchaseBooks(BookPurchaseInfo purchaseInfo)
         {
-            throw new NotImplementedException();
-        }
+            float totalCost = 0;
+            float thisBudget = purchaseInfo.budget;
 
-        public Dictionary<int, int> Books(int input)
-        {
-            Dictionary<int, int> Books = new Dictionary<int, int>();
+            Dictionary<int, int> items = purchaseInfo.items;
 
-            String[] readerBooks = ReadLines().ToArray();
-            String[] delimiters = {
-                                      ",",
-                                      "\r\n"
-                                  };
-
-            for (int i = 0; i < readerBooks.GetLength(0); i++)
+            foreach (KeyValuePair<int, int> item in items)
             {
-                String[] arrayBooks = readerBooks[i].Split(delimiters,
-                    StringSplitOptions.RemoveEmptyEntries)
-                    .Select(Book => Book.Trim())
-                    .ToArray();
+                int thisID = item.Key;
+                int thisQty = item.Value;
 
-                Books.Add((i + 1), input);
+                float getCost = getBookCost(thisID);
+                int getQty = getBookQty(thisID);
+
+                if (getQty < thisQty)
+                {
+                    thisResponse.result = false;
+                    thisResponse.response = "Not enough stocks available. Stock available: " + getQty;
+
+                    return thisResponse;
+                }
+
+                totalCost += getCost * thisQty;
             }
 
-            return Books;
-
-            throw new NotImplementedException();
+            if (totalCost < thisBudget)
+            {
+                thisResponse.result = true;
+                try
+                {
+                    float balance = thisBudget - totalCost;
+                    thisResponse.response = String.Format("{0:0.##}", balance);
+                }
+                catch (Exception Ex)
+                {
+                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                }
+            }
+            else
+            {
+                thisResponse.result = false;
+                thisResponse.response = "Not enough money. You are $" + (totalCost - thisBudget) + " short.";
+            }
+            return thisResponse;
         }
 
-        public IEnumerable<String> ReadLines()
+        private float getBookCost(int bookNum)
         {
-            StreamReader readerBooks;
-            string line;
+            float bookCost = 0;
 
             try
             {
-                readerBooks = new StreamReader(finalPathname);
+                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First(); //access the particular book
+                String[] bookDetails = line.Split(','); //split the line into an array entry
+                bookCost = float.Parse(bookDetails[4].Trim('$')); //access the cost of the book
             }
             catch (Exception Ex)
             {
                 throw new FaultException<Exception>(new Exception(Ex.Message));
             }
-
-            while ((line = readerBooks.ReadLine()) != null)
-            {
-                yield return line;
-                Debug.WriteLine(line);
-            }
-            readerBooks.Close();
+            return bookCost;
         }
 
-        public BookPurchaseInfo BookPurchaseInfo()
+        private int getBookQty(int bookNum)
         {
-            throw new NotImplementedException();
+            int bookQty = 0;
+
+            try
+            {
+                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First(); //access the particular book
+                String[] bookDetails = line.Split(','); //split the line into an array entry
+                bookQty = int.Parse(bookDetails[5]); //access the qty of the book available
+            }
+            catch (Exception Ex)
+            {
+                throw new FaultException<Exception>(new Exception(Ex.Message));
+            }
+            return bookQty;
         }
+
+        private BookPurchaseInfo BookPurchaseInfo(string total_budget, Dictionary<string, string> purchaseBook)
+        {
+            BookPurchaseInfo thisPurchaseInfo = new BookPurchaseInfo();
+            thisPurchaseInfo.budget = float.Parse(total_budget);
+            thisPurchaseInfo.items = purchaseBook.ToDictionary(
+                x => int.Parse(x.Key),
+                x => int.Parse(x.Value)
+                );
+
+            return thisPurchaseInfo;
+        }
+
     }
 }
