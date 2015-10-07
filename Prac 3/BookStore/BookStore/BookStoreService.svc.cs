@@ -21,10 +21,10 @@ namespace BookStore
 
         private string tempFile = Path.GetTempFileName();
 
-        public Book createBook(string[] bookDetails, int num)
+        public Book createBook(String[] bookDetails, int num)
         {
-            List<string> fieldError = new List<string>();
-            Boolean isFieldEmpty = false;
+            List<String> fieldError = new List<String>();
+            bool isFieldEmpty = false;
             for (int i = 0; i <= 5; i++)
             {
                 if (String.IsNullOrWhiteSpace(bookDetails[i]))
@@ -232,7 +232,6 @@ namespace BookStore
             catch (Exception Ex)
             {
                 return false;
-
                 throw new FaultException<Exception>(new Exception(Ex.Message));
             }
         }
