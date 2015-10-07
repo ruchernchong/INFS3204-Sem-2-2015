@@ -235,7 +235,54 @@ namespace BookStore
 
         protected void btnPurchase_Click(object sender, EventArgs e)
         {
+            string totalBudget = txtTotalBudget.Text;
+            Dictionary<string, string> purchasedBooks = new Dictionary<string, string>();
 
+            string bookNo = txtBookNumber_0.Text;
+            string bookQty = txtQty_0.Text;
+            purchasedBooks.Add(bookNo, bookQty);
+
+            int noOfFields = fieldQty;
+            bool isBookNo = false;
+            bool isBookQty = false;
+
+            foreach (Control controls in placeHolderAddField.Controls)
+            {
+                if (controls is TextBox && controls.ID.Contains("txtBookNumber_"))
+                {
+                    bookNo = ((TextBox)controls).Text;
+                    isBookNo = true;
+                }
+
+                if (controls is TextBox && controls.ID.Contains("txtQty_"))
+                {
+                    bookQty = ((TextBox)controls).Text;
+                    isBookQty = true;
+                }
+
+                if (isBookNo && isBookQty)
+                {
+                    purchasedBooks.Add(bookNo, bookQty);
+                    isBookNo= false;
+                    isBookQty = false;
+                }
+            }
+
+            try
+            {
+                BookPurchaseInfo thisBookPurchaseInfo = thisBookPurchaseService.BookPurchaseInfo(totalBudget, purchasedBooks);
+                BookPurchaseResponse thisPurchaseResponse = thisBookPurchaseService.PurchaseBooks(thisBookPurchaseInfo);
+                txtPurchase.Text = thisPurchaseResponse.response;
+            }
+            catch (Exception Ex)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    Ex.Message,
+                    "Error Occurred",
+                    System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Exclamation
+                    );
+            }
         }
 
         protected int fieldQty
