@@ -76,7 +76,7 @@
     <None Include="Service References\BookPurchaseServiceReference\BookPurchaseService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\BookPurchaseServiceReference\BookStore.BookPurchaseServiceReference.BookPurchaseInfo.datasource">
+    <Content Include="Service References\BookPurchaseServiceReference\BookStore.BookPurchaseServiceReference.BookPurchaseResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\BookStoreServiceReference\BookStoreService3.xsd">
