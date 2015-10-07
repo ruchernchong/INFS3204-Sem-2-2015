@@ -28,21 +28,6 @@ namespace BookStore
         protected void Page_Load(object sender, EventArgs e)
         {
             //Assigning values to ASP elements on Load.
-            btnAddBooks.Text = "Add Books";
-            btnDeleteBooks.Text = "Delete Books";
-            btnSearchBooks.Text = "Search Books";
-            btnMore.Text = "More";
-            btnPurchase.Text = "Purchase";
-
-            lblBookID.Text = "ID: ";
-            lblBookName.Text = "Name: ";
-            lblBookAuthor.Text = "Author: ";
-            lblBookYear.Text = "Year: ";
-            lblBookPrice.Text = "Price($): ";
-            lblBookStock.Text = "Stock: ";
-            lblTotalBudget.Text = "Total Budget: ";
-            lblBookNumber_0.Text = "Book No: ";
-            lblQty_0.Text = "Qty: ";
 
             btnAddBooks.UseSubmitBehavior = false;
             btnDeleteBooks.UseSubmitBehavior = false;
