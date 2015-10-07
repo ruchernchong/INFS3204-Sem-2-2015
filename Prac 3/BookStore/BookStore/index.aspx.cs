@@ -43,14 +43,14 @@ namespace BookStore
             //Check if PostBack
             if (!IsPostBack)
             {
-                fieldQty = 1;
+                this.fieldQty = 0;
 
                 this.populateDropDelete();
                 this.populateDropSearch();
 
                 try
                 {
-                    loadAllBooks();
+                    this.loadAllBooks();
                 }
                 catch (Exception Ex)
                 {
@@ -202,7 +202,7 @@ namespace BookStore
             placeHolderAddField.Controls.Add(lblQty);
             placeHolderAddField.Controls.Add(txtQty);
 
-            fieldQty++;
+            this.fieldQty++;
         }
 
         protected void CreateDynamicElements()
