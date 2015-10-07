@@ -70,7 +70,7 @@ namespace BookStore
 
             if (!isPositiveYear || !isPositivePrice || !isPositiveStock)
             {
-                throw new ArgumentException("Input for Year, Price and Stock must be positive.");
+                throw new ArgumentException("Input(s) for Year, Price and Stock must be positive.");
             }
 
             Book thisBook = new Book();
