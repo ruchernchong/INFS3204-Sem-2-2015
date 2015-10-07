@@ -14,11 +14,10 @@ namespace BookStore
     public partial class index : System.Web.UI.Page
     {
         //Declare BookStoreService from WCF Client.
-        BookStoreService BookStoreService = new BookStoreService();
-        //BookPurchaseService BookPurchaseService = new BookPurchaseService();
-        BookPurchaseServiceReference.BookPurchaseServiceClient BookPurchaseService = new BookPurchaseServiceReference.BookPurchaseServiceClient();
+        BookStoreService thisBookStoreService = new BookStoreService();
+        BookPurchaseService thisBookPurchaseService = new BookPurchaseService();
 
-        //Declare error messages to use in array form.
+        //Declare error messages to use in array.
         String[] errorMessages = {
                                    "Input is empty. ",
                                    "Invalid input type. ",
