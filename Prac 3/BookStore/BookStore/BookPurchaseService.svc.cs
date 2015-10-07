@@ -102,14 +102,29 @@ namespace BookStore
             return bookQty;
         }
 
-        private BookPurchaseInfo BookPurchaseInfo(string total_budget, Dictionary<string, string> purchaseBook)
+        public BookPurchaseInfo BookPurchaseInfo(string totalBudget, Dictionary<string, string> purchaseBook)
         {
             BookPurchaseInfo thisPurchaseInfo = new BookPurchaseInfo();
-            thisPurchaseInfo.budget = float.Parse(total_budget);
-            thisPurchaseInfo.items = purchaseBook.ToDictionary(
-                x => int.Parse(x.Key),
-                x => int.Parse(x.Value)
-                );
+
+            if (String.IsNullOrWhiteSpace(totalBudget))
+            {
+                throw new NullReferenceException("Input field(s) is empty.");
+            }
+            else
+            {
+                try
+                {
+                    thisPurchaseInfo.budget = float.Parse(totalBudget);
+                    thisPurchaseInfo.items = purchaseBook.ToDictionary(
+                        x => int.Parse(x.Key),
+                        x => int.Parse(x.Value)
+                        );
+                }
+                catch (Exception Ex)
+                {
+                    throw new Exception(Ex.Message);
+                }
+            }
 
             return thisPurchaseInfo;
         }
