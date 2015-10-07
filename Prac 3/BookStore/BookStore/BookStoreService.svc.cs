@@ -136,8 +136,6 @@ namespace BookStore
 
             DataView dataView = new DataView(dataTable);
             return dataView;
-
-            throw new NotImplementedException();
         }
 
         public Boolean addBook(String[] newBook)
@@ -181,13 +179,9 @@ namespace BookStore
             if (isUpdatedBookStock)
             {
                 AddNewRecord(thisBook);
-
                 return true;
             }
-
             return false;
-
-            throw new NotImplementedException();
         }
 
         public Boolean updateRecord(Book book, int updatedStock)
@@ -508,8 +502,6 @@ namespace BookStore
 
             DataView dataView = new DataView(dataTable);
             return dataView;
-
-            throw new NotImplementedException();
         }
 
         public IEnumerable<String> ReadLines()
