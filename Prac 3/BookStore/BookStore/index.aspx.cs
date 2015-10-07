@@ -46,20 +46,8 @@ namespace BookStore
             {
                 fieldQty = 1;
 
-                //Populate DropDownList with items on Page_Load for dropDelete.
-                List<ListItem> dropDeleteItems = new List<ListItem>();
-                dropDeleteItems.Add(new ListItem("Name"));
-                dropDeleteItems.Add(new ListItem("ID"));
-                dropDeleteItems.Add(new ListItem("Year"));
-                dropDelete.Items.AddRange(dropDeleteItems.ToArray());
-
-                //Populate DropDownList with items on Page_Load for dropSearch.
-                List<ListItem> dropSearchItems = new List<ListItem>();
-                dropSearchItems.Add(new ListItem("Name"));
-                dropSearchItems.Add(new ListItem("ID"));
-                dropSearchItems.Add(new ListItem("Author"));
-                dropSearchItems.Add(new ListItem("Year"));
-                dropSearch.Items.AddRange(dropSearchItems.ToArray());
+                this.populateDropDelete();
+                this.populateDropSearch();
 
                 try
                 {
@@ -260,6 +248,27 @@ namespace BookStore
         private Boolean IsPositive(int number)
         {
             return number > 0;
+        }
+
+        private void populateDropDelete()
+        {
+            //Populate DropDownList with items on Page_Load for dropDelete.
+            List<ListItem> dropDeleteItems = new List<ListItem>();
+            dropDeleteItems.Add(new ListItem("Name"));
+            dropDeleteItems.Add(new ListItem("ID"));
+            dropDeleteItems.Add(new ListItem("Year"));
+            dropDelete.Items.AddRange(dropDeleteItems.ToArray());
+        }
+
+        private void populateDropSearch()
+        {
+            //Populate DropDownList with items on Page_Load for dropSearch.
+            List<ListItem> dropSearchItems = new List<ListItem>();
+            dropSearchItems.Add(new ListItem("Name"));
+            dropSearchItems.Add(new ListItem("ID"));
+            dropSearchItems.Add(new ListItem("Author"));
+            dropSearchItems.Add(new ListItem("Year"));
+            dropSearch.Items.AddRange(dropSearchItems.ToArray());
         }
     }
 }
