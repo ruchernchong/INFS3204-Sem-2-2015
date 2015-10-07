@@ -43,7 +43,7 @@ namespace BookStore
                     return thisResponse;
                 }
 
-                totalCost += getCost * thisQty;
+                totalCost += (getCost * thisQty);
             }
 
             if (totalCost < thisBudget)
