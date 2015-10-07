@@ -182,26 +182,6 @@ namespace BookStore
 
         protected void btnMore_Click(object sender, EventArgs e)
         {
-            Label lblBookNumber = new Label();
-            TextBox txtBookNumber = new TextBox();
-            Label lblQty = new Label();
-            TextBox txtQty = new TextBox();
-            LiteralControl lineBreak = new LiteralControl("<br />");
-
-            lblBookNumber.ID = "lblBookNumber_" + fieldQty.ToString();
-            lblBookNumber.Text = "Book No: ";
-            txtBookNumber.ID = "txtBookNumber_" + fieldQty.ToString();
-
-            lblQty.ID = "lblQty_" + fieldQty.ToString();
-            lblQty.Text = " Qty: ";
-            txtQty.ID = "txtQty_" + fieldQty.ToString();
-
-            placeHolderAddField.Controls.Add(lineBreak);
-            placeHolderAddField.Controls.Add(lblBookNumber);
-            placeHolderAddField.Controls.Add(txtBookNumber);
-            placeHolderAddField.Controls.Add(lblQty);
-            placeHolderAddField.Controls.Add(txtQty);
-
             this.fieldQty++;
         }
 
