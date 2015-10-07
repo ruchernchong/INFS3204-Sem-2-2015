@@ -74,9 +74,9 @@ namespace BookStore
 
             try
             {
-                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First(); //access the particular book
-                String[] bookDetails = line.Split(','); //split the line into an array entry
-                bookCost = float.Parse(bookDetails[4].Trim('$')); //access the cost of the book
+                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First();
+                String[] bookDetails = line.Split(',');
+                bookCost = float.Parse(bookDetails[4].Trim('$'));
             }
             catch (Exception Ex)
             {
@@ -91,9 +91,9 @@ namespace BookStore
 
             try
             {
-                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First(); //access the particular book
-                String[] bookDetails = line.Split(','); //split the line into an array entry
-                bookQty = int.Parse(bookDetails[5]); //access the qty of the book available
+                string line = File.ReadLines(finalPathname).Skip(bookNum - 1).Take(1).First();
+                String[] bookDetails = line.Split(',');
+                bookQty = int.Parse(bookDetails[5]);
             }
             catch (Exception Ex)
             {
