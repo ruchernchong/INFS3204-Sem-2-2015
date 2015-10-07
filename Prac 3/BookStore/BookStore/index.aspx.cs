@@ -58,10 +58,6 @@ namespace BookStore
                     divErrorMessage.Controls.Add(new LiteralControl(Ex.Message));
                 }
             }
-            else
-            {
-                CreateDynamicElements();
-            }
         }
 
         protected void btnAddBooks_Click(object sender, EventArgs e)
@@ -78,15 +74,15 @@ namespace BookStore
                                };
 
                 Debug.WriteLine(newBook);
-                BookStoreService.addBook(newBook);
+                thisBookStoreService.addBook(newBook);
 
-                Response.Redirect(Request.RawUrl);
+                Response.Redirect(Request.RawUrl, false);
             }
             catch (ArgumentException ArgumentEx)
             {
                 System.Windows.Forms.MessageBox.Show(
                     ArgumentEx.Message, 
-                    "Empty Fields", 
+                    "Invalid input type", 
                     System.Windows.Forms.MessageBoxButtons.OK, 
                     System.Windows.Forms.MessageBoxIcon.Warning);
             }
@@ -107,7 +103,7 @@ namespace BookStore
                          );
                     if (confirmDelete == System.Windows.Forms.DialogResult.Yes)
                     {
-                        BookStoreService.deleteBook(type, input);
+                        thisBookStoreService.deleteBook(type, input);
                     }
                     else
                     {
@@ -118,13 +114,13 @@ namespace BookStore
                             System.Windows.Forms.MessageBoxIcon.Information);
                     }
 
-                    Response.Redirect(Request.RawUrl);
+                    Response.Redirect(Request.RawUrl, false);
                 }
             catch (Exception Ex)
                 {
                     System.Windows.Forms.MessageBox.Show(
                             Ex.Message,
-                            "Error",
+                            "Error Occurred",
                             System.Windows.Forms.MessageBoxButtons.OK,
                             System.Windows.Forms.MessageBoxIcon.Warning
                             );
@@ -138,9 +134,9 @@ namespace BookStore
 
                 try
                 {
-                    if (BookStoreService.searchBook(type, input).Count > 0)
+                    if (thisBookStoreService.searchBook(type, input).Count > 0)
                     {
-                        dataGrid_DisplayData.DataSource = BookStoreService.searchBook(type, input);
+                        dataGrid_DisplayData.DataSource = thisBookStoreService.searchBook(type, input);
                         dataGrid_DisplayData.DataBind();
                     }
                     else
@@ -148,14 +144,21 @@ namespace BookStore
                         dataGrid_DisplayData.Visible = false;
 
                         divEmptyResults.Visible = true;
-                        divEmptyResults.Controls.Add(new LiteralControl(errorMessages[2] + input));
+                        divEmptyResults.Controls.Add(new LiteralControl(errorMessages[2] + type + ": <b>" + input + "</b>."));
+
+                        System.Windows.Forms.MessageBox.Show(
+                            errorMessages[2] + type + ": " + input + ".",
+                            "No Results Found!",
+                            System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Information
+                            );
                     }
                 }
                 catch (FaultException<Exception> faultEx)
                 {
                     System.Windows.Forms.MessageBox.Show(
                         faultEx.Detail.Message,
-                        "Error",
+                        "Error Occurred",
                         System.Windows.Forms.MessageBoxButtons.OK,
                         System.Windows.Forms.MessageBoxIcon.Warning
                         );
@@ -163,7 +166,7 @@ namespace BookStore
                 catch (Exception Ex) {
                     System.Windows.Forms.MessageBox.Show(
                         Ex.Message,
-                        "Error",
+                        "Error Occurred",
                         System.Windows.Forms.MessageBoxButtons.OK,
                         System.Windows.Forms.MessageBoxIcon.Warning
                         );
@@ -173,7 +176,7 @@ namespace BookStore
         // Method to loadAllBooks(); Used for populating on Page_Load.
         public void loadAllBooks()
         {
-            ICollection bookList = BookStoreService.GetAllBooks();
+            ICollection bookList = thisBookStoreService.GetAllBooks();
             Debug.WriteLine(bookList);
 
             dataGrid_DisplayData.DataSource = bookList;
@@ -183,18 +186,18 @@ namespace BookStore
         protected void btnMore_Click(object sender, EventArgs e)
         {
             this.fieldQty++;
+            this.CreateDynamicElements();
         }
 
         protected void CreateDynamicElements()
         {
-            for (int i = 1; i < fieldQty; i++)
+            for (int i = 1; i <= fieldQty; i++)
             {
                 Label lblBookNumber = new Label();
                 TextBox txtBookNumber = new TextBox();
                 Label lblQty = new Label();
                 TextBox txtQty = new TextBox();
-
-                LiteralControl lineBreak = new LiteralControl("<br />");
+                LiteralControl lineBreak = new LiteralControl("<p />");
 
                 lblBookNumber.ID = "lblBookNumber_" + i.ToString();
                 lblBookNumber.Text = "Book No: ";
