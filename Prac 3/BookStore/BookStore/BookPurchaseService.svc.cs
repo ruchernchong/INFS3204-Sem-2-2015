@@ -38,7 +38,7 @@ namespace BookStore
                 if (getQty < thisQty)
                 {
                     thisResponse.result = false;
-                    thisResponse.response = "Not enough stocks available. Stock available: " + getQty;
+                    thisResponse.response = "Not enough stock(s) available. You wanted:" + thisQty + "; stock(s) available: " + getQty;
 
                     return thisResponse;
                 }
@@ -49,10 +49,11 @@ namespace BookStore
             if (totalCost < thisBudget)
             {
                 thisResponse.result = true;
+
                 try
                 {
                     float balance = thisBudget - totalCost;
-                    thisResponse.response = String.Format("{0:0.##}", balance);
+                    thisResponse.response = String.Format("Your change is: ${0:0.00}", balance);
                 }
                 catch (Exception Ex)
                 {
@@ -62,7 +63,7 @@ namespace BookStore
             else
             {
                 thisResponse.result = false;
-                thisResponse.response = "Not enough money. You are $" + (totalCost - thisBudget) + " short.";
+                thisResponse.response = "Not enough money. You are $" + String.Format("{0:0.00}", totalCost - thisBudget) + " short.";
             }
             return thisResponse;
         }
