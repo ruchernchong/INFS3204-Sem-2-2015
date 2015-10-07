@@ -8,13 +8,6 @@
       <xsd:import schemaLocation="http://localhost:52460/BookPurchaseService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="BookPurchaseResponse">
-    <wsdl:part name="parameters" element="tns:BookPurchaseResponse" />
-  </wsdl:message>
-  <wsdl:message name="BookPurchaseResponse_Headers">
-    <wsdl:part name="response" element="tns:response" />
-    <wsdl:part name="result" element="tns:result" />
-  </wsdl:message>
   <wsdl:message name="BookPurchaseInfo">
     <wsdl:part name="parameters" element="tns:BookPurchaseInfo" />
   </wsdl:message>
@@ -22,51 +15,35 @@
     <wsdl:part name="budget" element="tns:budget" />
     <wsdl:part name="items" element="tns:items" />
   </wsdl:message>
-  <wsdl:message name="IBookPurchaseService_PurchaseBook_ExceptionFault_FaultMessage">
+  <wsdl:message name="BookPurchaseResponse">
+    <wsdl:part name="parameters" element="tns:BookPurchaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookPurchaseResponse_Headers">
+    <wsdl:part name="response" element="tns:response" />
+    <wsdl:part name="result" element="tns:result" />
+  </wsdl:message>
+  <wsdl:message name="IBookPurchaseService_PurchaseBooks_ExceptionFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:Exception" />
   </wsdl:message>
-  <wsdl:message name="IBookPurchaseService_BookPurchaseInfo_InputMessage" />
-  <wsdl:message name="IBookPurchaseService_BookPurchaseInfo_ExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System" name="detail" element="q2:Exception" />
-  </wsdl:message>
   <wsdl:portType name="IBookPurchaseService">
-    <wsdl:operation name="PurchaseBook">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBook" name="BookPurchaseResponse" message="tns:BookPurchaseResponse" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBookResponse" name="BookPurchaseInfo" message="tns:BookPurchaseInfo" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBookExceptionFault" name="ExceptionFault" message="tns:IBookPurchaseService_PurchaseBook_ExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="BookPurchaseInfo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfo" message="tns:IBookPurchaseService_BookPurchaseInfo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfoResponse" name="BookPurchaseInfo" message="tns:BookPurchaseInfo" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfoExceptionFault" name="ExceptionFault" message="tns:IBookPurchaseService_BookPurchaseInfo_ExceptionFault_FaultMessage" />
+    <wsdl:operation name="PurchaseBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBooks" name="BookPurchaseInfo" message="tns:BookPurchaseInfo" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBooksResponse" name="BookPurchaseResponse" message="tns:BookPurchaseResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IBookPurchaseService/PurchaseBooksExceptionFault" name="ExceptionFault" message="tns:IBookPurchaseService_PurchaseBooks_ExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBookPurchaseService" type="tns:IBookPurchaseService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="PurchaseBook">
-      <soap:operation soapAction="http://tempuri.org/IBookPurchaseService/PurchaseBook" style="document" />
-      <wsdl:input name="BookPurchaseResponse">
+    <wsdl:operation name="PurchaseBooks">
+      <soap:operation soapAction="http://tempuri.org/IBookPurchaseService/PurchaseBooks" style="document" />
+      <wsdl:input name="BookPurchaseInfo">
+        <soap:header message="tns:BookPurchaseInfo_Headers" part="budget" use="literal" />
+        <soap:header message="tns:BookPurchaseInfo_Headers" part="items" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BookPurchaseResponse">
         <soap:header message="tns:BookPurchaseResponse_Headers" part="response" use="literal" />
         <soap:header message="tns:BookPurchaseResponse_Headers" part="result" use="literal" />
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="BookPurchaseInfo">
-        <soap:header message="tns:BookPurchaseInfo_Headers" part="budget" use="literal" />
-        <soap:header message="tns:BookPurchaseInfo_Headers" part="items" use="literal" />
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ExceptionFault">
-        <soap:fault use="literal" name="ExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="BookPurchaseInfo">
-      <soap:operation soapAction="http://tempuri.org/IBookPurchaseService/BookPurchaseInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="BookPurchaseInfo">
-        <soap:header message="tns:BookPurchaseInfo_Headers" part="budget" use="literal" />
-        <soap:header message="tns:BookPurchaseInfo_Headers" part="items" use="literal" />
         <soap:body use="literal" />
       </wsdl:output>
       <wsdl:fault name="ExceptionFault">

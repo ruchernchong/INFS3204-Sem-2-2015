@@ -15,42 +15,13 @@ namespace BookStore.BookPurchaseServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BookPurchaseServiceReference.IBookPurchaseService")]
     public interface IBookPurchaseService {
         
-        // CODEGEN: Generating message contract since the wrapper name (BookPurchaseResponse) of message BookPurchaseResponse does not match the default value (PurchaseBook)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/PurchaseBook", ReplyAction="http://tempuri.org/IBookPurchaseService/PurchaseBookResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://tempuri.org/IBookPurchaseService/PurchaseBookExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
-        BookStore.BookPurchaseServiceReference.BookPurchaseInfo PurchaseBook(BookStore.BookPurchaseServiceReference.BookPurchaseResponse request);
+        // CODEGEN: Generating message contract since the wrapper name (BookPurchaseInfo) of message BookPurchaseInfo does not match the default value (PurchaseBooks)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/PurchaseBooks", ReplyAction="http://tempuri.org/IBookPurchaseService/PurchaseBooksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://tempuri.org/IBookPurchaseService/PurchaseBooksExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
+        BookStore.BookPurchaseServiceReference.BookPurchaseResponse PurchaseBooks(BookStore.BookPurchaseServiceReference.BookPurchaseInfo request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/PurchaseBook", ReplyAction="http://tempuri.org/IBookPurchaseService/PurchaseBookResponse")]
-        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> PurchaseBookAsync(BookStore.BookPurchaseServiceReference.BookPurchaseResponse request);
-        
-        // CODEGEN: Generating message contract since the operation BookPurchaseInfo is neither RPC nor document wrapped.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfo", ReplyAction="http://tempuri.org/IBookPurchaseService/BookPurchaseInfoResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfoExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
-        BookStore.BookPurchaseServiceReference.BookPurchaseInfo BookPurchaseInfo(BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/BookPurchaseInfo", ReplyAction="http://tempuri.org/IBookPurchaseService/BookPurchaseInfoResponse")]
-        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> BookPurchaseInfoAsync(BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="BookPurchaseResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class BookPurchaseResponse {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public string response;
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public bool result;
-        
-        public BookPurchaseResponse() {
-        }
-        
-        public BookPurchaseResponse(string response, bool result) {
-            this.response = response;
-            this.result = result;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookPurchaseService/PurchaseBooks", ReplyAction="http://tempuri.org/IBookPurchaseService/PurchaseBooksResponse")]
+        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseResponse> PurchaseBooksAsync(BookStore.BookPurchaseServiceReference.BookPurchaseInfo request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -77,10 +48,21 @@ namespace BookStore.BookPurchaseServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class BookPurchaseInfoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="BookPurchaseResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class BookPurchaseResponse {
         
-        public BookPurchaseInfoRequest() {
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public string response;
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public bool result;
+        
+        public BookPurchaseResponse() {
+        }
+        
+        public BookPurchaseResponse(string response, bool result) {
+            this.response = response;
+            this.result = result;
         }
     }
     
@@ -112,51 +94,29 @@ namespace BookStore.BookPurchaseServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BookStore.BookPurchaseServiceReference.BookPurchaseInfo BookStore.BookPurchaseServiceReference.IBookPurchaseService.PurchaseBook(BookStore.BookPurchaseServiceReference.BookPurchaseResponse request) {
-            return base.Channel.PurchaseBook(request);
+        BookStore.BookPurchaseServiceReference.BookPurchaseResponse BookStore.BookPurchaseServiceReference.IBookPurchaseService.PurchaseBooks(BookStore.BookPurchaseServiceReference.BookPurchaseInfo request) {
+            return base.Channel.PurchaseBooks(request);
         }
         
-        public float PurchaseBook(string response, bool result, out System.Collections.Generic.Dictionary<int, int> items) {
-            BookStore.BookPurchaseServiceReference.BookPurchaseResponse inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseResponse();
-            inValue.response = response;
-            inValue.result = result;
-            BookStore.BookPurchaseServiceReference.BookPurchaseInfo retVal = ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).PurchaseBook(inValue);
-            items = retVal.items;
-            return retVal.budget;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> BookStore.BookPurchaseServiceReference.IBookPurchaseService.PurchaseBookAsync(BookStore.BookPurchaseServiceReference.BookPurchaseResponse request) {
-            return base.Channel.PurchaseBookAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> PurchaseBookAsync(string response, bool result) {
-            BookStore.BookPurchaseServiceReference.BookPurchaseResponse inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseResponse();
-            inValue.response = response;
-            inValue.result = result;
-            return ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).PurchaseBookAsync(inValue);
+        public string PurchaseBooks(float budget, System.Collections.Generic.Dictionary<int, int> items, out bool result) {
+            BookStore.BookPurchaseServiceReference.BookPurchaseInfo inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseInfo();
+            inValue.budget = budget;
+            inValue.items = items;
+            BookStore.BookPurchaseServiceReference.BookPurchaseResponse retVal = ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).PurchaseBooks(inValue);
+            result = retVal.result;
+            return retVal.response;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        BookStore.BookPurchaseServiceReference.BookPurchaseInfo BookStore.BookPurchaseServiceReference.IBookPurchaseService.BookPurchaseInfo(BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest request) {
-            return base.Channel.BookPurchaseInfo(request);
+        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseResponse> BookStore.BookPurchaseServiceReference.IBookPurchaseService.PurchaseBooksAsync(BookStore.BookPurchaseServiceReference.BookPurchaseInfo request) {
+            return base.Channel.PurchaseBooksAsync(request);
         }
         
-        public float BookPurchaseInfo(out System.Collections.Generic.Dictionary<int, int> items) {
-            BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest();
-            BookStore.BookPurchaseServiceReference.BookPurchaseInfo retVal = ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).BookPurchaseInfo(inValue);
-            items = retVal.items;
-            return retVal.budget;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> BookStore.BookPurchaseServiceReference.IBookPurchaseService.BookPurchaseInfoAsync(BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest request) {
-            return base.Channel.BookPurchaseInfoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseInfo> BookPurchaseInfoAsync() {
-            BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseInfoRequest();
-            return ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).BookPurchaseInfoAsync(inValue);
+        public System.Threading.Tasks.Task<BookStore.BookPurchaseServiceReference.BookPurchaseResponse> PurchaseBooksAsync(float budget, System.Collections.Generic.Dictionary<int, int> items) {
+            BookStore.BookPurchaseServiceReference.BookPurchaseInfo inValue = new BookStore.BookPurchaseServiceReference.BookPurchaseInfo();
+            inValue.budget = budget;
+            inValue.items = items;
+            return ((BookStore.BookPurchaseServiceReference.IBookPurchaseService)(this)).PurchaseBooksAsync(inValue);
         }
     }
 }
