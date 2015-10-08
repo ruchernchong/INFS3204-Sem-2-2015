@@ -46,7 +46,7 @@ namespace BookStore
                 totalCost += (getCost * thisQty);
             }
 
-            if (totalCost < thisBudget)
+            if (totalCost <= thisBudget)
             {
                 thisResponse.result = true;
 
