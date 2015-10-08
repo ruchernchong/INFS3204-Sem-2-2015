@@ -25,7 +25,11 @@ namespace BookStore
         public Book createBook(String[] bookDetails, int num)
         {
             List<String> fieldError = new List<String>();
+            List<String> fieldIsPositive = new List<String>();
+
             bool isFieldEmpty = false;
+            bool isFieldPositive = false;
+
             for (int i = 0; i <= 5; i++)
             {
                 if (String.IsNullOrWhiteSpace(bookDetails[i]))
@@ -56,6 +60,29 @@ namespace BookStore
                             break;
                     }
                 }
+                //else if (!IsPositive(int.Parse(bookDetails[3])) || !IsPositive(int.Parse(bookDetails[5])))
+                //{
+                //    isFieldPositive = true;
+
+                //    switch (i)
+                //    {
+                //        case 0:
+                //        case 1:
+                //        case 2:
+                //            break;
+                //        case 3:
+                //            fieldIsPositive.Add("Year");
+                //            break;
+                //        case 4:
+                ////            fieldIsPositive.Add("Price");
+                //            break;
+                //        case 5:
+                //            fieldIsPositive.Add("Stock");
+                //            break;
+                //        default:
+                //            break;
+                //    }
+                //}
             }
 
             if (isFieldEmpty)
@@ -65,11 +92,16 @@ namespace BookStore
                 throw new ArgumentException("The following field(s) are empty: ", concatFieldErrors);
             }
 
-            bool isPositiveYear = int.Parse(bookDetails[3]) > 0;
-            bool isPositivePrice = float.Parse(bookDetails[4].Trim('$')) > 0;
-            bool isPositiveStock = int.Parse(bookDetails[5]) > 0;
+            if (isFieldPositive)
+            {
+                string concatFieldPositive = String.Join(", ", fieldIsPositive.ToArray());
 
-            if (!isPositiveYear || !isPositivePrice || !isPositiveStock)
+                throw new ArgumentException("The following field(s) must be positive: ", concatFieldPositive);
+            }
+
+            bool isPositivePrice = float.Parse(bookDetails[4].Trim('$')) > 0;
+
+            if (!isPositivePrice)
             {
                 throw new ArgumentException("Input(s) for Year, Price and Stock must be positive.");
             }
@@ -539,6 +571,11 @@ namespace BookStore
         }
 
         private Boolean IsPositive(int number)
+        {
+            return number > 0;
+        }
+
+        private Boolean IsSinglePositive(float number)
         {
             return number > 0;
         }
