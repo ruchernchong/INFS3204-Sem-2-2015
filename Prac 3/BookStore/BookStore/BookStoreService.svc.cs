@@ -73,6 +73,11 @@ namespace BookStore
                 throw new ArgumentException("Input(s) for Year, Price and Stock must be positive.");
             }
 
+            if (!IsYear(bookDetails[3]))
+            {
+                throw new FormatException("Year must be valid and contain exactly 4 chars.");
+            }
+
             Book thisBook = new Book();
 
             thisBook.num = num;
@@ -240,6 +245,10 @@ namespace BookStore
             if (String.IsNullOrWhiteSpace(input))
             {
                 throw new NullReferenceException("Input is empty.");
+            }
+            else if (type.Equals("Year") && !IsYear(input))
+            {
+                throw new FormatException("Input is not a valid year.");
             }
             else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
             {
@@ -409,6 +418,10 @@ namespace BookStore
                         throw new FormatException("Year must be a valid positive integer. Input: " + input);
                     }
                     else
+                else if (type.Equals("Year") && !IsYear(input))
+                {
+                    throw new ArgumentException("Input is not a valid year.");
+                }
                     {
                         switch (type)
                         {
@@ -527,6 +540,20 @@ namespace BookStore
         private Boolean IsPositive(int number)
         {
             return number > 0;
+        }
+
+        private Boolean IsYear(string year)
+        {
+            string isYear = @"^(19|20)[0-9][0-9]";
+
+            if (Regex.IsMatch(year, isYear))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
