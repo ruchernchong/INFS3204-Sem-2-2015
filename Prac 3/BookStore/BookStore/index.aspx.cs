@@ -24,7 +24,7 @@ namespace BookStore
                                    "No results found for "
                                };
 
-        private static bool isBtnMoreClicked = false;
+        private static int fieldQty = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,7 +45,7 @@ namespace BookStore
             //Check if PostBack
             if (!IsPostBack)
             {
-                this.fieldQty = 0;
+                fieldQty = 1;
 
                 this.populateDropDelete();
                 this.populateDropSearch();
@@ -56,16 +56,17 @@ namespace BookStore
                 }
                 catch (Exception Ex)
                 {
-                    divErrorMessage.Visible = true;
-                    divErrorMessage.Controls.Add(new LiteralControl(Ex.Message));
+                    System.Windows.Forms.MessageBox.Show(
+                        Ex.Message,
+                        "Error Occurred!",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Warning
+                        );
                 }
             }
-            else
+            for (int i = 1; i < fieldQty; i++)
             {
-                if (isBtnMoreClicked)
-                {
-                    this.CreateDynamicElements();
-                }
+                this.CreateDynamicElements(i);
             }
         }
 
@@ -94,6 +95,15 @@ namespace BookStore
                     "Invalid input type", 
                     System.Windows.Forms.MessageBoxButtons.OK, 
                     System.Windows.Forms.MessageBoxIcon.Warning);
+            }
+            catch (FormatException FormatEx)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    FormatEx.Message,
+                    "Error Occurred",
+                    System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Warning
+                    );
             }
         }
 
@@ -194,15 +204,12 @@ namespace BookStore
 
         protected void btnMore_Click(object sender, EventArgs e)
         {
-            this.fieldQty++;
-            isBtnMoreClicked = true;
-            this.CreateDynamicElements();
+            this.CreateDynamicElements(fieldQty);
+            fieldQty++;
         }
 
-        protected void CreateDynamicElements()
+        protected void CreateDynamicElements(int i)
         {
-            for (int i = 1; i <= fieldQty; i++)
-            {
                 Label lblBookNumber = new Label();
                 TextBox txtBookNumber = new TextBox();
                 Label lblQty = new Label();
@@ -222,7 +229,6 @@ namespace BookStore
                 placeHolderAddField.Controls.Add(txtBookNumber);
                 placeHolderAddField.Controls.Add(lblQty);
                 placeHolderAddField.Controls.Add(txtQty);
-            }
         }
 
 
@@ -265,7 +271,7 @@ namespace BookStore
                     {
                         System.Windows.Forms.MessageBox.Show(
                             Ex.Message,
-                            "Error Occurred!",
+                            "Error Occurred",
                             System.Windows.Forms.MessageBoxButtons.OK,
                             System.Windows.Forms.MessageBoxIcon.Error
                             );
@@ -288,17 +294,6 @@ namespace BookStore
                     System.Windows.Forms.MessageBoxIcon.Exclamation
                     );
             }
-        }
-
-        protected int fieldQty
-        {
-            get { return (int)ViewState["fieldBookNo"]; }
-            set { ViewState["fieldBookNo"] = value; }
-        }
-
-        private Boolean IsPositive(int number)
-        {
-            return number > 0;
         }
 
         private void populateDropDelete()
