@@ -293,7 +293,7 @@ namespace BookStore
         {
             //Populate DropDownList with items on Page_Load for dropDelete.
             List<ListItem> dropDeleteItems = new List<ListItem>();
-            dropDeleteItems.Add(new ListItem("Name"));
+            dropDeleteItems.Add(new ListItem("Num"));
             dropDeleteItems.Add(new ListItem("ID"));
             dropDeleteItems.Add(new ListItem("Year"));
             dropDelete.Items.AddRange(dropDeleteItems.ToArray());
