@@ -255,9 +255,21 @@ namespace BookStore
 
                 if (isBookNo && isBookQty)
                 {
-                    purchasedBooks.Add(bookNo, bookQty);
-                    isBookNo= false;
-                    isBookQty = false;
+                    try
+                    {
+                        purchasedBooks.Add(bookNo, bookQty);
+                        isBookNo = false;
+                        isBookQty = false;
+                    }
+                    catch (Exception Ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show(
+                            Ex.Message,
+                            "Error Occurred!",
+                            System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Error
+                            );
+                    }
                 }
             }
 
