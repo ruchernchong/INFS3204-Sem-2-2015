@@ -24,6 +24,8 @@ namespace BookStore
                                    "No results found for "
                                };
 
+        private static bool isBtnMoreClicked = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //Assigning values to ASP elements on Load.
@@ -56,6 +58,13 @@ namespace BookStore
                 {
                     divErrorMessage.Visible = true;
                     divErrorMessage.Controls.Add(new LiteralControl(Ex.Message));
+                }
+            }
+            else
+            {
+                if (isBtnMoreClicked)
+                {
+                    this.CreateDynamicElements();
                 }
             }
         }
@@ -186,6 +195,7 @@ namespace BookStore
         protected void btnMore_Click(object sender, EventArgs e)
         {
             this.fieldQty++;
+            isBtnMoreClicked = true;
             this.CreateDynamicElements();
         }
 
