@@ -124,12 +124,11 @@ namespace BookStore
 
                 dataRow = dataTable.NewRow();
 
-                dataRow[1] = arrayBooks[0]; // ID of Book
-                dataRow[2] = arrayBooks[1]; // Name of Book
-                dataRow[3] = arrayBooks[2]; // Author of Book
-                dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                dataRow[5] = arrayBooks[4]; // Price of Book
-                dataRow[6] = arrayBooks[5]; // Stock of Book
+
+                for (int j = 0; j < arrayBooks.GetLength(0); j++)
+                {
+                    dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
+                }
 
                 dataTable.Rows.Add(dataRow);
             }
@@ -410,16 +409,17 @@ namespace BookStore
                             {
                                 if (arrayBooks[0].Equals(input))
                                 {
-                                    dataRow = dataTable.NewRow();
+                                    if (arrayBooks[0].Equals(input))
+                                    {
+                                        dataRow = dataTable.NewRow();
 
-                                    dataRow[1] = arrayBooks[0]; // ID of Book
-                                    dataRow[2] = arrayBooks[1]; // Name of Book
-                                    dataRow[3] = arrayBooks[2]; // Author of Book
-                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                    dataRow[5] = arrayBooks[4]; // Price of Book
-                                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
+                                        {
+                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
+                                        }
 
-                                    dataTable.Rows.Add(dataRow);
+                                        dataTable.Rows.Add(dataRow);
+                                    }
                                 }
                             }
                             catch (Exception Ex)
@@ -433,15 +433,15 @@ namespace BookStore
                                 if (arrayBooks[1].ToLower().Contains(input.ToLower()))
                                 {
                                     dataRow = dataTable.NewRow();
+                                        dataRow = dataTable.NewRow();
 
-                                    dataRow[1] = arrayBooks[0]; // ID of Book
-                                    dataRow[2] = arrayBooks[1]; // Name of Book
-                                    dataRow[3] = arrayBooks[2]; // Author of Book
-                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                    dataRow[5] = arrayBooks[4]; // Price of Book
-                                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
+                                        {
+                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
+                                        }
 
-                                    dataTable.Rows.Add(dataRow);
+                                        dataTable.Rows.Add(dataRow);
+                                    }
                                 }
                             }
                             catch (Exception Ex)
@@ -455,15 +455,15 @@ namespace BookStore
                                 if (arrayBooks[2].ToLower().Contains(input.ToLower()))
                                 {
                                     dataRow = dataTable.NewRow();
+                                        dataRow = dataTable.NewRow();
 
-                                    dataRow[1] = arrayBooks[0]; // ID of Book
-                                    dataRow[2] = arrayBooks[1]; // Name of Book
-                                    dataRow[3] = arrayBooks[2]; // Author of Book
-                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                    dataRow[5] = arrayBooks[4]; // Price of Book
-                                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
+                                        {
+                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
+                                        }
 
-                                    dataTable.Rows.Add(dataRow);
+                                        dataTable.Rows.Add(dataRow);
+                                    }
                                 }
                             }
                             catch (Exception Ex)
@@ -477,15 +477,15 @@ namespace BookStore
                                 if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
                                 {
                                     dataRow = dataTable.NewRow();
+                                        dataRow = dataTable.NewRow();
 
-                                    dataRow[1] = arrayBooks[0]; // ID of Book
-                                    dataRow[2] = arrayBooks[1]; // Name of Book
-                                    dataRow[3] = arrayBooks[2]; // Author of Book
-                                    dataRow[4] = arrayBooks[3]; // Year of Publication of Book
-                                    dataRow[5] = arrayBooks[4]; // Price of Book
-                                    dataRow[6] = arrayBooks[5]; // Stock of Book
+                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
+                                        {
+                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
+                                        }
 
-                                    dataTable.Rows.Add(dataRow);
+                                        dataTable.Rows.Add(dataRow);
+                                    }
                                 }
                             }
                             catch (Exception Ex)
