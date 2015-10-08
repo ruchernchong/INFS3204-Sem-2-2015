@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.ServiceModel;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace BookStore
@@ -409,106 +410,106 @@ namespace BookStore
                     .Select(Book => Book.Trim())
                     .ToArray();
 
-                    if (String.IsNullOrWhiteSpace(input))
-                    {
-                        throw new NullReferenceException("Input is empty.");
-                    }
-                    else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
-                    {
-                        throw new FormatException("Year must be a valid positive integer. Input: " + input);
-                    }
-                    else
+                if (String.IsNullOrWhiteSpace(input))
+                {
+                    throw new NullReferenceException("Input is empty.");
+                }
                 else if (type.Equals("Year") && !IsYear(input))
                 {
                     throw new ArgumentException("Input is not a valid year.");
                 }
+                else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
+                {
+                    throw new FormatException("Year must be a valid positive integer. Input: " + input);
+                }
+                else
+                {
+                    switch (type)
                     {
-                        switch (type)
-                        {
-                            case "ID":
-                                try
+                        case "ID":
+                            try
+                            {
+                                if (arrayBooks[0].Equals(input))
                                 {
-                                    if (arrayBooks[0].Equals(input))
+                                    dataRow = dataTable.NewRow();
+
+                                    for (int j = 0; j < arrayBooks.GetLength(0); j++)
                                     {
-                                        dataRow = dataTable.NewRow();
-
-                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
-                                        {
-                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
-                                        }
-
-                                        dataTable.Rows.Add(dataRow);
+                                        dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
                                     }
+
+                                    dataTable.Rows.Add(dataRow);
                                 }
-                                catch (Exception Ex)
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Name":
+                            try
+                            {
+                                if (arrayBooks[1].ToLower().Contains(input.ToLower()))
                                 {
-                                    throw new FaultException<Exception>(new Exception(Ex.Message));
-                                }
-                                break;
-                            case "Name":
-                                try
-                                {
-                                    if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                                    dataRow = dataTable.NewRow();
+
+                                    for (int j = 0; j < arrayBooks.GetLength(0); j++)
                                     {
-                                        dataRow = dataTable.NewRow();
-
-                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
-                                        {
-                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
-                                        }
-
-                                        dataTable.Rows.Add(dataRow);
+                                        dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
                                     }
+
+                                    dataTable.Rows.Add(dataRow);
                                 }
-                                catch (Exception Ex)
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Author":
+                            try
+                            {
+                                if (arrayBooks[2].ToLower().Contains(input.ToLower()))
                                 {
-                                    throw new FaultException<Exception>(new Exception(Ex.Message));
-                                }
-                                break;
-                            case "Author":
-                                try
-                                {
-                                    if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                                    dataRow = dataTable.NewRow();
+
+                                    for (int j = 0; j < arrayBooks.GetLength(0); j++)
                                     {
-                                        dataRow = dataTable.NewRow();
-
-                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
-                                        {
-                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
-                                        }
-
-                                        dataTable.Rows.Add(dataRow);
+                                        dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
                                     }
+
+                                    dataTable.Rows.Add(dataRow);
                                 }
-                                catch (Exception Ex)
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        case "Year":
+                            try
+                            {
+                                if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
                                 {
-                                    throw new FaultException<Exception>(new Exception(Ex.Message));
-                                }
-                                break;
-                            case "Year":
-                                try
-                                {
-                                    if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                                    dataRow = dataTable.NewRow();
+
+                                    for (int j = 0; j < arrayBooks.GetLength(0); j++)
                                     {
-                                        dataRow = dataTable.NewRow();
-
-                                        for (int j = 0; j < arrayBooks.GetLength(0); j++)
-                                        {
-                                            dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
-                                        }
-
-                                        dataTable.Rows.Add(dataRow);
+                                        dataRow[j + 1] = arrayBooks[j]; // j+1 because index is pre-defined.
                                     }
+
+                                    dataTable.Rows.Add(dataRow);
                                 }
-                                catch (Exception Ex)
-                                {
-                                    throw new FaultException<Exception>(new Exception(Ex.Message));
-                                }
-                                break;
-                            default:
-                                break;
-                        }
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new FaultException<Exception>(new Exception(Ex.Message));
+                            }
+                            break;
+                        default:
+                            break;
                     }
+                }
             }
 
             DataView dataView = new DataView(dataTable);
