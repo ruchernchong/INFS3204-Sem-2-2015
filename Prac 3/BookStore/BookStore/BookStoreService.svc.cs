@@ -253,6 +253,7 @@ namespace BookStore
                     {
                         string line;
                         bool isDeleted = false;
+                        int columnIndex = 1;
                         List<String> bookLines = new List<String>();
                         String[] delimiters = {
                                          ",",
@@ -277,21 +278,26 @@ namespace BookStore
                                     }
                                     break;
 
-                                case "Name":
-                                    if (arrayBooks[1].Equals(input))
+                                case "Num":
+                                    try
                                     {
-                                        isDeleted = true;
+                                        if (columnIndex == int.Parse(input))
+                                        {
+                                            isDeleted = true;
+                                        }
+                                        else
+                                        {
+                                            bookLines.Add(line);
+                                        }
+                                        break;
                                     }
-                                    else
+                                    catch (FormatException thisFormatException)
                                     {
-                                        bookLines.Add(line);
+                                        throw new FormatException(thisFormatException.Message);
                                     }
-                                    break;
-
                                 case "Year":
                                     try
                                     {
-
                                         if (int.Parse(arrayBooks[3]) == int.Parse(input))
                                         {
                                             isDeleted = true;
@@ -302,14 +308,15 @@ namespace BookStore
                                         }
 
                                     }
-                                    catch
+                                    catch (Exception Ex)
                                     {
-                                        throw new FaultException<Exception>(new Exception(input));
+                                        throw new Exception(Ex.Message);
                                     }
                                     break;
                                 default:
                                     return false;
                             }
+                            columnIndex++;
                         }
                         readerBooks.Close();
 
@@ -337,9 +344,9 @@ namespace BookStore
                         return false;
                     }
                 }
-                catch (Exception Ex)
+                catch (FormatException thisFormatException)
                 {
-                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                    throw new FormatException(thisFormatException.Message);
                 }
             }
         }
@@ -392,22 +399,21 @@ namespace BookStore
                     StringSplitOptions.RemoveEmptyEntries)
                     .Select(Book => Book.Trim())
                     .ToArray();
-                if (String.IsNullOrWhiteSpace(input))
-            {
-                throw new NullReferenceException("Input is empty.");
-            }
-                else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
-                {
-                    throw new FormatException("Year must be a valid positive integer. Input: " + input);
-                }
-                else
-                {
-                    switch (type)
+
+                    if (String.IsNullOrWhiteSpace(input))
                     {
-                        case "ID":
-                            try
-                            {
-                                if (arrayBooks[0].Equals(input))
+                        throw new NullReferenceException("Input is empty.");
+                    }
+                    else if (type.Equals("Year") && !IsPositive(int.Parse(input)))
+                    {
+                        throw new FormatException("Year must be a valid positive integer. Input: " + input);
+                    }
+                    else
+                    {
+                        switch (type)
+                        {
+                            case "ID":
+                                try
                                 {
                                     if (arrayBooks[0].Equals(input))
                                     {
@@ -421,18 +427,16 @@ namespace BookStore
                                         dataTable.Rows.Add(dataRow);
                                     }
                                 }
-                            }
-                            catch (Exception Ex)
-                            {
-                                throw new FaultException<Exception>(new Exception(Ex.Message));
-                            }
-                            break;
-                        case "Name":
-                            try
-                            {
-                                if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                                catch (Exception Ex)
                                 {
-                                    dataRow = dataTable.NewRow();
+                                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                                }
+                                break;
+                            case "Name":
+                                try
+                                {
+                                    if (arrayBooks[1].ToLower().Contains(input.ToLower()))
+                                    {
                                         dataRow = dataTable.NewRow();
 
                                         for (int j = 0; j < arrayBooks.GetLength(0); j++)
@@ -443,18 +447,16 @@ namespace BookStore
                                         dataTable.Rows.Add(dataRow);
                                     }
                                 }
-                            }
-                            catch (Exception Ex)
-                            {
-                                throw new FaultException<Exception>(new Exception(Ex.Message));
-                            }
-                            break;
-                        case "Author":
-                            try
-                            {
-                                if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                                catch (Exception Ex)
                                 {
-                                    dataRow = dataTable.NewRow();
+                                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                                }
+                                break;
+                            case "Author":
+                                try
+                                {
+                                    if (arrayBooks[2].ToLower().Contains(input.ToLower()))
+                                    {
                                         dataRow = dataTable.NewRow();
 
                                         for (int j = 0; j < arrayBooks.GetLength(0); j++)
@@ -465,18 +467,16 @@ namespace BookStore
                                         dataTable.Rows.Add(dataRow);
                                     }
                                 }
-                            }
-                            catch (Exception Ex)
-                            {
-                                throw new FaultException<Exception>(new Exception(Ex.Message));
-                            }
-                            break;
-                        case "Year":
-                            try
-                            {
-                                if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                                catch (Exception Ex)
                                 {
-                                    dataRow = dataTable.NewRow();
+                                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                                }
+                                break;
+                            case "Year":
+                                try
+                                {
+                                    if (int.Parse(arrayBooks[3]).Equals(int.Parse(input)))
+                                    {
                                         dataRow = dataTable.NewRow();
 
                                         for (int j = 0; j < arrayBooks.GetLength(0); j++)
@@ -487,16 +487,15 @@ namespace BookStore
                                         dataTable.Rows.Add(dataRow);
                                     }
                                 }
-                            }
-                            catch (Exception Ex)
-                            {
-                                throw new FaultException<Exception>(new Exception(Ex.Message));
-                            }
-                            break;
-                        default:
-                            break;
+                                catch (Exception Ex)
+                                {
+                                    throw new FaultException<Exception>(new Exception(Ex.Message));
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
             }
 
             DataView dataView = new DataView(dataTable);
