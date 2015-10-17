@@ -8,6 +8,7 @@ using NBA_League_REST.Models;
 using System.IO;
 using System.Web;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace NBA_League_REST.Controllers
 {
@@ -46,7 +47,8 @@ namespace NBA_League_REST.Controllers
                     Player.First_Name = arrayPlayers[1];
                     Player.Last_Name = arrayPlayers[2];
                     Player.Team_Name = arrayPlayers[3];
-                    Player.DOB = DateTime.Parse(arrayPlayers[4]);
+                    //Player.DOB = DateTime.ParseExact(arrayPlayers[4].Trim(), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date;
+                    Player.DOB = DateTime.Parse(arrayPlayers[4]).Date;
 
                     listPlayers.Add(Player);
                 }
@@ -142,8 +144,7 @@ namespace NBA_League_REST.Controllers
         public IHttpActionResult PlayerRegistration(String[] getPlayerFromInput)
         {
             Player thisPlayer = new Player();
-            //Player thisBook = createBook(newPlayer, 0);
-            bool isUpdatedPlayerInfo = false;
+            //bool isUpdatedPlayerInfo = false;
 
             try
             {
@@ -183,7 +184,8 @@ namespace NBA_League_REST.Controllers
 
                         this.DeleteThisPlayer("id", RegistrationID);
                         this.CreateThisPlayer(thisPlayer);
-                        isUpdatedPlayerInfo = true;
+
+                        //isUpdatedPlayerInfo = true;
                     }
                 }
             }
