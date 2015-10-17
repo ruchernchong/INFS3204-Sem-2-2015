@@ -60,29 +60,6 @@ namespace BookStore
                             break;
                     }
                 }
-                //else if (!IsPositive(int.Parse(bookDetails[3])) || !IsPositive(int.Parse(bookDetails[5])))
-                //{
-                //    isFieldPositive = true;
-
-                //    switch (i)
-                //    {
-                //        case 0:
-                //        case 1:
-                //        case 2:
-                //            break;
-                //        case 3:
-                //            fieldIsPositive.Add("Year");
-                //            break;
-                //        case 4:
-                ////            fieldIsPositive.Add("Price");
-                //            break;
-                //        case 5:
-                //            fieldIsPositive.Add("Stock");
-                //            break;
-                //        default:
-                //            break;
-                //    }
-                //}
             }
 
             if (isFieldEmpty)
