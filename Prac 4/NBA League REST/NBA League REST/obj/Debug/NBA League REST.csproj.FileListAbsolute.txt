@@ -11,4 +11,3 @@ C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\I
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 4\NBA League REST\NBA League REST\bin\System.Web.Http.WebHost.xml
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 4\NBA League REST\NBA League REST\obj\Debug\NBA League REST.dll
 C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 4\NBA League REST\NBA League REST\obj\Debug\NBA League REST.pdb
-C:\Users\RuChern\Dropbox\Course Work\INFS3204 - Service-Oriented Architectures\INFS3204-Sem-2-2015\Prac 4\NBA League REST\NBA League REST\obj\Debug\NBA League REST.csprojResolveAssemblyReference.cache
