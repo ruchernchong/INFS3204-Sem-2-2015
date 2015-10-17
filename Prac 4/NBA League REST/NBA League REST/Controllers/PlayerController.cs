@@ -16,13 +16,14 @@ namespace NBA_League_REST.Controllers
         private static string path = HttpRuntime.AppDomainAppPath;
         private static string file = @"players.txt";
         private string finalPathname = path + file;
+        private string tempFile = Path.GetTempFileName();
 
         List<Player> listPlayers = new List<Player>();
 
         // GET: api/Player
         public IHttpActionResult GetAllPlayers()
         {
-            String[] readerPlayers = ReadLines().ToArray();
+            String[] readerPlayers = this.ReadLines().ToArray();
             String[] delimiters = {
                                       ",",
                                       "\r\n"
@@ -62,75 +63,144 @@ namespace NBA_League_REST.Controllers
         [Route("api/player/{type}/{input}")]
         public IHttpActionResult GetPlayer(string type, string input)
         {
-            String[] readerPlayers = ReadLines().ToArray();
-            String[] delimiters = {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                throw new NullReferenceException("Input is empty.");
+            }
+            else
+            {
+                String[] readerPlayers = this.ReadLines().ToArray();
+                String[] delimiters = {
                                       ",",
                                       "\r\n"
                                   };
 
-            for (int i = 0; i < readerPlayers.GetLength(0); i++)
-            {
-                String[] arrayPlayers = readerPlayers[i].Split(delimiters,
-                    StringSplitOptions.RemoveEmptyEntries)
-                    .Select(Players => Players.Trim())
-                    .ToArray();
-
-                switch (type)
+                for (int i = 0; i < readerPlayers.GetLength(0); i++)
                 {
-                    case "ID":
-                        if (arrayPlayers[0].Equals(input))
-                        {
-                            try
-                            {
-                                Player Player = new Player();
+                    String[] arrayPlayers = readerPlayers[i].Split(delimiters,
+                        StringSplitOptions.RemoveEmptyEntries)
+                        .Select(Players => Players.Trim())
+                        .ToArray();
 
-                                Player.RegistrationID = arrayPlayers[0];
-                                Player.First_Name = arrayPlayers[1];
-                                Player.Last_Name = arrayPlayers[2];
-                                Player.Team_Name = arrayPlayers[3];
-                                Player.DOB = DateTime.Parse(arrayPlayers[4]);
+                    var RegistrationID = arrayPlayers[0];
+                    var First_Name = arrayPlayers[1];
+                    var Last_Name = arrayPlayers[2];
 
-                                listPlayers.Add(Player);
-                            }
-                            catch (Exception Ex)
+                    switch (type)
+                    {
+                        case "ID":
+                            if (RegistrationID.Equals(input))
                             {
-                                throw new Exception(Ex.Message);
-                            }
-                        }
-                        break;
-                    case "Name":
-                        if (arrayPlayers[1].ToLower().Contains(input.ToLower()) || arrayPlayers[2].ToLower().Contains(input.ToLower()))
-                        {
-                            try
-                            {
-                                Player Player = new Player();
+                                try
+                                {
+                                    Player Player = new Player();
 
-                                Player.RegistrationID = arrayPlayers[0];
-                                Player.First_Name = arrayPlayers[1];
-                                Player.Last_Name = arrayPlayers[2];
-                                Player.Team_Name = arrayPlayers[3];
-                                Player.DOB = DateTime.Parse(arrayPlayers[4]);
+                                    Player.RegistrationID = arrayPlayers[0];
+                                    Player.First_Name = arrayPlayers[1];
+                                    Player.Last_Name = arrayPlayers[2];
+                                    Player.Team_Name = arrayPlayers[3];
+                                    Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
-                                listPlayers.Add(Player);
+                                    listPlayers.Add(Player);
+                                }
+                                catch (Exception Ex)
+                                {
+                                    throw new Exception(Ex.Message);
+                                }
                             }
-                            catch (Exception Ex)
+                            break;
+                        case "Name":
+                            if (First_Name.ToLower().Contains(input.ToLower()) || Last_Name.ToLower().Contains(input.ToLower()))
                             {
-                                throw new Exception(Ex.Message);
+                                try
+                                {
+                                    Player Player = new Player();
+
+                                    Player.RegistrationID = arrayPlayers[0];
+                                    Player.First_Name = arrayPlayers[1];
+                                    Player.Last_Name = arrayPlayers[2];
+                                    Player.Team_Name = arrayPlayers[3];
+                                    Player.DOB = DateTime.Parse(arrayPlayers[4]);
+
+                                    listPlayers.Add(Player);
+                                }
+                                catch (Exception Ex)
+                                {
+                                    throw new Exception(Ex.Message);
+                                }
                             }
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
-
             return Ok(listPlayers);
         }
 
         // POST: api/Player
-        public IHttpActionResult PlayerRegistration(String[] newPlayer)
+        public IHttpActionResult PlayerRegistration(String[] getPlayerFromInput)
         {
-            return Ok(listPlayers);
+            Player thisPlayer = new Player();
+            //Player thisBook = createBook(newPlayer, 0);
+            bool isUpdatedPlayerInfo = false;
+
+            try
+            {
+                String[] readerPlayers = ReadLines().ToArray();
+                String[] delimiters = {
+                                      ",",
+                                      "\r\n"
+                                  };
+
+                for (int i = 0; i < readerPlayers.GetLength(0); i++)
+                {
+                    String[] arrayPlayers = readerPlayers[i].Split(delimiters,
+                        StringSplitOptions.RemoveEmptyEntries)
+                        .Select(Player => Player.Trim())
+                        .ToArray();
+
+                    var RegistrationID = arrayPlayers[0];
+                    var First_Name = arrayPlayers[1];
+                    var Last_Name = arrayPlayers[2];
+                    var Team_Name = arrayPlayers[3];
+                    var DOB = arrayPlayers[4];
+
+                    if (RegistrationID == thisPlayer.RegistrationID)
+                    {
+                        //String[] oldPlayer = new String[] { First_Name, Last_Name, Team_Name, DOB };
+                        //String[] newPlayer = new String[] { getPlayerFromInput[0], getPlayerFromInput[1], getPlayerFromInput[2], getPlayerFromInput[3] };
+
+                        //for (int j = 0; j < oldPlayer.GetLength(0); j++)
+                        //{
+                        //}
+
+                        thisPlayer.RegistrationID = arrayPlayers[0];
+                        thisPlayer.First_Name = getPlayerFromInput[1];
+                        thisPlayer.Last_Name = getPlayerFromInput[2];
+                        thisPlayer.Team_Name = getPlayerFromInput[3];
+                        thisPlayer.DOB = DateTime.Parse(getPlayerFromInput[4]).Date;
+
+                        this.DeleteThisPlayer("id", RegistrationID);
+                        this.CreateThisPlayer(thisPlayer);
+                        isUpdatedPlayerInfo = true;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception(Ex.Message);
+            }
+
+            return GetAllPlayers();
+
+            //if (isUpdatedPlayerInfo)
+            //{
+            //    AddNewRecord(thisBook);
+            //    return true;
+            //}
+            //return false;
+            //return Ok(listPlayers);
         }
 
         // PUT: api/Player/5
@@ -139,30 +209,179 @@ namespace NBA_League_REST.Controllers
         }
 
         // DELETE: api/Player/5
-        public void Delete(int id)
+        [Route("api/player/{type}/{input}")]
+        public IHttpActionResult DeletePlayer(string type, string input)
         {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                throw new NullReferenceException("Input is empty.");
+            }
+            else
+            {
+                bool PlayerDeleted = this.DeleteThisPlayer(type, input);
+
+                if (PlayerDeleted)
+                {
+                    return this.GetAllPlayers();
+                }
+                return NotFound();
+            }
+        }
+
+        public Boolean CreateThisPlayer(Player newPlayer)
+        {
+            Player thisPlayer = new Player();
+
+            try
+            {
+                using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
+                {
+                    writerBooks.WriteLineAsync(String.Format(
+                        "{0},{1},{2},{3},{4},{5}",
+                        thisPlayer.RegistrationID,
+                        thisPlayer.First_Name,
+                        thisPlayer.Last_Name,
+                        thisPlayer.Team_Name,
+                        thisPlayer.DOB
+                        ));
+
+                    writerBooks.Close();
+
+                    return true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                return false;
+                throw new Exception(Ex.Message);
+            }
+        }
+
+        public Boolean DeleteThisPlayer(string type, string input)
+        {
+            try
+            {
+                using (StreamReader readerPlayers = new StreamReader(finalPathname))
+                {
+                    string line;
+                    bool isDeleted = false;
+
+                    List<String> playerLines = new List<String>();
+                    String[] delimiters = {
+                                         ",",
+                                         "\r\n"
+                                     };
+
+                    while ((line = readerPlayers.ReadLine()) != null)
+                    {
+                        String[] arrayPlayers = line.Split(delimiters,
+                        StringSplitOptions.RemoveEmptyEntries);
+
+                        var RegistrationID = arrayPlayers[0];
+                        var First_Name = arrayPlayers[1];
+                        var Last_Name = arrayPlayers[2];
+
+                        switch (type)
+                        {
+                            case "ID":
+                                if (RegistrationID.Equals(input))
+                                {
+                                    isDeleted = true;
+                                }
+                                else
+                                {
+                                    playerLines.Add(line);
+                                }
+                                break;
+
+                            case "Name":
+                                try
+                                {
+                                    if (First_Name.ToLower().Equals(input.ToLower()) || Last_Name.ToLower().Equals(input.ToLower()))
+                                    {
+                                        isDeleted = true;
+                                    }
+                                    else
+                                    {
+                                        playerLines.Add(line);
+                                    }
+                                    break;
+                                }
+                                catch (FormatException thisFormatException)
+                                {
+                                    throw new FormatException(thisFormatException.Message);
+                                }
+                            default:
+                                return false;
+                                break;
+                        }
+                    }
+                    readerPlayers.Close();
+
+                    if (isDeleted)
+                    {
+                        try
+                        {
+                            using (StreamWriter writerPlayers = new StreamWriter(tempFile))
+                            {
+                                foreach (string playerLine in playerLines)
+                                {
+                                    writerPlayers.WriteLine(playerLine);
+                                }
+                            }
+                        }
+                        catch (Exception Ex)
+                        {
+                            throw new Exception(Ex.Message);
+                        }
+
+                        this.deleteFile(); //Call deleteFile() method;
+                    }
+                    return false;
+                }
+            }
+            catch (FormatException thisFormatException)
+            {
+                throw new FormatException(thisFormatException.Message);
+            }
+        }
+
+        private void deleteFile()
+        {
+            try
+            {
+                if (File.Exists(finalPathname))
+                {
+                    File.Delete(finalPathname);
+                    File.Move(tempFile, finalPathname);
+                }
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception(Ex.Message);
+            }
         }
 
         public IEnumerable<String> ReadLines()
         {
-            StreamReader readerBooks;
+            StreamReader readerPlayers;
             string line;
 
             try
             {
-                readerBooks = new StreamReader(finalPathname);
+                readerPlayers = new StreamReader(finalPathname);
             }
             catch (Exception Ex)
             {
                 throw new Exception(Ex.Message);
             }
 
-            while ((line = readerBooks.ReadLine()) != null)
+            while ((line = readerPlayers.ReadLine()) != null)
             {
                 yield return line;
                 Console.WriteLine(line);
             }
-            readerBooks.Close();
+            readerPlayers.Close();
         }
     }
 }
