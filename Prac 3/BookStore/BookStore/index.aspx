@@ -4,11 +4,10 @@
     <div class="col-lg-12">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">Data Table</h3>
+                <h3 class="panel-title">All Players</h3>
             </div>
             <div class="panel-body">
-                <asp:Panel ID="divEmptyResults" CssClass="alert alert-warning" runat="server"></asp:Panel>
-                <asp:DataGrid ID="dataGrid_DisplayData" runat="server" CssClass="table table-striped table-hover"></asp:DataGrid>
+
             </div>
         </div>
         <asp:Panel ID="divErrorMessage" CssClass="alert alert-danger" runat="server"></asp:Panel>
