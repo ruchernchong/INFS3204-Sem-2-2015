@@ -17,6 +17,7 @@ namespace NBA_League_REST
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+                //routeTemplate: "api/player/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
