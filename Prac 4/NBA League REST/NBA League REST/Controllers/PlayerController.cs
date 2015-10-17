@@ -7,17 +7,19 @@ using System.Web.Http;
 using NBA_League_REST.Models;
 using System.IO;
 using System.Web;
+using System.Diagnostics;
 
 namespace NBA_League_REST.Controllers
 {
     public class PlayerController : ApiController
     {
-        List<Player> listPlayers = new List<Player>();
-
         private static string path = HttpRuntime.AppDomainAppPath;
         private static string file = @"players.txt";
         private string finalPathname = path + file;
 
+        List<Player> listPlayers = new List<Player>();
+
+        // GET: api/Player
         public IHttpActionResult GetAllPlayers()
         {
             String[] readerPlayers = ReadLines().ToArray();
@@ -56,7 +58,9 @@ namespace NBA_League_REST.Controllers
             return Ok(listPlayers);
         }
 
-        public IHttpActionResult GetPlayer(string id)
+        // GET: api/Player/{type}/{input}
+        [Route("api/player/{type}/{input}")]
+        public IHttpActionResult GetPlayer(string type, string input)
         {
             String[] readerPlayers = ReadLines().ToArray();
             String[] delimiters = {
@@ -71,69 +75,62 @@ namespace NBA_League_REST.Controllers
                     .Select(Players => Players.Trim())
                     .ToArray();
 
-                Console.WriteLine(arrayPlayers);
-
-                try
+                switch (type)
                 {
-                    Console.WriteLine(listPlayers);
+                    case "ID":
+                        if (arrayPlayers[0].Equals(input))
+                        {
+                            try
+                            {
+                                Player Player = new Player();
 
-                    if (arrayPlayers[0].Equals(id))
-                    {
-                        Player Player = new Player();
+                                Player.RegistrationID = arrayPlayers[0];
+                                Player.First_Name = arrayPlayers[1];
+                                Player.Last_Name = arrayPlayers[2];
+                                Player.Team_Name = arrayPlayers[3];
+                                Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
-                        Player.RegistrationID = arrayPlayers[0];
-                        Player.First_Name = arrayPlayers[1];
-                        Player.Last_Name = arrayPlayers[2];
-                        Player.Team_Name = arrayPlayers[3];
-                        Player.DOB = DateTime.Parse(arrayPlayers[4]);
+                                listPlayers.Add(Player);
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new Exception(Ex.Message);
+                            }
+                        }
+                        break;
+                    case "Name":
+                        if (arrayPlayers[1].ToLower().Contains(input.ToLower()) || arrayPlayers[2].ToLower().Contains(input.ToLower()))
+                        {
+                            try
+                            {
+                                Player Player = new Player();
 
-                        listPlayers.Add(Player);
-                    }
-                }
-                catch (Exception Ex)
-                {
-                    throw new Exception(Ex.Message);
+                                Player.RegistrationID = arrayPlayers[0];
+                                Player.First_Name = arrayPlayers[1];
+                                Player.Last_Name = arrayPlayers[2];
+                                Player.Team_Name = arrayPlayers[3];
+                                Player.DOB = DateTime.Parse(arrayPlayers[4]);
+
+                                listPlayers.Add(Player);
+                            }
+                            catch (Exception Ex)
+                            {
+                                throw new Exception(Ex.Message);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
-
-                //if (getPlayer == null)
-                //{
-                //    return NotFound();
-                //}
-
-            //switch (field)
-            //{
-            //    case "ID":
-            //        foreach (var player in listPlayers)
-            //        {
-            //            if (player.RegistrationID.Equals(value))
-            //            {
-            //                listPlayers.Add(player);
-            //            }
-            //        }
-            //        break;
-            //    case "Name":
-            //        break;
-            //}
 
             return Ok(listPlayers);
         }
 
-        // GET: api/Player
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET: api/Player/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST: api/Player
-        public void Post([FromBody]string value)
+        public IHttpActionResult PlayerRegistration(String[] newPlayer)
         {
+            return Ok(listPlayers);
         }
 
         // PUT: api/Player/5
