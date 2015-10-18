@@ -221,8 +221,6 @@ namespace NBA_League_REST.Controllers
 
         private Boolean CreateThisPlayer(Player newPlayer)
         {
-            Player thisPlayer = new Player();
-
             try
             {
                 using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
