@@ -213,7 +213,7 @@ namespace NBA_League_REST.Controllers
 
                 if (PlayerDeleted)
                 {
-                    return this.GetAllPlayers();
+                    return this.Get_AllPlayers();
                 }
                 return NotFound();
             }
