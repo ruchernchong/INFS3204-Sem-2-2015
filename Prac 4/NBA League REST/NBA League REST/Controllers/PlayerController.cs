@@ -22,7 +22,7 @@ namespace NBA_League_REST.Controllers
         List<Player> listPlayers = new List<Player>();
 
         // GET: api/Player
-        public IHttpActionResult GetAllPlayers()
+        public IHttpActionResult Get_AllPlayers()
         {
             String[] readerPlayers = this.ReadLines().ToArray();
             String[] delimiters = {
@@ -63,7 +63,7 @@ namespace NBA_League_REST.Controllers
 
         // GET: api/Player/{type}/{input}
         [Route("api/player/{type}/{input}")]
-        public IHttpActionResult GetPlayer(string type, string input)
+        public IHttpActionResult Get_Player(string type, string input)
         {
             if (String.IsNullOrWhiteSpace(input))
             {
@@ -141,7 +141,7 @@ namespace NBA_League_REST.Controllers
         }
 
         // POST: api/Player
-        public IHttpActionResult PlayerRegistration(String[] getPlayerFromInput)
+        public IHttpActionResult Post_Player(Player getPlayer)
         {
             Player thisPlayer = new Player();
             //bool isUpdatedPlayerInfo = false;
@@ -212,7 +212,7 @@ namespace NBA_League_REST.Controllers
 
         // DELETE: api/Player/5
         [Route("api/player/{type}/{input}")]
-        public IHttpActionResult DeletePlayer(string type, string input)
+        public IHttpActionResult Delete_Player(string type, string input)
         {
             if (String.IsNullOrWhiteSpace(input))
             {
