@@ -149,7 +149,7 @@ namespace NBA_League_REST.Controllers
         {
             Debug.WriteLine(getPlayer);
             Player thisPlayer = new Player();
-            //bool isUpdatedPlayerInfo = false;
+            bool isPlayerNew = true;
 
             try
             {
@@ -179,6 +179,7 @@ namespace NBA_League_REST.Controllers
                         thisPlayer.Last_Name = getPlayerFromInput[2];
                         thisPlayer.Team_Name = getPlayerFromInput[3];
                         thisPlayer.DOB = DateTime.Parse(getPlayerFromInput[4]).Date;
+                        isPlayerNew = false;
 
                         this.DeleteThisPlayer("id", RegistrationID);
                         this.CreateThisPlayer(thisPlayer);
@@ -186,6 +187,7 @@ namespace NBA_League_REST.Controllers
                         //isUpdatedPlayerInfo = true;
                     }
                 }
+                if (isPlayerNew)
             }
             catch (Exception Ex)
             {
