@@ -228,12 +228,12 @@ namespace NBA_League_REST.Controllers
                 using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
                 {
                     writerBooks.WriteLineAsync(String.Format(
-                        "{0},{1},{2},{3},{4},{5}",
-                        thisPlayer.RegistrationID,
-                        thisPlayer.First_Name,
-                        thisPlayer.Last_Name,
-                        thisPlayer.Team_Name,
-                        thisPlayer.DOB
+                        "{0},{1},{2},{3},{4:yyyy-MM-dd}",
+                        newPlayer.RegistrationID,
+                        newPlayer.First_Name,
+                        newPlayer.Last_Name,
+                        newPlayer.Team_Name,
+                        newPlayer.DOB
                         ));
 
                     writerBooks.Close();
