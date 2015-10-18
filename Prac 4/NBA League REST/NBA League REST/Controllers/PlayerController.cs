@@ -174,17 +174,12 @@ namespace NBA_League_REST.Controllers
 
                     if (RegistrationID == thisPlayer.RegistrationID)
                     {
-                        thisPlayer.RegistrationID = arrayPlayers[0];
-                        thisPlayer.First_Name = getPlayerFromInput[1];
-                        thisPlayer.Last_Name = getPlayerFromInput[2];
-                        thisPlayer.Team_Name = getPlayerFromInput[3];
-                        thisPlayer.DOB = DateTime.Parse(getPlayerFromInput[4]).Date;
                         isPlayerNew = false;
 
                         this.DeleteThisPlayer("id", RegistrationID);
-                        this.CreateThisPlayer(thisPlayer);
+                        this.CreateThisPlayer(getPlayer);
 
-                        //isUpdatedPlayerInfo = true;
+                        return Get_AllPlayers();
                     }
                 }
 
