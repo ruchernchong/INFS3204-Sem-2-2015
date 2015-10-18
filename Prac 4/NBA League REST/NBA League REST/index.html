@@ -24,7 +24,7 @@
         });
 
         function formatPlayer(player) {
-            return player.RegistrationID + ", " + player.First_Name + " " + player.Last_Name + ", " + player.Team_Name + ", " + player.DOB;
+            return player.RegistrationID + ", " + player.First_Name + " " + player.Last_Name + ", " + player.Team_Name + ", " + player.DOB.slice(0, 10);
         }
 
         function displayData(data) {
