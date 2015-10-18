@@ -172,13 +172,6 @@ namespace NBA_League_REST.Controllers
 
                     if (RegistrationID == thisPlayer.RegistrationID)
                     {
-                        //String[] oldPlayer = new String[] { First_Name, Last_Name, Team_Name, DOB };
-                        //String[] newPlayer = new String[] { getPlayerFromInput[0], getPlayerFromInput[1], getPlayerFromInput[2], getPlayerFromInput[3] };
-
-                        //for (int j = 0; j < oldPlayer.GetLength(0); j++)
-                        //{
-                        //}
-
                         thisPlayer.RegistrationID = arrayPlayers[0];
                         thisPlayer.First_Name = getPlayerFromInput[1];
                         thisPlayer.Last_Name = getPlayerFromInput[2];
@@ -199,13 +192,6 @@ namespace NBA_League_REST.Controllers
 
             return GetAllPlayers();
 
-            //if (isUpdatedPlayerInfo)
-            //{
-            //    AddNewRecord(thisBook);
-            //    return true;
-            //}
-            //return false;
-            //return Ok(listPlayers);
         }
 
         // PUT: api/Player/5
