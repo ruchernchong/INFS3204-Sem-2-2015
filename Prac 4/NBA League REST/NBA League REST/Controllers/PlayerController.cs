@@ -219,7 +219,7 @@ namespace NBA_League_REST.Controllers
             }
         }
 
-        public Boolean CreateThisPlayer(Player newPlayer)
+        private Boolean CreateThisPlayer(Player newPlayer)
         {
             Player thisPlayer = new Player();
 
@@ -353,7 +353,7 @@ namespace NBA_League_REST.Controllers
             }
         }
 
-        public IEnumerable<String> ReadLines()
+        private IEnumerable<String> ReadLines()
         {
             StreamReader readerPlayers;
             string line;
