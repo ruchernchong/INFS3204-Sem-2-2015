@@ -47,8 +47,7 @@ namespace NBA_League_REST.Controllers
                     Player.First_Name = arrayPlayers[1];
                     Player.Last_Name = arrayPlayers[2];
                     Player.Team_Name = arrayPlayers[3];
-                    //Player.DOB = DateTime.ParseExact(arrayPlayers[4].Trim(), "yyyy-MM-dd", CultureInfo.InvariantCulture).Date;
-                    Player.DOB = DateTime.Parse(arrayPlayers[4]).Date;
+                    Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
                     listPlayers.Add(Player);
                 }
