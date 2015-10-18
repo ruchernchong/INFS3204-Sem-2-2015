@@ -144,6 +144,7 @@ namespace NBA_League_REST.Controllers
         }
 
         // POST: api/Player
+        [HttpPost]
         public IHttpActionResult Post_Player(Player getPlayer)
         {
             Debug.WriteLine(getPlayer);
