@@ -103,6 +103,8 @@ namespace NBA_League_REST.Controllers
                                     Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
                                     listPlayers.Add(Player);
+
+                                    return Ok(listPlayers);
                                 }
                                 catch (Exception Ex)
                                 {
@@ -124,6 +126,8 @@ namespace NBA_League_REST.Controllers
                                     Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
                                     listPlayers.Add(Player);
+
+                                    return Ok(listPlayers);
                                 }
                                 catch (Exception Ex)
                                 {
@@ -135,8 +139,8 @@ namespace NBA_League_REST.Controllers
                             break;
                     }
                 }
+                return NotFound();
             }
-            return Ok(listPlayers);
         }
 
         // POST: api/Player
