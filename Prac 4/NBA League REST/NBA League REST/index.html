@@ -94,31 +94,41 @@
                                         <input type="date" class="form-control" id="formDOB" name="formDOB" placeholder="Date of Birth" />
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Add Player(s)</button>
+                                        <input type="button" class="btn btn-success" id="btnAddPlayer" value="Add Player(s)" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <script>
-                        $("#formAddPlayer").submit(function (e) {
-                            e.preventDefault();
+                        $("#btnAddPlayer").click(function (e) {
                             console.log($("#formAddPlayer").serialize());
-                            //console.log(JSON.stringify($("#formAddPlayer").serializeArray()));
 
                             $.ajax({
-                                type: "post",
+                                type: "POST",
+                                url: uri,
                                 data: $("#formAddPlayer").serialize(),
                                 success: function (response) {
-                                    console.log($("#formAddPlayer").serialize());
-                                }, 
-                                error: function (error) {
+                                    console.log(response);
 
+                                    $(document).ready(function (e) {
+                                        $.ajax({
+                                            type: "GET",
+                                            url: uri,
+                                            success: function (response) {
+                                                console.log(response);
+                                                displayData(response);
+                                            }
+                                        });
+                                    });
+                                },
+                                error: function (jqXHR, textStatus, error) {
+                                    console.log(jqXHR);
                                 }
                             });
                         });
                     </script>
-                    <form id="#formSearchOrDelete" class="form-inline">
+                    <form id="formSearchOrDelete" class="form-inline">
                         <div class="col-lg-6">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
@@ -127,23 +137,67 @@
                                 <div class="panel-body">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <select class ="form-control" id="selectDropType">
+                                            <select class="form-control" id="selectDropType">
                                                 <option value="ID">ID</option>
                                                 <option value="Name">Name</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="formSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" />
+                                            <input type="text" class="form-control" id="txtSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" />
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
-                                            <button type="submit" class="btn btn-danger" id="btnDelete">Delete</button>
+                                            <input type="button" class="btn btn-primary" id="btnSearch" value="Search" />
+                                            <input type="button" class="btn btn-danger" id="btnDelete" value="Delete" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    <script>
+                        $("#btnSearch").click(function (e) {
+                            var type = $("#selectDropType").val();
+                            var input = $("#txtSearchOrDelete").val();
+                            //console.log("Type: " + type + ", " + "Input: " + input);
+
+                            $.ajax({
+                                type: "GET",
+                                url: uri + "/" + type + "/" + input,
+                                data: $("#formSearchOrDelete").serialize(),
+                                success: function (response) {
+                                    console.log(response);
+                                    $("#getAllPlayer").empty();
+                                    displayData(response);
+                                },
+                                error: function (jqXHR, textStatus, error) {
+                                    $("#getAllPlayer").html("No results found for: <i>" + input + "</i>.");
+                                    console.log(error);
+                                }
+                            });
+                        });
+
+                        $("#btnDelete").click(function (e) {
+                            var type = $("#selectDropType").val();
+                            var input = $("#txtSearchOrDelete").val();
+                            //console.log("Type: " + type + ", " + "Input: " + input);
+
+                            $.ajax({
+                                type: "DELETE",
+                                url: uri + "/" + type + "/" + input,
+                                data: $("#formSearchOrDelete").serialize(),
+                                success: function (response) {
+                                    console.log(response);
+                                    $("#getAllPlayer").empty();
+                                    displayData(response);
+                                },
+                                error: function (jqXHR, textStatus, error) {
+                                    $("#getAllPlayer").empty();
+                                    $("#getAllPlayer").html("Your input: <i>" + input + "</i> for Type: <i>" + type + "</i> is " + error + ", and therefore not deleted.");
+                                    console.log(error);
+                                }
+                            });
+                        });
+                    </script>
                     <!--<div class="col-lg-4">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
