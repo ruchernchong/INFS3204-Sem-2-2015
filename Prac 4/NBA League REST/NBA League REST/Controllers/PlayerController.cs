@@ -146,6 +146,7 @@ namespace NBA_League_REST.Controllers
         // POST: api/Player
         public IHttpActionResult Post_Player(Player getPlayer)
         {
+            Debug.WriteLine(getPlayer);
             Player thisPlayer = new Player();
             //bool isUpdatedPlayerInfo = false;
 
@@ -221,6 +222,7 @@ namespace NBA_League_REST.Controllers
 
         private Boolean CreateThisPlayer(Player newPlayer)
         {
+            Debug.WriteLine(newPlayer);
             try
             {
                 using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
