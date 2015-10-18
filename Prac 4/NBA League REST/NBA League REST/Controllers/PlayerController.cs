@@ -187,15 +187,19 @@ namespace NBA_League_REST.Controllers
                         //isUpdatedPlayerInfo = true;
                     }
                 }
+
                 if (isPlayerNew)
+                {
+                    bool isPlayerCreated = CreateThisPlayer(getPlayer);
+
+                    return Get_AllPlayers();
+                }
+                return NotFound();
             }
             catch (Exception Ex)
             {
                 throw new Exception(Ex.Message);
             }
-
-            return GetAllPlayers();
-
         }
 
         // PUT: api/Player/5
