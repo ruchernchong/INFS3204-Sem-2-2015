@@ -307,7 +307,6 @@ namespace NBA_League_REST.Controllers
                                 }
                             default:
                                 return false;
-                                break;
                         }
                     }
                     readerPlayers.Close();
