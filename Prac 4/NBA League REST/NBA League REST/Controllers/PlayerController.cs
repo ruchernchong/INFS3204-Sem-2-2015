@@ -103,8 +103,6 @@ namespace NBA_League_REST.Controllers
                                     Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
                                     listPlayers.Add(Player);
-
-                                    return Ok(listPlayers);
                                 }
                                 catch (Exception Ex)
                                 {
@@ -126,8 +124,6 @@ namespace NBA_League_REST.Controllers
                                     Player.DOB = DateTime.Parse(arrayPlayers[4]);
 
                                     listPlayers.Add(Player);
-
-                                    return Ok(listPlayers);
                                 }
                                 catch (Exception Ex)
                                 {
@@ -138,7 +134,15 @@ namespace NBA_League_REST.Controllers
                         default:
                             break;
                     }
-                }
+                }   
+            }
+
+            if (listPlayers.Count > 0)
+            {
+                return Ok(listPlayers);
+            }
+            else
+            {
                 return NotFound();
             }
         }
@@ -226,9 +230,12 @@ namespace NBA_League_REST.Controllers
 
                 if (PlayerDeleted)
                 {
-
+                    return this.Get_AllPlayers();
                 }
-                return this.Get_AllPlayers();
+                else
+                {
+                    return NotFound();
+                }
             }
         }
 
@@ -339,6 +346,8 @@ namespace NBA_League_REST.Controllers
                         }
 
                         this.deleteFile(); //Call deleteFile() method;
+
+                        return true;
                     }
                     return false;
                 }
