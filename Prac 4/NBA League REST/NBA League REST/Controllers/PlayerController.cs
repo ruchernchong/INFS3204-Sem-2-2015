@@ -153,34 +153,44 @@ namespace NBA_League_REST.Controllers
 
             try
             {
-                String[] readerPlayers = ReadLines().ToArray();
+                //String[] readerPlayers = ReadLines().ToArray();
                 String[] delimiters = {
                                       ",",
                                       "\r\n"
                                   };
 
-                for (int i = 0; i < readerPlayers.GetLength(0); i++)
-                {
-                    String[] arrayPlayers = readerPlayers[i].Split(delimiters,
-                        StringSplitOptions.RemoveEmptyEntries)
-                        .Select(Player => Player.Trim())
-                        .ToArray();
+                //for (int i = 0; i < readerPlayers.GetLength(0); i++)
+                //{
+                //    String[] arrayPlayers = readerPlayers[i].Split(delimiters,
+                //        StringSplitOptions.RemoveEmptyEntries)
+                //        .Select(Player => Player.Trim())
+                //        .ToArray();
 
-                    var RegistrationID = arrayPlayers[0];
-                    var First_Name = arrayPlayers[1];
-                    var Last_Name = arrayPlayers[2];
-                    var Team_Name = arrayPlayers[3];
-                    var DOB = arrayPlayers[4];
-
-                    if (RegistrationID == thisPlayer.RegistrationID)
+                //    var RegistrationID = arrayPlayers[0];
+                //    var First_Name = arrayPlayers[1];
+                //    var Last_Name = arrayPlayers[2];
+                //    var Team_Name = arrayPlayers[3];
+                //    var DOB = arrayPlayers[4];
+                using (StreamReader readerPlayers = new StreamReader(finalPathname)) {
+                    string line;
+                    while ((line = readerPlayers.ReadLine()) != null)
                     {
-                        isPlayerNew = false;
+                        String[] arrayPlayers = line.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                        var RegistrationID = arrayPlayers[0];
 
-                        this.DeleteThisPlayer("id", RegistrationID);
-                        this.CreateThisPlayer(getPlayer);
+                        if (RegistrationID == getPlayer.RegistrationID)
+                        {
+                            isPlayerNew = false;
 
-                        return Get_AllPlayers();
+                            readerPlayers.Close();
+
+                            this.DeleteThisPlayer("ID", RegistrationID);
+                            this.CreateThisPlayer(getPlayer);
+
+                            return Get_AllPlayers();
+                        }
                     }
+                    readerPlayers.Close();
                 }
 
                 if (isPlayerNew)
@@ -216,15 +226,16 @@ namespace NBA_League_REST.Controllers
 
                 if (PlayerDeleted)
                 {
-                    return this.Get_AllPlayers();
+
                 }
-                return NotFound();
+                return this.Get_AllPlayers();
             }
         }
 
         private Boolean CreateThisPlayer(Player newPlayer)
         {
             Debug.WriteLine(newPlayer);
+
             try
             {
                 using (StreamWriter writerBooks = new StreamWriter(finalPathname, true))
