@@ -217,7 +217,7 @@ namespace NBA_League_REST.Controllers
         {
             if (String.IsNullOrWhiteSpace(input))
             {
-                throw new NullReferenceException("Input is empty.");
+                return NotFound();
             }
             else
             {
