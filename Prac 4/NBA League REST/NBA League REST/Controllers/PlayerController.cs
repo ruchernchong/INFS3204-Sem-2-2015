@@ -111,7 +111,7 @@ namespace NBA_League_REST.Controllers
                             }
                             break;
                         case "Name":
-                            if (First_Name.ToLower().Contains(input.ToLower()) || Last_Name.ToLower().Contains(input.ToLower()))
+                            if (arrayPlayers[1].ToLower().Contains(input.ToLower()) || arrayPlayers[2].ToLower().Contains(input.ToLower()))
                             {
                                 try
                                 {
