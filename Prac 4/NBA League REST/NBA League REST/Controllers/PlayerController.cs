@@ -263,7 +263,7 @@ namespace NBA_League_REST.Controllers
             }
         }
 
-        public Boolean DeleteThisPlayer(string type, string input)
+        private Boolean DeleteThisPlayer(string type, string input)
         {
             try
             {
