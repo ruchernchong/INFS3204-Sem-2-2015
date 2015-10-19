@@ -211,11 +211,6 @@ namespace NBA_League_REST.Controllers
             }
         }
 
-        // PUT: api/Player/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
         // DELETE: api/Player/5
         [Route("api/player/{type}/{input}")]
         public IHttpActionResult Delete_Player(string type, string input)
