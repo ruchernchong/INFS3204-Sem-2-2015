@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Content/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="Content/Site.css" type="text/css" />
     <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script>
         var uri = "api/player";
@@ -30,7 +31,9 @@
         function displayData(data) {
             $("ul").empty();
             $.each(data, function (key, player) {
-                $("<li>", { text: formatPlayer(player) }).appendTo($("#getAllPlayer"));
+                $("<li>", {
+                    text: formatPlayer(player)
+                }).appendTo($("#getAllPlayer"));
             });
         }
     </script>
@@ -60,7 +63,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">All Player</h3>
+                        <h3 id="panel-title" class="panel-title">All Player(s)</h3>
                     </div>
                     <div class="panel-body">
                         <div id="getAllPlayer"></div>
@@ -76,23 +79,23 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label>Registration ID</label>
-                                        <input type="text" class="form-control" id="RegistrationID" name="RegistrationID" placeholder="Registration ID" />
+                                        <input type="text" class="form-control" id="RegistrationID" name="RegistrationID" placeholder="Registration ID" required />
                                     </div>
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control" id="First_Name" name="First_Name" placeholder="First Name" />
+                                        <input type="text" class="form-control" id="First_Name" name="First_Name" placeholder="First Name" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control" id="Last_Name" name="Last_Name" placeholder="Last Name" />
+                                        <input type="text" class="form-control" id="Last_Name" name="Last_Name" placeholder="Last Name" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Team Name</label>
-                                        <input type="text" class="form-control" id="Team_Name" name="Team_Name" placeholder="Team Name" />
+                                        <input type="text" class="form-control" id="Team_Name" name="Team_Name" placeholder="Team Name" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Date of Birth</label>
-                                        <input type="date" class="form-control" id="DOB" name="DOB" placeholder="Date of Birth" />
+                                        <input type="date" class="form-control" id="DOB" name="DOB" placeholder="Date of Birth" required />
                                     </div>
                                     <div class="form-group">
                                         <input type="button" class="btn btn-success" id="btnAddPlayer" value="Add Player(s)" />
@@ -104,29 +107,31 @@
                     <script>
                         $("#btnAddPlayer").click(function (e) {
                             console.log($("#formAddPlayer").serialize());
+                            if ($("#formAddPlayer").valid()) {
 
-                            $.ajax({
-                                type: "POST",
-                                url: uri,
-                                data: $("#formAddPlayer").serialize(),
-                                success: function (response) {
-                                    $("#getAllPlayer").empty();
+                                $.ajax({
+                                    type: "POST",
+                                    url: uri,
+                                    data: $("#formAddPlayer").serialize(),
+                                    success: function (response) {
+                                        $("#getAllPlayer").empty();
 
-                                    $(document).ready(function (e) {
-                                        $.ajax({
-                                            type: "GET",
-                                            url: uri,
-                                            success: function (response) {
-                                                console.log(response);
-                                                displayData(response);
-                                            }
+                                        $(document).ready(function (e) {
+                                            $.ajax({
+                                                type: "GET",
+                                                url: uri,
+                                                success: function (response) {
+                                                    console.log(response);
+                                                    displayData(response);
+                                                }
+                                            });
                                         });
-                                    });
-                                },
-                                error: function (jqXHR, textStatus, error) {
-                                    console.log(jqXHR);
-                                }
-                            });
+                                    },
+                                    error: function (jqXHR, textStatus, error) {
+                                        console.log(jqXHR);
+                                    }
+                                });
+                            }
                         });
                     </script>
                     <form id="formSearchOrDelete" class="form-inline">
@@ -144,7 +149,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="txtSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" />
+                                            <input type="text" class="form-control" id="txtSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" required />
                                         </div>
                                         <div class="form-group">
                                             <input type="button" class="btn btn-primary" id="btnSearch" value="Search" />
@@ -168,9 +173,11 @@
                                 success: function (response) {
                                     console.log(response);
                                     $("#getAllPlayer").empty();
+                                    $("#panel-title").text("Search Result(s)");
                                     displayData(response);
                                 },
                                 error: function (jqXHR, textStatus, error) {
+                                    $("#panel-title").text("Search Result(s)");
                                     $("#getAllPlayer").html("No results found for: <i>" + input + "</i>.");
                                     console.log(error);
                                 }
@@ -194,7 +201,7 @@
                                 error: function (jqXHR, textStatus, error) {
                                     $("#getAllPlayer").empty();
                                     $("#getAllPlayer").html("Your input: <i>" + input + "</i> for Type: <i>" + type + "</i> is " + error + ", and therefore not deleted.");
-                                    console.log(error);
+                                    console.log(jqXHR);
                                 }
                             });
                         });
