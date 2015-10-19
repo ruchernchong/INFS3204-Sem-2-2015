@@ -36,6 +36,7 @@
     </script>
 </head>
 <body>
+    <div id="loader"></div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -202,5 +203,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).load(function () {
+            // Animate loader off screen
+            $(".loader").fadeOut("slow");;
+        });
+
+        $(document).ajaxStart(function () {
+            $("#loader").addClass("loader");
+            $(".loader").fadeIn("slow");
+        });
+
+        $(document).ajaxStop(function () {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
 </body>
 </html>
