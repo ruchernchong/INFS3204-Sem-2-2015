@@ -29,11 +29,11 @@
         }
 
         function displayData(data) {
-            $("ul").empty();
+            $("ul").addClass("list-group").empty();
             $.each(data, function (key, player) {
                 $("<li>", {
                     text: formatPlayer(player)
-                }).appendTo($("#getAllPlayer"));
+                }).addClass("list-group-item").appendTo($("#getAllPlayer"));
             });
         }
     </script>
@@ -106,8 +106,8 @@
                     </form>
                     <script>
                         $("#btnAddPlayer").click(function (e) {
-                            console.log($("#formAddPlayer").serialize());
                             if ($("#formAddPlayer").valid()) {
+                                console.log($("#formAddPlayer").serialize());
 
                                 $.ajax({
                                     type: "POST",
@@ -141,20 +141,18 @@
                                     <h3 class="panel-title">Delete Or Search Players</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <select class="form-control" id="selectDropType">
-                                                <option value="ID">ID</option>
-                                                <option value="Name">Name</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="txtSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="button" class="btn btn-primary" id="btnSearch" value="Search" />
-                                            <input type="button" class="btn btn-danger" id="btnDelete" value="Delete" />
-                                        </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="selectDropType">
+                                            <option value="ID">ID</option>
+                                            <option value="Name">Name</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="txtSearchOrDelete" name="formSearchOrDelete" placeholder="Keywords" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="button" class="btn btn-primary" id="btnSearch" value="Search" />
+                                        <input type="button" class="btn btn-danger" id="btnDelete" value="Delete" />
                                     </div>
                                 </div>
                             </div>
@@ -162,48 +160,52 @@
                     </form>
                     <script>
                         $("#btnSearch").click(function (e) {
-                            var type = $("#selectDropType").val();
-                            var input = $("#txtSearchOrDelete").val();
-                            //console.log("Type: " + type + ", " + "Input: " + input);
+                            if ($("#formSearchOrDelete").valid()) {
+                                var type = $("#selectDropType").val();
+                                var input = $("#txtSearchOrDelete").val();
+                                //console.log("Type: " + type + ", " + "Input: " + input);
 
-                            $.ajax({
-                                type: "GET",
-                                url: uri + "/" + type + "/" + input,
-                                data: $("#formSearchOrDelete").serialize(),
-                                success: function (response) {
-                                    console.log(response);
-                                    $("#getAllPlayer").empty();
-                                    $("#panel-title").text("Search Result(s)");
-                                    displayData(response);
-                                },
-                                error: function (jqXHR, textStatus, error) {
-                                    $("#panel-title").text("Search Result(s)");
-                                    $("#getAllPlayer").html("No results found for: <i>" + input + "</i>.");
-                                    console.log(error);
-                                }
-                            });
+                                $.ajax({
+                                    type: "GET",
+                                    url: uri + "/" + type + "/" + input,
+                                    data: $("#formSearchOrDelete").serialize(),
+                                    success: function (response) {
+                                        console.log(response);
+                                        $("#getAllPlayer").empty();
+                                        $("#panel-title").text("Search Result(s)");
+                                        displayData(response);
+                                    },
+                                    error: function (jqXHR, textStatus, error) {
+                                        $("#panel-title").text("Search Result(s)");
+                                        $("#getAllPlayer").html("No results found for: <i>" + input + "</i>.");
+                                        console.log(error);
+                                    }
+                                });
+                            }
                         });
 
                         $("#btnDelete").click(function (e) {
-                            var type = $("#selectDropType").val();
-                            var input = $("#txtSearchOrDelete").val();
-                            //console.log("Type: " + type + ", " + "Input: " + input);
+                            if ($("#formSearchOrDelete").valid()) {
+                                var type = $("#selectDropType").val();
+                                var input = $("#txtSearchOrDelete").val();
+                                //console.log("Type: " + type + ", " + "Input: " + input);
 
-                            $.ajax({
-                                type: "DELETE",
-                                url: uri + "/" + type + "/" + input,
-                                data: $("#formSearchOrDelete").serialize(),
-                                success: function (response) {
-                                    console.log(response);
-                                    $("#getAllPlayer").empty();
-                                    displayData(response);
-                                },
-                                error: function (jqXHR, textStatus, error) {
-                                    $("#getAllPlayer").empty();
-                                    $("#getAllPlayer").html("Your input: <i>" + input + "</i> for Type: <i>" + type + "</i> is " + error + ", and therefore not deleted.");
-                                    console.log(jqXHR);
-                                }
-                            });
+                                $.ajax({
+                                    type: "DELETE",
+                                    url: uri + "/" + type + "/" + input,
+                                    data: $("#formSearchOrDelete").serialize(),
+                                    success: function (response) {
+                                        console.log(response);
+                                        $("#getAllPlayer").empty();
+                                        displayData(response);
+                                    },
+                                    error: function (jqXHR, textStatus, error) {
+                                        $("#getAllPlayer").empty();
+                                        $("#getAllPlayer").html("Your input: <i>" + input + "</i> for Type: <i>" + type + "</i> is " + error + ", and therefore not deleted.");
+                                        console.log(jqXHR);
+                                    }
+                                });
+                            }
                         });
                     </script>
                 </div>
