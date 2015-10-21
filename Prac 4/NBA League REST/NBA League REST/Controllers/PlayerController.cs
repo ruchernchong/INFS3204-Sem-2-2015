@@ -111,7 +111,10 @@ namespace NBA_League_REST.Controllers
                             }
                             break;
                         case "Name":
-                            if (arrayPlayers[1].ToLower().Contains(input.ToLower()) || arrayPlayers[2].ToLower().Contains(input.ToLower()))
+                            string concatName = arrayPlayers[1] + " " + arrayPlayers[2];
+                            Debug.WriteLine(concatName);
+
+                            if (concatName.ToLower().Contains(input.ToLower()) || arrayPlayers[1].ToLower().Contains(input.ToLower()) || arrayPlayers[2].ToLower().Contains(input.ToLower()))
                             {
                                 try
                                 {
@@ -134,7 +137,7 @@ namespace NBA_League_REST.Controllers
                         default:
                             break;
                     }
-                }   
+                }
             }
 
             if (listPlayers.Count > 0)
@@ -157,25 +160,13 @@ namespace NBA_League_REST.Controllers
 
             try
             {
-                //String[] readerPlayers = ReadLines().ToArray();
                 String[] delimiters = {
                                       ",",
                                       "\r\n"
                                   };
 
-                //for (int i = 0; i < readerPlayers.GetLength(0); i++)
-                //{
-                //    String[] arrayPlayers = readerPlayers[i].Split(delimiters,
-                //        StringSplitOptions.RemoveEmptyEntries)
-                //        .Select(Player => Player.Trim())
-                //        .ToArray();
-
-                //    var RegistrationID = arrayPlayers[0];
-                //    var First_Name = arrayPlayers[1];
-                //    var Last_Name = arrayPlayers[2];
-                //    var Team_Name = arrayPlayers[3];
-                //    var DOB = arrayPlayers[4];
-                using (StreamReader readerPlayers = new StreamReader(finalPathname)) {
+                using (StreamReader readerPlayers = new StreamReader(finalPathname))
+                {
                     string line;
                     while ((line = readerPlayers.ReadLine()) != null)
                     {
@@ -303,7 +294,10 @@ namespace NBA_League_REST.Controllers
                             case "Name":
                                 try
                                 {
-                                    if (First_Name.ToLower().Equals(input.ToLower()) || Last_Name.ToLower().Equals(input.ToLower()))
+                                    string concatName = First_Name + " " + Last_Name;
+                                    Debug.WriteLine(concatName);
+
+                                    if (concatName.ToLower().Contains(input.ToLower()) || First_Name.ToLower().Equals(input.ToLower()) || Last_Name.ToLower().Equals(input.ToLower()))
                                     {
                                         isDeleted = true;
                                     }

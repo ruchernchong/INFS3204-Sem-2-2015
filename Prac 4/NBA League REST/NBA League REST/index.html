@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="Content/Site.css" type="text/css" />
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/jquery.validate.min.js"></script>
+    <script src="Scripts/bootstrap-datepicker.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script>
         var uri = "api/player";
@@ -95,7 +96,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Date of Birth</label>
-                                        <input type="date" class="form-control" id="DOB" name="DOB" placeholder="Date of Birth" required />
+                                        <input type="date" class="form-control" id="DOB" name="DOB" placeholder="Date of Birth" required min="2015-01-01" max="2015-12-31" />
                                     </div>
                                     <div class="form-group">
                                         <input type="button" class="btn btn-success" id="btnAddPlayer" value="Add Player(s)" />
